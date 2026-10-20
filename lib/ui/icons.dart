@@ -15,7 +15,7 @@ class Ic {
   static const IconData userOn = SolarIconsBold.userCircle;
 
   // umum
-  static const IconData search = SolarIconsOutline.magnifer;
+  static const IconData search = SolarIconsOutline.magnifier;
   static const IconData bell = SolarIconsOutline.bell;
   static const IconData eye = SolarIconsOutline.eye;
   static const IconData eyeOff = SolarIconsOutline.eyeClosed;
