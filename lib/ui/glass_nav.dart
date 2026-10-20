@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oc_liquid_glass/oc_liquid_glass.dart';
 
+import 'icons.dart';
 import 'theme.dart';
 
 class _NavItem {
@@ -11,10 +12,10 @@ class _NavItem {
 }
 
 const _items = [
-  _NavItem(Icons.home_rounded, Icons.home_outlined, 'Beranda'),
-  _NavItem(Icons.inventory_2_rounded, Icons.inventory_2_outlined, 'Stok'),
-  _NavItem(Icons.insights_rounded, Icons.insights_outlined, 'Aktivitas'),
-  _NavItem(Icons.person_rounded, Icons.person_outline_rounded, 'Profil'),
+  _NavItem(Ic.homeOn, Ic.home, 'Beranda'),
+  _NavItem(Ic.boxOn, Ic.box, 'Stok'),
+  _NavItem(Ic.chartOn, Ic.chart, 'Aktivitas'),
+  _NavItem(Ic.userOn, Ic.user, 'Profil'),
 ];
 
 /// Bottom nav melayang berbahan liquid glass (oc_liquid_glass)

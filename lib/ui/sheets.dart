@@ -6,6 +6,7 @@ import 'package:oc_liquid_glass/oc_liquid_glass.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
+import 'icons.dart';
 import 'theme.dart';
 import 'widgets.dart';
 
@@ -136,7 +137,7 @@ class _SuccessCard extends StatelessWidget {
                       width: 48,
                       height: 48,
                       decoration: const BoxDecoration(color: C.ink, shape: BoxShape.circle),
-                      child: const Icon(Icons.check_rounded, color: Colors.white, size: 28),
+                      child: const Icon(Ic.check, color: Colors.white, size: 30),
                     ),
                   ],
                 ),
@@ -238,14 +239,14 @@ class _TxSheetState extends State<TxSheet> {
       };
 
   IconData get _icon => switch (widget.kind) {
-        TxKind.cetak => Icons.add_box_rounded,
-        TxKind.pindah => Icons.local_fire_department_rounded,
-        TxKind.mulaiBakar => Icons.whatshot_rounded,
-        TxKind.selesaiBakar => Icons.check_circle_rounded,
-        TxKind.susun => Icons.inventory_2_rounded,
-        TxKind.kirim => Icons.local_shipping_rounded,
-        TxKind.pengeluaran => Icons.south_west_rounded,
-        TxKind.kirimUtama => Icons.send_rounded,
+        TxKind.cetak => Ic.add,
+        TxKind.pindah => Ic.fire,
+        TxKind.mulaiBakar => Ic.play,
+        TxKind.selesaiBakar => Ic.checkLine,
+        TxKind.susun => Ic.stock,
+        TxKind.kirim => Ic.truck,
+        TxKind.pengeluaran => Ic.wallet,
+        TxKind.kirimUtama => Ic.send,
       };
 
   String get _headline => switch (widget.kind) {
@@ -664,7 +665,7 @@ class _TxSheetState extends State<TxSheet> {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: C.line)),
-                      child: const Icon(Icons.close_rounded, size: 20, color: C.ink),
+                      child: const Icon(Ic.close, size: 22, color: C.ink),
                     ),
                   ),
                 ),

@@ -37,6 +37,7 @@ class AppStore extends ChangeNotifier {
   final List<StreamSubscription<dynamic>> _subs = [];
 
   int tab = 0;
+  int stokTab = 0;
   bool hideSaldo = false;
   bool ready = false;
   String? error;
@@ -60,6 +61,19 @@ class AppStore extends ChangeNotifier {
 
   void toggleSaldo() {
     hideSaldo = !hideSaldo;
+    notifyListeners();
+  }
+
+  void setStokTab(int i) {
+    if (stokTab == i) return;
+    stokTab = i;
+    notifyListeners();
+  }
+
+  /// Buka tab Stok langsung di sub-tab tertentu (0 mentah, 1 tungku, 2 siap jual)
+  void openStok(int i) {
+    stokTab = i;
+    tab = 1;
     notifyListeners();
   }
 

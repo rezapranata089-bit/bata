@@ -5,6 +5,7 @@ import '../data/store.dart';
 import 'glass_nav.dart';
 import 'home_page.dart';
 import 'other_pages.dart';
+import 'stok_page.dart';
 
 class Shell extends StatelessWidget {
   const Shell({super.key});

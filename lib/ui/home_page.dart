@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
+import 'icons.dart';
 import 'sheets.dart';
 import 'theme.dart';
 import 'widgets.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _f = 0;
 
   String _sapa() {
     final h = DateTime.now().hour;
@@ -24,11 +18,77 @@ class _HomePageState extends State<HomePage> {
     return 'Selamat Malam';
   }
 
+  Widget _aksi(IconData icon, String label, VoidCallback onTap) {
+    return Expanded(
+      child: Tap(
+        onTap: onTap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [BoxShadow(color: Color(0x1F0D1220), blurRadius: 16, offset: Offset(0, 6))],
+              ),
+              child: Icon(icon, size: 26, color: C.ink),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _stok(AppStore s, int i, String label, num v, IconData icon, Color c) {
+    return Expanded(
+      child: Tap(
+        onTap: () => s.openStok(i),
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: const [BoxShadow(color: Color(0x0F101828), blurRadius: 16, offset: Offset(0, 6))],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 34,
+                height: 34,
+                decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(11)),
+                child: Icon(icon, size: 19, color: c),
+              ),
+              const SizedBox(height: 12),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  fmt(v),
+                  style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800, color: C.ink),
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(label, style: const TextStyle(fontSize: 12, color: C.ink3)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = StoreScope.of(context);
     final top = MediaQuery.paddingOf(context).top;
-    final feed = s.feed(_f).take(6).toList();
+    final feed = s.feed(0).take(5).toList();
     final sk = s.siklus;
     final plus = sk > 0 ? '+' : '';
     final saldo = s.hideSaldo ? 'Rp ••••••' : rp(s.kas);
@@ -36,7 +96,7 @@ class _HomePageState extends State<HomePage> {
 
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient()),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 520)),
         ListView(
           padding: EdgeInsets.fromLTRB(20, top + 14, 20, 130),
           children: [
@@ -72,9 +132,9 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                RoundIconBtn(icon: Icons.search_rounded, onTap: () => s.setTab(2)),
+                RoundIconBtn(icon: Ic.search, onTap: () => s.setTab(2)),
                 const SizedBox(width: 10),
-                RoundIconBtn(icon: Icons.notifications_none_rounded, dot: s.burning),
+                RoundIconBtn(icon: Ic.bell, dot: s.burning),
               ],
             ),
             if (s.error != null) ...[
@@ -93,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ],
-            const SizedBox(height: 26),
+            const SizedBox(height: 28),
             Text('Total Kas', style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 14)),
             const SizedBox(height: 4),
             Row(
@@ -117,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                 GestureDetector(
                   onTap: s.toggleSaldo,
                   child: Icon(
-                    s.hideSaldo ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    s.hideSaldo ? Ic.eyeOff : Ic.eye,
                     color: Colors.white.withValues(alpha: 0.7),
                     size: 22,
                   ),
@@ -126,47 +186,34 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 4),
             Text(sub, style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 12.5)),
-            const SizedBox(height: 22),
+            const SizedBox(height: 26),
             Row(
               children: [
-                Expanded(
-                  child: WhiteBtn(
-                    icon: Icons.add_rounded,
-                    label: 'Cetak',
-                    onTap: () => openTx(context, TxKind.cetak),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: WhiteBtn(
-                    icon: Icons.swap_vert_rounded,
-                    label: 'Kirim',
-                    onTap: () => openTx(context, TxKind.kirim),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Tap(
-                  onTap: () => openTx(context, TxKind.pindah),
-                  child: Container(
-                    width: 52,
-                    height: 52,
-                    decoration: BoxDecoration(color: C.ink, borderRadius: BorderRadius.circular(16)),
-                    child: const Icon(Icons.local_fire_department_rounded, color: Colors.white),
-                  ),
-                ),
+                _aksi(Ic.add, 'Cetak', () => openTx(context, TxKind.cetak)),
+                _aksi(Ic.fire, 'Ke Tungku', () => openTx(context, TxKind.pindah)),
+                _aksi(Ic.truck, 'Kirim', () => openTx(context, TxKind.kirim)),
+                _aksi(Ic.wallet, 'Biaya', () => openTx(context, TxKind.pengeluaran)),
               ],
             ),
-            const SizedBox(height: 18),
+            const SizedBox(height: 28),
+            Row(
+              children: [
+                _stok(s, 0, 'Mentah', s.mentahKulon + s.mentahEtan, Ic.box, C.green),
+                const SizedBox(width: 10),
+                _stok(s, 1, 'Di Tungku', s.batu, Ic.fire, C.amber),
+                const SizedBox(width: 10),
+                _stok(s, 2, 'Siap Jual', s.siapJual, Ic.stock, C.blue),
+              ],
+            ),
+            const SizedBox(height: 14),
             _SesiCard(s),
-            const SizedBox(height: 16),
-            _StatStrip(s),
-            const SizedBox(height: 26),
+            const SizedBox(height: 28),
             Row(
               children: [
                 const Expanded(
                   child: Text(
                     'Aktivitas Terbaru',
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800, color: C.ink),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: C.ink),
                   ),
                 ),
                 GestureDetector(
@@ -178,8 +225,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
-            FilterChips(items: const ['Semua', 'Kas', 'Stok'], index: _f, onChanged: (i) => setState(() => _f = i)),
             const SizedBox(height: 12),
             FeedCard(items: feed, loading: !s.ready),
           ],
@@ -202,16 +247,15 @@ class _SesiCard extends StatelessWidget {
     final VoidCallback onTap;
     if (a != null) {
       final sn = a['sesi'];
-      info = 'Sesi $sn sedang berjalan dengan ${fmt(toNum(a['nominal']))} bata di tungku. '
-          'Tap bila pembakaran sudah selesai.';
+      info = 'Sesi $sn sedang berjalan dengan ${fmt(toNum(a['nominal']))} bata di tungku.';
       cta = 'Selesai bakar';
       onTap = () => openTx(context, TxKind.selesaiBakar);
     } else if (s.batu > 0) {
-      info = '${fmt(s.batu)} bata sudah di tungku dan siap dibakar. Mulai sesi baru sekarang.';
+      info = '${fmt(s.batu)} bata sudah di tungku dan siap dibakar.';
       cta = 'Mulai bakar';
       onTap = () => openTx(context, TxKind.mulaiBakar);
     } else {
-      info = 'Tungku masih kosong. Pindahkan bata mentah ke tungku untuk memulai sesi bakar.';
+      info = 'Tungku masih kosong. Pindahkan bata mentah untuk memulai sesi bakar.';
       cta = 'Pindah ke tungku';
       onTap = () => openTx(context, TxKind.pindah);
     }
@@ -224,7 +268,7 @@ class _SesiCard extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(6, 6, 6, 10),
             child: Row(
               children: [
-                Icon(Icons.local_fire_department_rounded, color: Color(0xFF2B9BF0), size: 22),
+                Icon(Ic.fire, color: Color(0xFF2B9BF0), size: 22),
                 SizedBox(width: 8),
                 Text('Sesi Bakar', style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: C.ink)),
               ],
@@ -247,7 +291,7 @@ class _SesiCard extends StatelessWidget {
                       children: [
                         Text(cta, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink)),
                         const SizedBox(width: 8),
-                        const Icon(Icons.arrow_forward_rounded, size: 18, color: C.ink),
+                        const Icon(Ic.arrowRight, size: 18, color: C.ink),
                       ],
                     ),
                   ),
@@ -255,41 +299,6 @@ class _SesiCard extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatStrip extends StatelessWidget {
-  const _StatStrip(this.s);
-
-  final AppStore s;
-
-  Widget _cell(String label, num v, Color c) {
-    return Expanded(
-      child: Column(
-        children: [
-          Text(fmt(v), style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: c)),
-          const SizedBox(height: 2),
-          Text(label, style: const TextStyle(fontSize: 12, color: C.ink3)),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    const div = SizedBox(height: 30, child: VerticalDivider(width: 1, color: C.line));
-    return WhiteCard(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        children: [
-          _cell('Mentah', s.mentahKulon + s.mentahEtan, C.green),
-          div,
-          _cell('Di Tungku', s.batu, C.amber),
-          div,
-          _cell('Siap Jual', s.siapJual, C.blue),
         ],
       ),
     );

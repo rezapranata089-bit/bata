@@ -1,7 +1,53 @@
 import 'package:flutter/material.dart';
 
 import '../data/models.dart';
+import 'icons.dart';
 import 'theme.dart';
+
+const pageTitle = TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -0.5);
+
+final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
+
+/// Tombol aksi lebar (putih / gelap)
+class ActBtn extends StatelessWidget {
+  const ActBtn({super.key, required this.label, required this.icon, this.onTap, this.dark = false});
+
+  final String label;
+  final IconData icon;
+  final VoidCallback? onTap;
+  final bool dark;
+
+  @override
+  Widget build(BuildContext context) {
+    final fg = dark ? Colors.white : C.ink;
+    return Tap(
+      onTap: onTap,
+      child: Container(
+        height: 52,
+        decoration: BoxDecoration(
+          color: dark ? C.ink : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: dark ? null : Border.all(color: C.line),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 20, color: fg),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: fg),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class TopGradient extends StatelessWidget {
   const TopGradient({super.key, this.height = 560});
@@ -236,30 +282,30 @@ class ActStyle {
 ActStyle styleFor(Aktivitas a) {
   switch (a.tipe) {
     case 'Cetak Bata':
-      return const ActStyle(Icons.add_box_rounded, C.green, 'Cetak Bata');
+      return const ActStyle(Ic.add, C.green, 'Cetak Bata');
     case 'Bata Mentah Masuk':
     case 'Bakar Bata':
-      return const ActStyle(Icons.local_fire_department_rounded, C.amber, 'Masuk Tungku');
+      return const ActStyle(Ic.fire, C.amber, 'Masuk Tungku');
     case 'Mulai Bakar':
-      return const ActStyle(Icons.whatshot_rounded, C.amber, 'Mulai Bakar');
+      return const ActStyle(Ic.play, C.amber, 'Mulai Bakar');
     case 'Batu Selesai Dibakar':
-      return const ActStyle(Icons.check_circle_rounded, C.green, 'Selesai Dibakar');
+      return const ActStyle(Ic.check, C.green, 'Selesai Dibakar');
     case 'Batu Telah Disusun':
     case 'Batu Siap Jual':
-      return const ActStyle(Icons.inventory_2_rounded, C.blue, 'Disusun Siap Jual');
+      return const ActStyle(Ic.stock, C.blue, 'Disusun Siap Jual');
     case 'Pengiriman Bata':
-      return const ActStyle(Icons.local_shipping_rounded, C.blue, 'Pengiriman Bata');
+      return const ActStyle(Ic.truck, C.blue, 'Pengiriman Bata');
     case 'Penjualan Bata':
-      return const ActStyle(Icons.payments_rounded, C.green, 'Penjualan Bata');
+      return const ActStyle(Ic.money, C.green, 'Penjualan Bata');
     case 'Kirim ke Total Utama':
-      return const ActStyle(Icons.send_rounded, C.violet, 'Kirim ke Total Utama');
+      return const ActStyle(Ic.send, C.violet, 'Kirim ke Total Utama');
     case 'Penyesuaian Saldo':
-      return const ActStyle(Icons.tune_rounded, C.ink2, 'Penyesuaian Saldo');
+      return const ActStyle(Ic.tune, C.ink2, 'Penyesuaian Saldo');
   }
   final title = a.tipe.isEmpty ? 'Aktivitas' : a.tipe;
-  if (a.isKeluar) return ActStyle(Icons.south_west_rounded, C.red, title);
-  if (a.isMasuk) return ActStyle(Icons.north_east_rounded, C.green, title);
-  return ActStyle(Icons.circle_outlined, C.ink2, title);
+  if (a.isKeluar) return ActStyle(Ic.outgoing, C.red, title);
+  if (a.isMasuk) return ActStyle(Ic.incoming, C.green, title);
+  return ActStyle(Ic.tune, C.ink2, title);
 }
 
 class ActivityTile extends StatelessWidget {
@@ -303,7 +349,7 @@ class ActivityTile extends StatelessWidget {
           Container(
             width: 44,
             height: 44,
-            decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(14)),
+            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(14)),
             child: Icon(s.icon, color: s.color, size: 22),
           ),
           const SizedBox(width: 12),
