@@ -175,14 +175,19 @@ class AppStore extends ChangeNotifier {
     notifyListeners();
   }
 
+  Timer? _debounce;
+
+  /// Gabungkan banyak snapshot Firestore jadi satu rebuild (cegah UI macet / ANR)
   void _changed() {
     _semua = null;
     ready = true;
-    notifyListeners();
+    if (_debounce?.isActive ?? false) return;
+    _debounce = Timer(const Duration(milliseconds: 80), notifyListeners);
   }
 
   @override
   void dispose() {
+    _debounce?.cancel();
     for (final s in _subs) {
       s.cancel();
     }
