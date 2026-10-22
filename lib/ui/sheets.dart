@@ -93,8 +93,9 @@ class _SuccessCard extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: 360),
         padding: const EdgeInsets.fromLTRB(22, 26, 22, 22),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: C.card,
           borderRadius: BorderRadius.circular(30),
+          border: C.dark ? Border.all(color: C.line) : null,
           boxShadow: const [BoxShadow(color: Color(0x290D1220), blurRadius: 40, offset: Offset(0, 16))],
         ),
         child: Column(
@@ -120,7 +121,7 @@ class _SuccessCard extends StatelessWidget {
                     Container(
                       width: 84,
                       height: 84,
-                      decoration: const BoxDecoration(color: Color(0xFFEDEEF2), shape: BoxShape.circle),
+                      decoration: BoxDecoration(color: C.field, shape: BoxShape.circle),
                     ),
                     Positioned(
                       left: 0,
@@ -136,20 +137,20 @@ class _SuccessCard extends StatelessWidget {
                     Container(
                       width: 48,
                       height: 48,
-                      decoration: const BoxDecoration(color: C.ink, shape: BoxShape.circle),
-                      child: const Icon(Ic.check, color: Colors.white, size: 30),
+                      decoration: BoxDecoration(color: C.ink, shape: BoxShape.circle),
+                      child: Icon(Ic.check, color: C.inv, size: 30),
                     ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 18),
-            Text(L.t('saved'), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
+            Text(L.t('saved'), style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
             const SizedBox(height: 8),
             Text(
               message,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 14, height: 1.4, color: C.ink2),
+              style: TextStyle(fontSize: 14, height: 1.4, color: C.ink2),
             ),
             const SizedBox(height: 22),
             _BigBtn(
@@ -180,7 +181,7 @@ class _BigBtn extends StatelessWidget {
         height: 56,
         alignment: Alignment.center,
         decoration: BoxDecoration(color: C.ink, borderRadius: BorderRadius.circular(28)),
-        child: Text(label, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700)),
+        child: Text(label, style: TextStyle(color: C.inv, fontSize: 16, fontWeight: FontWeight.w700)),
       ),
     );
   }
@@ -421,7 +422,7 @@ class _TxSheetState extends State<TxSheet> {
   // ───────── UI helpers ─────────
   Widget _label(String t) => Padding(
         padding: const EdgeInsets.only(bottom: 6),
-        child: Text(t, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: C.ink2)),
+        child: Text(t, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: C.ink2)),
       );
 
   Widget _tf(String label, TextEditingController c, {String hint = '', bool number = false, String? suffix}) {
@@ -441,12 +442,14 @@ class _TxSheetState extends State<TxSheet> {
                     ThousandsFormatter(),
                   ]
                 : null,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: C.ink),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: C.ink),
             decoration: InputDecoration(
               hintText: hint,
+              hintStyle: TextStyle(color: C.ink3),
               suffixText: suffix,
+              suffixStyle: TextStyle(color: C.ink3),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: C.card,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
             ),
@@ -470,12 +473,12 @@ class _TxSheetState extends State<TxSheet> {
                 duration: const Duration(milliseconds: 180),
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: o == cur ? C.ink : Colors.white,
+                  color: o == cur ? C.ink : C.card,
                   borderRadius: BorderRadius.circular(14),
                 ),
                 child: Text(
                   text(o),
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13.5, color: o == cur ? Colors.white : C.ink2),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13.5, color: o == cur ? C.inv : C.ink2),
                 ),
               ),
             ),
@@ -486,7 +489,7 @@ class _TxSheetState extends State<TxSheet> {
 
   Widget _hint(String t) => Padding(
         padding: const EdgeInsets.only(bottom: 12),
-        child: Text(t, style: const TextStyle(fontSize: 12.5, color: C.ink3)),
+        child: Text(t, style: TextStyle(fontSize: 12.5, color: C.ink3)),
       );
 
   Widget _input(AppStore s) {
@@ -566,12 +569,12 @@ class _TxSheetState extends State<TxSheet> {
               Container(
                 width: 42,
                 height: 42,
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
-                child: Icon(_icon, color: C.blue, size: 22),
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(14)),
+                child: Icon(_icon, color: s.pal.accent, size: 22),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(_headline, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: C.ink)),
+                child: Text(_headline, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: C.ink)),
               ),
             ],
           ),
@@ -583,13 +586,13 @@ class _TxSheetState extends State<TxSheet> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(4, 2, 4, 8),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 2, 4, 8),
                 child: Text('Ringkasan', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: C.ink)),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(16)),
                 child: Column(
                   children: [
                     for (var i = 0; i < rows.length; i++) ...[
@@ -598,19 +601,19 @@ class _TxSheetState extends State<TxSheet> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(rows[i][0], style: const TextStyle(fontSize: 13, color: C.ink3)),
+                            Text(rows[i][0], style: TextStyle(fontSize: 13, color: C.ink3)),
                             const SizedBox(width: 16),
                             Expanded(
                               child: Text(
                                 rows[i][1],
                                 textAlign: TextAlign.right,
-                                style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: C.ink),
+                                style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: C.ink),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      if (i != rows.length - 1) const Divider(height: 1, color: Color(0xFFF0F1F4)),
+                      if (i != rows.length - 1) Divider(height: 1, color: C.div),
                     ],
                   ],
                 ),
@@ -618,12 +621,12 @@ class _TxSheetState extends State<TxSheet> {
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(16)),
                 child: Row(
                   children: [
-                    Text(tot[0], style: const TextStyle(fontSize: 13, color: C.ink3)),
+                    Text(tot[0], style: TextStyle(fontSize: 13, color: C.ink3)),
                     const Spacer(),
-                    Text(tot[1], style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: C.ink)),
+                    Text(tot[1], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: C.ink)),
                   ],
                 ),
               ),
@@ -640,9 +643,9 @@ class _TxSheetState extends State<TxSheet> {
     final maxH = MediaQuery.sizeOf(context).height * 0.92;
     return Container(
       constraints: BoxConstraints(maxHeight: maxH),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+      decoration: BoxDecoration(
+        color: C.card,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
       ),
       padding: EdgeInsets.fromLTRB(20, 18, 20, MediaQuery.paddingOf(context).bottom + 16),
       child: Column(
@@ -655,7 +658,7 @@ class _TxSheetState extends State<TxSheet> {
               children: [
                 Text(
                   _step == 0 ? _title : 'Konfirmasi $_title',
-                  style: const TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink),
+                  style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -665,7 +668,7 @@ class _TxSheetState extends State<TxSheet> {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: C.line)),
-                      child: const Icon(Ic.close, size: 22, color: C.ink),
+                      child: Icon(Ic.close, size: 22, color: C.ink),
                     ),
                   ),
                 ),
@@ -695,7 +698,7 @@ class _TxSheetState extends State<TxSheet> {
               padding: const EdgeInsets.only(top: 10),
               child: GestureDetector(
                 onTap: () => setState(() => _step = 0),
-                child: const Text('Ubah data', style: TextStyle(color: C.ink2, fontWeight: FontWeight.w600)),
+                child: Text('Ubah data', style: TextStyle(color: C.ink2, fontWeight: FontWeight.w600)),
               ),
             ),
         ],

@@ -50,7 +50,17 @@ class BataApp extends StatelessWidget {
         builder: (context, _) => MaterialApp(
           title: 'Usaha Bata',
           debugShowCheckedModeBanner: false,
-          theme: buildTheme(store.pal.accent),
+          themeMode: switch (store.themeMode) {
+            1 => ThemeMode.light,
+            2 => ThemeMode.dark,
+            _ => ThemeMode.system,
+          },
+          theme: buildTheme(store.pal.accent, false),
+          darkTheme: buildTheme(store.pal.accent, true),
+          builder: (context, child) {
+            C.dark = Theme.of(context).brightness == Brightness.dark;
+            return child!;
+          },
           home: const Shell(),
         ),
       ),

@@ -38,7 +38,7 @@ class StokPage extends StatelessWidget {
                   children: [
                     Text(L.t('stok_title'), style: pageTitle),
                     const SizedBox(height: 4),
-                    Text('Total ${fmt(total)} bata di semua tahap', style: pageSub),
+                    Text(L.t('stok_total').replaceAll('{n}', fmt(total)), style: pageSub),
                     const SizedBox(height: 18),
                     _SegTabs(labels: _labels, index: i, onChanged: s.setStokTab),
                   ],
@@ -93,7 +93,7 @@ class _SegTabs extends StatelessWidget {
                   curve: Curves.easeOutCubic,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: i == index ? Colors.white : Colors.transparent,
+                    color: i == index ? C.card : Colors.transparent,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
@@ -120,9 +120,10 @@ class _Section extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    StoreScope.of(context);
     return Padding(
       padding: const EdgeInsets.only(top: 26, bottom: 12),
-      child: Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink)),
+      child: Text(title, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink)),
     );
   }
 }
@@ -176,7 +177,7 @@ class _Hero extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Expanded(
-                child: Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink2)),
+                child: Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink2)),
               ),
               if (pill != null) _Pill(pill!, color),
             ],
@@ -185,17 +186,20 @@ class _Hero extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Counter(value: value, style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
+              Counter(
+                value: value,
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+              ),
               const SizedBox(width: 8),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 4),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
                 child: Text('bata', style: TextStyle(fontSize: 14, color: C.ink3)),
               ),
             ],
           ),
           if (sub != null) ...[
             const SizedBox(height: 8),
-            Text(sub!, style: const TextStyle(fontSize: 12.5, color: C.ink3)),
+            Text(sub!, style: TextStyle(fontSize: 12.5, color: C.ink3)),
           ],
         ],
       ),
@@ -215,11 +219,14 @@ class _Area extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Area $label', style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink2)),
+          Text('Area $label', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink2)),
           const SizedBox(height: 8),
-          Counter(value: value, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
+          Counter(
+            value: value,
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+          ),
           const SizedBox(height: 4),
-          const Text('bata mentah', style: TextStyle(fontSize: 12, color: C.ink3)),
+          Text('bata mentah', style: TextStyle(fontSize: 12, color: C.ink3)),
         ],
       ),
     );
@@ -257,7 +264,7 @@ class _Mentah extends StatelessWidget {
             ),
           ],
         ),
-        const _Section('Riwayat Mentah'),
+        _Section(L.t('h_raw')),
         FeedCard(items: s.mentah.take(15).toList(), loading: !s.ready),
       ],
     );
@@ -313,24 +320,24 @@ class _Tungku extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         ActBtn(label: 'Susun ke siap jual', icon: Ic.stock, onTap: () => openTx(context, TxKind.susun)),
-        const _Section('Sesi Bakar'),
+        _Section(L.t('h_sessions')),
         WhiteCard(
           padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
           child: sesi.isEmpty
-              ? const SizedBox(
+              ? SizedBox(
                   height: 80,
-                  child: Center(child: Text('Belum ada sesi bakar', style: TextStyle(color: C.ink3))),
+                  child: Center(child: Text(L.t('no_session'), style: TextStyle(color: C.ink3))),
                 )
               : Column(
                   children: [
                     for (var i = 0; i < sesi.length; i++) ...[
                       _SesiTile(sesi[i]),
-                      if (i != sesi.length - 1) const Divider(height: 1, color: Color(0xFFF0F1F4)),
+                      if (i != sesi.length - 1) Divider(height: 1, color: C.div),
                     ],
                   ],
                 ),
         ),
-        const _Section('Aktivitas Tungku'),
+        _Section(L.t('h_kiln')),
         FeedCard(items: s.beranda.take(10).toList(), loading: !s.ready),
       ],
     );
@@ -365,11 +372,11 @@ class _SesiTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Sesi $sn', style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
+                Text('Sesi $sn', style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
                 const SizedBox(height: 2),
                 Text(
                   '${tglCantik(tgl)} · ${selesai ? 'Selesai' : 'Berjalan'}',
-                  style: const TextStyle(fontSize: 12, color: C.ink3),
+                  style: TextStyle(fontSize: 12, color: C.ink3),
                 ),
               ],
             ),
@@ -379,9 +386,9 @@ class _SesiTile extends StatelessWidget {
             children: [
               Text(
                 '${fmt(toNum(e['nominal']))} bata',
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: C.ink),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: C.ink),
               ),
-              if (total > 0) Text(rp(total), style: const TextStyle(fontSize: 11.5, color: C.ink3)),
+              if (total > 0) Text(rp(total), style: TextStyle(fontSize: 11.5, color: C.ink3)),
             ],
           ),
         ],
@@ -420,7 +427,7 @@ class _SiapJual extends StatelessWidget {
             ),
           ],
         ),
-        const _Section('Riwayat Siap Jual'),
+        _Section(L.t('h_ready')),
         FeedCard(items: s.siapjual.take(15).toList(), loading: !s.ready),
       ],
     );

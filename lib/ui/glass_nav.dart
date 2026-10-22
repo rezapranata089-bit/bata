@@ -59,7 +59,7 @@ class GlassNav extends StatelessWidget {
                       width: w,
                       height: _h,
                       borderRadius: _h / 2,
-                      color: Colors.white.withValues(alpha: 0.35),
+                      color: (C.dark ? Colors.black : Colors.white).withValues(alpha: 0.35),
                       shadow: BoxShadow(
                         color: Colors.black.withValues(alpha: 0.10),
                         blurRadius: 24,
@@ -73,9 +73,9 @@ class GlassNav extends StatelessWidget {
                     child: IgnorePointer(
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.18),
+                          color: Colors.white.withValues(alpha: C.dark ? 0.05 : 0.18),
                           borderRadius: BorderRadius.circular(_h / 2),
-                          border: Border.all(color: Colors.white.withValues(alpha: 0.65)),
+                          border: Border.all(color: Colors.white.withValues(alpha: C.dark ? 0.14 : 0.65)),
                         ),
                       ),
                     ),
@@ -123,7 +123,7 @@ class _NavBtn extends StatelessWidget {
         duration: const Duration(milliseconds: 240),
         curve: Curves.easeOutCubic,
         decoration: BoxDecoration(
-          color: selected ? Colors.white.withValues(alpha: 0.78) : Colors.transparent,
+          color: selected ? Colors.white.withValues(alpha: C.dark ? 0.14 : 0.78) : Colors.transparent,
           borderRadius: BorderRadius.circular(28),
         ),
         child: Column(

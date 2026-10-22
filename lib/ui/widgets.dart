@@ -10,7 +10,7 @@ const pageTitle = TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontW
 
 final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
 
-/// Tombol aksi lebar (putih / gelap)
+/// Tombol aksi lebar (terang / gelap)
 class ActBtn extends StatelessWidget {
   const ActBtn({super.key, required this.label, required this.icon, this.onTap, this.dark = false});
 
@@ -21,13 +21,13 @@ class ActBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fg = dark ? Colors.white : C.ink;
+    final fg = dark ? C.inv : C.ink;
     return Tap(
       onTap: onTap,
       child: Container(
         height: 52,
         decoration: BoxDecoration(
-          color: dark ? C.ink : Colors.white,
+          color: dark ? C.ink : C.card,
           borderRadius: BorderRadius.circular(16),
           border: dark ? null : Border.all(color: C.line),
         ),
@@ -59,6 +59,8 @@ class TopGradient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = StoreScope.of(context).pal;
+    final dk = C.dark;
+    Color d(Color c, double t) => dk ? Color.lerp(c, Colors.black, t)! : c;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
       height: height,
@@ -66,7 +68,12 @@ class TopGradient extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [p.top, p.mid, p.soft, C.bg],
+          colors: [
+            d(p.top, 0.45),
+            d(p.mid, 0.5),
+            dk ? Color.lerp(p.soft, C.bg, 0.78)! : p.soft,
+            C.bg,
+          ],
           stops: const [0, 0.42, 0.78, 1],
         ),
       ),
@@ -149,77 +156,6 @@ class RoundIconBtn extends StatelessWidget {
   }
 }
 
-class WhiteBtn extends StatelessWidget {
-  const WhiteBtn({super.key, required this.icon, required this.label, this.onTap});
-
-  final IconData icon;
-  final String label;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Tap(
-      onTap: onTap,
-      child: Container(
-        height: 52,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: const [BoxShadow(color: Color(0x1A0D1220), blurRadius: 14, offset: Offset(0, 6))],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 20, color: C.ink),
-            const SizedBox(width: 8),
-            Flexible(
-              child: Text(
-                label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: C.ink),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class PillBtn extends StatelessWidget {
-  const PillBtn({super.key, required this.label, this.icon, this.onTap, this.dark = true});
-
-  final String label;
-  final IconData? icon;
-  final VoidCallback? onTap;
-  final bool dark;
-
-  @override
-  Widget build(BuildContext context) {
-    final fg = dark ? Colors.white : C.ink;
-    return Tap(
-      onTap: onTap,
-      child: Container(
-        height: 42,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        decoration: BoxDecoration(
-          color: dark ? C.ink : C.field,
-          borderRadius: BorderRadius.circular(21),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (icon != null) ...[Icon(icon, size: 17, color: fg), const SizedBox(width: 6)],
-            Text(label, style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: fg)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class WhiteCard extends StatelessWidget {
   const WhiteCard({super.key, required this.child, this.padding = const EdgeInsets.all(16)});
 
@@ -231,9 +167,10 @@ class WhiteCard extends StatelessWidget {
     return Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: C.card,
         borderRadius: BorderRadius.circular(24),
-        boxShadow: const [BoxShadow(color: Color(0x0F101828), blurRadius: 20, offset: Offset(0, 8))],
+        border: C.dark ? Border.all(color: C.line) : null,
+        boxShadow: C.dark ? null : const [BoxShadow(color: Color(0x0F101828), blurRadius: 20, offset: Offset(0, 8))],
       ),
       child: child,
     );
@@ -260,7 +197,7 @@ class FilterChips extends StatelessWidget {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                 decoration: BoxDecoration(
-                  color: i == index ? C.ink : Colors.white,
+                  color: i == index ? C.ink : C.card,
                   borderRadius: BorderRadius.circular(99),
                   border: Border.all(color: i == index ? C.ink : C.line),
                 ),
@@ -269,7 +206,7 @@ class FilterChips extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12.5,
                     fontWeight: FontWeight.w600,
-                    color: i == index ? Colors.white : C.ink2,
+                    color: i == index ? C.inv : C.ink2,
                   ),
                 ),
               ),
@@ -309,7 +246,7 @@ ActStyle styleFor(Aktivitas a) {
     case 'Kirim ke Total Utama':
       return const ActStyle(Ic.send, C.violet, 'Kirim ke Total Utama');
     case 'Penyesuaian Saldo':
-      return const ActStyle(Ic.tune, C.ink2, 'Penyesuaian Saldo');
+      return ActStyle(Ic.tune, C.ink2, 'Penyesuaian Saldo');
   }
   final title = a.tipe.isEmpty ? 'Aktivitas' : a.tipe;
   if (a.isKeluar) return ActStyle(Ic.outgoing, C.red, title);
@@ -358,7 +295,7 @@ class ActivityTile extends StatelessWidget {
           Container(
             width: 44,
             height: 44,
-            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(14)),
+            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(14)),
             child: Icon(s.icon, color: s.color, size: 22),
           ),
           const SizedBox(width: 12),
@@ -370,14 +307,14 @@ class ActivityTile extends StatelessWidget {
                   s.title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink),
+                  style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   '${tglCantik(a.tanggal)} · $detail',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 12, color: C.ink3),
+                  style: TextStyle(fontSize: 12, color: C.ink3),
                 ),
               ],
             ),
@@ -387,7 +324,7 @@ class ActivityTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(amt, style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700, color: col)),
-              if (!a.isUang) const Text('bata', style: TextStyle(fontSize: 10.5, color: C.ink3)),
+              if (!a.isUang) Text('bata', style: TextStyle(fontSize: 10.5, color: C.ink3)),
             ],
           ),
         ],
@@ -402,28 +339,27 @@ class FeedCard extends StatelessWidget {
   final List<Aktivitas> items;
   final bool loading;
 
-  /// true = tanpa kartu putih (dipakai di dalam sheet putih)
+  /// true = tanpa kartu (dipakai di dalam sheet)
   final bool flat;
 
   @override
   Widget build(BuildContext context) {
     if (items.isEmpty) {
-      return WhiteCard(
-        child: SizedBox(
-          height: 90,
-          child: Center(
-            child: loading
-                ? const CircularProgressIndicator(strokeWidth: 2.5)
-                : const Text('Belum ada aktivitas', style: TextStyle(color: C.ink3)),
-          ),
+      final empty = SizedBox(
+        height: 90,
+        child: Center(
+          child: loading
+              ? const CircularProgressIndicator(strokeWidth: 2.5)
+              : Text(L.t('no_activity'), style: TextStyle(color: C.ink3)),
         ),
       );
+      return flat ? empty : WhiteCard(child: empty);
     }
     final list = Column(
       children: [
         for (var i = 0; i < items.length; i++) ...[
           ActivityTile(items[i]),
-          if (i != items.length - 1) const Divider(height: 1, color: Color(0xFFF0F1F4)),
+          if (i != items.length - 1) Divider(height: 1, color: C.div),
         ],
       ],
     );

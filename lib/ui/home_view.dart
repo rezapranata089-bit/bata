@@ -30,9 +30,9 @@ class HomePage extends StatelessWidget {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: C.card,
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: const [BoxShadow(color: Color(0x1F0D1220), blurRadius: 16, offset: Offset(0, 6))],
+                boxShadow: C.dark ? null : const [BoxShadow(color: Color(0x1F0D1220), blurRadius: 16, offset: Offset(0, 6))],
               ),
               child: Icon(icon, size: 26, color: C.ink),
             ),
@@ -175,10 +175,16 @@ class HomePage extends StatelessWidget {
             Container(
               constraints: BoxConstraints(minHeight: minH),
               padding: const EdgeInsets.fromLTRB(20, 22, 20, 130),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                boxShadow: [BoxShadow(color: Color(0x1A0D1220), blurRadius: 24, offset: Offset(0, -6))],
+              decoration: BoxDecoration(
+                color: C.card,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: C.dark ? 0.35 : 0.10),
+                    blurRadius: 24,
+                    offset: const Offset(0, -6),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +196,7 @@ class HomePage extends StatelessWidget {
                       Expanded(
                         child: Text(
                           L.t('latest'),
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: C.ink),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: C.ink),
                         ),
                       ),
                       GestureDetector(
@@ -241,7 +247,6 @@ class _SesiCard extends StatelessWidget {
       cta = L.t('cta_move');
       onTap = () => openTx(context, TxKind.pindah);
     }
-    final acc = s.pal.accent;
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(22)),
@@ -250,12 +255,12 @@ class _SesiCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(Ic.fire, color: acc, size: 22),
+              Icon(Ic.fire, color: s.pal.accent, size: 22),
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
                   L.t('sesi_title'),
-                  style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: C.ink),
+                  style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: C.ink),
                 ),
               ),
               if (a != null)
@@ -273,19 +278,19 @@ class _SesiCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(info, style: const TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
+          Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
           const SizedBox(height: 12),
           Tap(
             onTap: onTap,
             child: Container(
               height: 46,
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14)),
+              decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(14)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(cta, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink)),
+                  Text(cta, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink)),
                   const SizedBox(width: 8),
-                  const Icon(Ic.arrowRight, size: 18, color: C.ink),
+                  Icon(Ic.arrowRight, size: 18, color: C.ink),
                 ],
               ),
             ),

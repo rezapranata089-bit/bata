@@ -4,6 +4,7 @@ import '../data/models.dart';
 import '../data/store.dart';
 import 'extras.dart';
 import 'icons.dart';
+import 'settings_pages.dart';
 import 'sheets.dart';
 import 'theme.dart';
 import 'widgets.dart';
@@ -33,14 +34,14 @@ class _AktivitasPageState extends State<AktivitasPage> {
                 child: Icon(icon, size: 16, color: c),
               ),
               const SizedBox(width: 8),
-              Text(label, style: const TextStyle(fontSize: 12.5, color: C.ink2)),
+              Text(label, style: TextStyle(fontSize: 12.5, color: C.ink2)),
             ],
           ),
           const SizedBox(height: 10),
           Counter(
             value: v,
             symbol: 'Rp ',
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink),
           ),
         ],
       ),
@@ -72,12 +73,12 @@ class _AktivitasPageState extends State<AktivitasPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(L.t('this_month'), style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink3)),
+                  Text(L.t('this_month'), style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink3)),
                   const SizedBox(height: 14),
                   Row(
                     children: [
                       _flow(L.t('income'), s.pemasukanBulan, C.green, Ic.incoming),
-                      const SizedBox(height: 40, child: VerticalDivider(width: 24, color: C.line)),
+                      SizedBox(height: 40, child: VerticalDivider(width: 24, color: C.line)),
                       _flow(L.t('expense'), s.pengeluaranBulan, C.red, Ic.outgoing),
                     ],
                   ),
@@ -102,7 +103,11 @@ class _AktivitasPageState extends State<AktivitasPage> {
               ],
             ),
             const SizedBox(height: 24),
-            FilterChips(items: [L.t('f_all'), L.t('f_cash'), L.t('f_stock')], index: _f, onChanged: (i) => setState(() => _f = i)),
+            FilterChips(
+              items: [L.t('f_all'), L.t('f_cash'), L.t('f_stock')],
+              index: _f,
+              onChanged: (i) => setState(() => _f = i),
+            ),
             const SizedBox(height: 14),
             if (feed.isEmpty) FeedCard(items: feed, loading: !s.ready),
             for (final e in groups.entries) ...[
@@ -110,7 +115,7 @@ class _AktivitasPageState extends State<AktivitasPage> {
                 padding: const EdgeInsets.fromLTRB(4, 8, 4, 8),
                 child: Text(
                   _label(e.key),
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: C.ink2),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: C.ink2),
                 ),
               ),
               FeedCard(items: e.value, loading: false),
@@ -127,25 +132,15 @@ class _AktivitasPageState extends State<AktivitasPage> {
 class ProfilPage extends StatelessWidget {
   const ProfilPage({super.key});
 
-  Widget _row(IconData icon, String l, String v) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 9),
-      child: Row(
-        children: [
-          Icon(icon, size: 20, color: C.ink2),
-          const SizedBox(width: 12),
-          Expanded(child: Text(l, style: const TextStyle(color: C.ink2, fontSize: 14))),
-          Text(v, style: const TextStyle(color: C.ink, fontSize: 14, fontWeight: FontWeight.w700)),
-        ],
-      ),
-    );
-  }
+  String _onOff(bool v) => v ? L.t('on') : L.t('off');
 
   @override
   Widget build(BuildContext context) {
     final s = StoreScope.of(context);
     final top = MediaQuery.paddingOf(context).top;
     final aktif = s.bon['kasbonActive'] == true;
+    final modes = [L.t('mode_system'), L.t('mode_light'), L.t('mode_dark')];
+    final sync = s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'));
     return Stack(
       children: [
         const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
@@ -168,56 +163,75 @@ class ProfilPage extends StatelessWidget {
                   child: const Text('R', style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w800)),
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Reza', style: TextStyle(color: Colors.white, fontSize: 21, fontWeight: FontWeight.w800)),
-                      SizedBox(height: 2),
-                      Text('Pemilik Usaha Bata', style: TextStyle(color: Colors.white70, fontSize: 13)),
+                      const Text('Reza', style: TextStyle(color: Colors.white, fontSize: 21, fontWeight: FontWeight.w800)),
+                      const SizedBox(height: 2),
+                      Text(L.t('role'), style: const TextStyle(color: Colors.white70, fontSize: 13)),
                     ],
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 26),
-            WhiteCard(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Kasbon Pekerja', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: C.ink)),
-                  const SizedBox(height: 6),
-                  _row(Ic.hand, L.t('status'), aktif ? L.t('active') : L.t('none')),
-                  _row(Ic.box, L.t('rest_brick'), fmt(toNum(s.bon['sisaBata']))),
-                  _row(Ic.money, L.t('rest_debt'), rp(toNum(s.bon['sisaRp']))),
-                ],
-              ),
+            SetGroup(
+              title: L.t('business'),
+              children: [
+                SetTile(
+                  icon: Ic.hand,
+                  color: C.amber,
+                  title: L.t('kasbon'),
+                  value: aktif ? L.t('active') : L.t('none'),
+                  onTap: () => openPage(context, const KasbonPage()),
+                ),
+              ],
             ),
-            const SizedBox(height: 14),
-            const SettingsCard(),
-            const SizedBox(height: 14),
-            WhiteCard(
-              padding: const EdgeInsets.fromLTRB(16, 6, 8, 6),
-              child: Row(
-                children: [
-                  const Icon(Ic.eyeOff, size: 20, color: C.ink2),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(L.t('hide_balance'), style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
-                  ),
-                  Switch(value: s.hideSaldo, onChanged: (_) => s.toggleSaldo()),
-                ],
-              ),
+            SetGroup(
+              title: L.t('settings'),
+              children: [
+                SetTile(
+                  icon: Icons.palette_outlined,
+                  color: C.violet,
+                  title: L.t('appearance'),
+                  value: '${s.pal.name} · ${modes[s.themeMode]}',
+                  onTap: () => openPage(context, const AppearancePage()),
+                ),
+                SetTile(
+                  icon: Icons.language_rounded,
+                  color: C.blue,
+                  title: L.t('language'),
+                  value: L.en ? 'English' : 'Bahasa Indonesia',
+                  onTap: () => openPage(context, const LanguagePage()),
+                ),
+                SetTile(
+                  icon: Icons.auto_awesome_rounded,
+                  color: C.green,
+                  title: L.t('anim_haptic'),
+                  value: '${L.t('counter_anim')}: ${_onOff(s.counterAnim)}',
+                  onTap: () => openPage(context, const GeneralPage()),
+                ),
+                SetTile(
+                  icon: Ic.eyeOff,
+                  color: C.red,
+                  title: L.t('privacy'),
+                  value: '${L.t('hide_balance')}: ${_onOff(s.hideSaldo)}',
+                  onTap: () => openPage(context, const PrivacyPage()),
+                ),
+              ],
             ),
-            const SizedBox(height: 14),
-            WhiteCard(
-              child: Column(
-                children: [
-                  _row(Ic.cloud, L.t('sync'), s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'))),
-                  _row(Ic.info, 'Project', 'usaha-batu'),
-                  _row(Ic.tune, L.t('version'), '1.1.0'),
-                ],
-              ),
+            SetGroup(
+              title: L.t('about'),
+              children: [
+                SetTile(
+                  icon: Ic.cloud,
+                  color: C.ink2,
+                  title: L.t('sync_about'),
+                  value: sync,
+                  onTap: () => openPage(context, const AboutPage()),
+                ),
+              ],
             ),
           ],
         ),

@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 
 class C {
+  /// diatur oleh MaterialApp.builder (lihat main.dart)
+  static bool dark = false;
+
   static const blue = Color(0xFF2F55D4);
-  static const ink = Color(0xFF0D1220);
-  static const ink2 = Color(0xFF6B7280);
-  static const ink3 = Color(0xFF9AA1AD);
-  static const bg = Color(0xFFF4F6FA);
-  static const field = Color(0xFFF4F5F7);
-  static const line = Color(0xFFE6E8ED);
   static const green = Color(0xFF12A150);
   static const red = Color(0xFFE5484D);
   static const amber = Color(0xFFF59E0B);
   static const violet = Color(0xFF7C4DDB);
+
+  static const bgL = Color(0xFFF4F6FA);
+  static const bgD = Color(0xFF0B0E17);
+
+  static Color get bg => dark ? bgD : bgL;
+  static Color get card => dark ? const Color(0xFF151A27) : Colors.white;
+  static Color get field => dark ? const Color(0xFF1D2333) : const Color(0xFFF4F5F7);
+  static Color get line => dark ? const Color(0xFF2A3145) : const Color(0xFFE6E8ED);
+  static Color get div => dark ? const Color(0xFF232A3C) : const Color(0xFFF0F1F4);
+  static Color get ink => dark ? const Color(0xFFF1F4FA) : const Color(0xFF0D1220);
+
+  /// warna kebalikan ink (teks di atas tombol ink)
+  static Color get inv => dark ? const Color(0xFF0D1220) : Colors.white;
+  static Color get ink2 => dark ? const Color(0xFFA3ABBA) : const Color(0xFF6B7280);
+  static Color get ink3 => dark ? const Color(0xFF7B8496) : const Color(0xFF9AA1AD);
 }
 
 class Pal {
@@ -101,14 +113,47 @@ class L {
     'haptic': ['Getar saat ditekan', 'Haptic feedback'],
     'saved': ['Tersimpan', 'Saved'],
     'go_home': ['Ke Beranda', 'Go Home'],
+    'role': ['Pemilik Usaha Bata', 'Brick Business Owner'],
+    'business': ['Usaha', 'Business'],
+    'about': ['Tentang', 'About'],
+    'appearance': ['Tampilan', 'Appearance'],
+    'appearance_sub': ['Mode layar dan warna tema', 'Screen mode and theme color'],
+    'screen_mode': ['Mode layar', 'Screen mode'],
+    'mode_system': ['Sistem', 'System'],
+    'mode_light': ['Terang', 'Light'],
+    'mode_dark': ['Gelap', 'Dark'],
+    'language_sub': ['Pilih bahasa aplikasi', 'Choose the app language'],
+    'anim_haptic': ['Animasi & Getar', 'Animation & Haptics'],
+    'anim_sub': ['Efek angka dan getar', 'Number effects and haptics'],
+    'counter_desc': ['Angka bergulir saat nilai berubah', 'Numbers roll when values change'],
+    'haptic_desc': ['Getar halus saat menekan tombol', 'Light vibration on taps'],
+    'privacy': ['Privasi', 'Privacy'],
+    'privacy_sub': ['Atur tampilan data sensitif', 'Control sensitive data display'],
+    'hide_desc': ['Saldo kas diblur di Beranda', 'Cash balance is blurred on Home'],
+    'kasbon': ['Kasbon Pekerja', 'Worker Advance'],
+    'kasbon_sub': ['Ringkasan kasbon pekerja', 'Worker advance summary'],
+    'sync_about': ['Sinkronisasi & Tentang', 'Sync & About'],
+    'sync_sub': ['Status koneksi dan info aplikasi', 'Connection status and app info'],
+    'project': ['Project', 'Project'],
+    'on': ['Aktif', 'On'],
+    'off': ['Mati', 'Off'],
+    'stok_total': ['Total {n} bata di semua tahap', 'Total {n} bricks across all stages'],
+    'h_raw': ['Riwayat Mentah', 'Raw History'],
+    'h_sessions': ['Sesi Bakar', 'Burn Sessions'],
+    'h_kiln': ['Aktivitas Tungku', 'Kiln Activity'],
+    'h_ready': ['Riwayat Siap Jual', 'Ready History'],
+    'no_session': ['Belum ada sesi bakar', 'No burn sessions yet'],
+    'no_activity': ['Belum ada aktivitas', 'No activity yet'],
   };
 }
 
-ThemeData buildTheme([Color seed = C.blue]) {
+ThemeData buildTheme(Color seed, bool dark) {
+  final b = dark ? Brightness.dark : Brightness.light;
   return ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.fromSeed(seedColor: seed),
-    scaffoldBackgroundColor: C.bg,
+    brightness: b,
+    colorScheme: ColorScheme.fromSeed(seedColor: seed, brightness: b),
+    scaffoldBackgroundColor: dark ? C.bgD : C.bgL,
     splashFactory: NoSplash.splashFactory,
     highlightColor: Colors.transparent,
   );

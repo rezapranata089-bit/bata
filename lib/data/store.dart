@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../ui/theme.dart';
@@ -29,13 +29,17 @@ Map<String, dynamic> hitungBiayaBakar(num jumlah, [num karung = 0, num hargaMera
 class StoreScope extends InheritedNotifier<AppStore> {
   const StoreScope({super.key, required AppStore store, required super.child}) : super(notifier: store);
 
-  static AppStore of(BuildContext c) => c.dependOnInheritedWidgetOfExactType<StoreScope>()!.notifier!;
+  static AppStore of(BuildContext c) {
+    Theme.of(c); // ikut rebuild saat tema terang/gelap berubah
+    return c.dependOnInheritedWidgetOfExactType<StoreScope>()!.notifier!;
+  }
   static AppStore read(BuildContext c) => c.getInheritedWidgetOfExactType<StoreScope>()!.notifier!;
 }
 
 class AppStore extends ChangeNotifier {
   AppStore(this._prefs) {
     paletteIdx = (_prefs.getInt('palette') ?? 0).clamp(0, palettes.length - 1).toInt();
+    themeMode = (_prefs.getInt('theme_mode') ?? 0).clamp(0, 2).toInt();
     counterAnim = _prefs.getBool('counter_anim') ?? true;
     haptic = _prefs.getBool('haptic') ?? true;
     hideSaldo = _prefs.getBool('hide_saldo') ?? false;
@@ -47,6 +51,7 @@ class AppStore extends ChangeNotifier {
 
   // pengaturan tampilan
   int paletteIdx = 0;
+  int themeMode = 0; // 0 sistem, 1 terang, 2 gelap
   bool counterAnim = true;
   bool haptic = true;
   Pal get pal => palettes[paletteIdx];
@@ -85,6 +90,12 @@ class AppStore extends ChangeNotifier {
   void setPalette(int i) {
     paletteIdx = i;
     _prefs.setInt('palette', i);
+    notifyListeners();
+  }
+
+  void setThemeMode(int i) {
+    themeMode = i;
+    _prefs.setInt('theme_mode', i);
     notifyListeners();
   }
 
