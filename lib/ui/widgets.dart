@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../data/models.dart';
+import '../data/store.dart';
 import 'icons.dart';
 import 'theme.dart';
 
@@ -56,14 +58,16 @@ class TopGradient extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final p = StoreScope.of(context).pal;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
       height: height,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Color(0xFF2848C9), Color(0xFF3A63DE), Color(0xFF9DBBF5), C.bg],
-          stops: [0, 0.42, 0.78, 1],
+          colors: [p.top, p.mid, p.soft, C.bg],
+          stops: const [0, 0.42, 0.78, 1],
         ),
       ),
     );
@@ -90,7 +94,12 @@ class _TapState extends State<Tap> {
       onTapDown: (_) => setState(() => _down = true),
       onTapUp: (_) => setState(() => _down = false),
       onTapCancel: () => setState(() => _down = false),
-      onTap: widget.onTap,
+      onTap: widget.onTap == null
+          ? null
+          : () {
+              if (StoreScope.read(context).haptic) HapticFeedback.selectionClick();
+              widget.onTap!();
+            },
       child: AnimatedScale(
         scale: _down ? 0.97 : 1,
         duration: const Duration(milliseconds: 90),
@@ -388,10 +397,13 @@ class ActivityTile extends StatelessWidget {
 }
 
 class FeedCard extends StatelessWidget {
-  const FeedCard({super.key, required this.items, required this.loading});
+  const FeedCard({super.key, required this.items, required this.loading, this.flat = false});
 
   final List<Aktivitas> items;
   final bool loading;
+
+  /// true = tanpa kartu putih (dipakai di dalam sheet putih)
+  final bool flat;
 
   @override
   Widget build(BuildContext context) {
@@ -407,16 +419,18 @@ class FeedCard extends StatelessWidget {
         ),
       );
     }
+    final list = Column(
+      children: [
+        for (var i = 0; i < items.length; i++) ...[
+          ActivityTile(items[i]),
+          if (i != items.length - 1) const Divider(height: 1, color: Color(0xFFF0F1F4)),
+        ],
+      ],
+    );
+    if (flat) return list;
     return WhiteCard(
       padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
-      child: Column(
-        children: [
-          for (var i = 0; i < items.length; i++) ...[
-            ActivityTile(items[i]),
-            if (i != items.length - 1) const Divider(height: 1, color: Color(0xFFF0F1F4)),
-          ],
-        ],
-      ),
+      child: list,
     );
   }
 }

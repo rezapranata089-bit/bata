@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../ui/theme.dart';
 import 'models.dart';
@@ -33,7 +34,23 @@ class StoreScope extends InheritedNotifier<AppStore> {
 }
 
 class AppStore extends ChangeNotifier {
+  AppStore(this._prefs) {
+    paletteIdx = (_prefs.getInt('palette') ?? 0).clamp(0, palettes.length - 1).toInt();
+    counterAnim = _prefs.getBool('counter_anim') ?? true;
+    haptic = _prefs.getBool('haptic') ?? true;
+    hideSaldo = _prefs.getBool('hide_saldo') ?? false;
+    L.en = _prefs.getString('lang') == 'en';
+  }
+
+  final SharedPreferences _prefs;
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  // pengaturan tampilan
+  int paletteIdx = 0;
+  bool counterAnim = true;
+  bool haptic = true;
+  Pal get pal => palettes[paletteIdx];
+  bool get en => L.en;
   final List<StreamSubscription<dynamic>> _subs = [];
 
   int tab = 0;
@@ -61,6 +78,31 @@ class AppStore extends ChangeNotifier {
 
   void toggleSaldo() {
     hideSaldo = !hideSaldo;
+    _prefs.setBool('hide_saldo', hideSaldo);
+    notifyListeners();
+  }
+
+  void setPalette(int i) {
+    paletteIdx = i;
+    _prefs.setInt('palette', i);
+    notifyListeners();
+  }
+
+  void setLang(bool english) {
+    L.en = english;
+    _prefs.setString('lang', english ? 'en' : 'id');
+    notifyListeners();
+  }
+
+  void toggleCounter() {
+    counterAnim = !counterAnim;
+    _prefs.setBool('counter_anim', counterAnim);
+    notifyListeners();
+  }
+
+  void toggleHaptic() {
+    haptic = !haptic;
+    _prefs.setBool('haptic', haptic);
     notifyListeners();
   }
 

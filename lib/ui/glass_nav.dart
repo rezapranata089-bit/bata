@@ -12,10 +12,10 @@ class _NavItem {
 }
 
 const _items = [
-  _NavItem(Ic.homeOn, Ic.home, 'Beranda'),
-  _NavItem(Ic.boxOn, Ic.box, 'Stok'),
-  _NavItem(Ic.chartOn, Ic.chart, 'Aktivitas'),
-  _NavItem(Ic.userOn, Ic.user, 'Profil'),
+  _NavItem(Ic.homeOn, Ic.home, 'nav_home'),
+  _NavItem(Ic.boxOn, Ic.box, 'nav_stok'),
+  _NavItem(Ic.chartOn, Ic.chart, 'nav_act'),
+  _NavItem(Ic.userOn, Ic.user, 'nav_profile'),
 ];
 
 /// Bottom nav melayang berbahan liquid glass (oc_liquid_glass)
@@ -132,7 +132,7 @@ class _NavBtn extends StatelessWidget {
             Icon(selected ? item.on : item.off, size: 24, color: selected ? C.ink : C.ink2),
             const SizedBox(height: 2),
             Text(
-              item.label,
+              L.t(item.label),
               style: TextStyle(
                 fontSize: 10.5,
                 fontWeight: selected ? FontWeight.w700 : FontWeight.w500,

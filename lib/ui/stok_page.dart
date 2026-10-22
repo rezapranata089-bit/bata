@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
+import 'extras.dart';
 import 'icons.dart';
 import 'sheets.dart';
 import 'theme.dart';
@@ -11,7 +12,7 @@ import 'widgets.dart';
 class StokPage extends StatelessWidget {
   const StokPage({super.key});
 
-  static const _labels = ['Mentah', 'Tungku', 'Siap Jual'];
+  static List<String> get _labels => [L.t('raw'), L.t('kiln'), L.t('ready')];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class StokPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Stok Bata', style: pageTitle),
+                    Text(L.t('stok_title'), style: pageTitle),
                     const SizedBox(height: 4),
                     Text('Total ${fmt(total)} bata di semua tahap', style: pageSub),
                     const SizedBox(height: 18),
@@ -184,7 +185,7 @@ class _Hero extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(fmt(value), style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
+              Counter(value: value, style: const TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
               const SizedBox(width: 8),
               const Padding(
                 padding: EdgeInsets.only(bottom: 4),
@@ -216,7 +217,7 @@ class _Area extends StatelessWidget {
         children: [
           Text('Area $label', style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink2)),
           const SizedBox(height: 8),
-          Text(fmt(value), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
+          Counter(value: value, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1)),
           const SizedBox(height: 4),
           const Text('bata mentah', style: TextStyle(fontSize: 12, color: C.ink3)),
         ],

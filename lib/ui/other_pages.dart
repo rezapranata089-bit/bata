@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
+import 'extras.dart';
 import 'icons.dart';
 import 'sheets.dart';
 import 'theme.dart';
@@ -36,10 +37,10 @@ class _AktivitasPageState extends State<AktivitasPage> {
             ],
           ),
           const SizedBox(height: 10),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            alignment: Alignment.centerLeft,
-            child: Text(rp(v), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: C.ink)),
+          Counter(
+            value: v,
+            symbol: 'Rp ',
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink),
           ),
         ],
       ),
@@ -63,21 +64,21 @@ class _AktivitasPageState extends State<AktivitasPage> {
         ListView(
           padding: EdgeInsets.fromLTRB(20, top + 18, 20, 130),
           children: [
-            const Text('Aktivitas', style: pageTitle),
+            Text(L.t('activity_title'), style: pageTitle),
             const SizedBox(height: 4),
-            Text('Riwayat kas dan stok usaha bata', style: pageSub),
+            Text(L.t('activity_sub'), style: pageSub),
             const SizedBox(height: 20),
             WhiteCard(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Bulan ini', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink3)),
+                  Text(L.t('this_month'), style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink3)),
                   const SizedBox(height: 14),
                   Row(
                     children: [
-                      _flow('Pemasukan', s.pemasukanBulan, C.green, Ic.incoming),
+                      _flow(L.t('income'), s.pemasukanBulan, C.green, Ic.incoming),
                       const SizedBox(height: 40, child: VerticalDivider(width: 24, color: C.line)),
-                      _flow('Pengeluaran', s.pengeluaranBulan, C.red, Ic.outgoing),
+                      _flow(L.t('expense'), s.pengeluaranBulan, C.red, Ic.outgoing),
                     ],
                   ),
                 ],
@@ -87,12 +88,12 @@ class _AktivitasPageState extends State<AktivitasPage> {
             Row(
               children: [
                 Expanded(
-                  child: ActBtn(label: 'Pengeluaran', icon: Ic.wallet, onTap: () => openTx(context, TxKind.pengeluaran)),
+                  child: ActBtn(label: L.t('expense'), icon: Ic.wallet, onTap: () => openTx(context, TxKind.pengeluaran)),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
                   child: ActBtn(
-                    label: 'Kirim ke utama',
+                    label: L.t('send_main'),
                     icon: Ic.send,
                     dark: true,
                     onTap: () => openTx(context, TxKind.kirimUtama),
@@ -101,7 +102,7 @@ class _AktivitasPageState extends State<AktivitasPage> {
               ],
             ),
             const SizedBox(height: 24),
-            FilterChips(items: const ['Semua', 'Kas', 'Stok'], index: _f, onChanged: (i) => setState(() => _f = i)),
+            FilterChips(items: [L.t('f_all'), L.t('f_cash'), L.t('f_stock')], index: _f, onChanged: (i) => setState(() => _f = i)),
             const SizedBox(height: 14),
             if (feed.isEmpty) FeedCard(items: feed, loading: !s.ready),
             for (final e in groups.entries) ...[
@@ -151,7 +152,7 @@ class ProfilPage extends StatelessWidget {
         ListView(
           padding: EdgeInsets.fromLTRB(20, top + 18, 20, 130),
           children: [
-            const Text('Profil', style: pageTitle),
+            Text(L.t('profile'), style: pageTitle),
             const SizedBox(height: 20),
             Row(
               children: [
@@ -186,12 +187,14 @@ class ProfilPage extends StatelessWidget {
                 children: [
                   const Text('Kasbon Pekerja', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: C.ink)),
                   const SizedBox(height: 6),
-                  _row(Ic.hand, 'Status', aktif ? 'Aktif' : 'Tidak ada'),
-                  _row(Ic.box, 'Sisa bata', fmt(toNum(s.bon['sisaBata']))),
-                  _row(Ic.money, 'Sisa hutang', rp(toNum(s.bon['sisaRp']))),
+                  _row(Ic.hand, L.t('status'), aktif ? L.t('active') : L.t('none')),
+                  _row(Ic.box, L.t('rest_brick'), fmt(toNum(s.bon['sisaBata']))),
+                  _row(Ic.money, L.t('rest_debt'), rp(toNum(s.bon['sisaRp']))),
                 ],
               ),
             ),
+            const SizedBox(height: 14),
+            const SettingsCard(),
             const SizedBox(height: 14),
             WhiteCard(
               padding: const EdgeInsets.fromLTRB(16, 6, 8, 6),
@@ -199,8 +202,8 @@ class ProfilPage extends StatelessWidget {
                 children: [
                   const Icon(Ic.eyeOff, size: 20, color: C.ink2),
                   const SizedBox(width: 12),
-                  const Expanded(
-                    child: Text('Sembunyikan saldo', style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
+                  Expanded(
+                    child: Text(L.t('hide_balance'), style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
                   ),
                   Switch(value: s.hideSaldo, onChanged: (_) => s.toggleSaldo()),
                 ],
@@ -210,9 +213,9 @@ class ProfilPage extends StatelessWidget {
             WhiteCard(
               child: Column(
                 children: [
-                  _row(Ic.cloud, 'Sinkron', s.error != null ? 'Bermasalah' : (s.ready ? 'Tersambung' : 'Menghubungkan')),
+                  _row(Ic.cloud, L.t('sync'), s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'))),
                   _row(Ic.info, 'Project', 'usaha-batu'),
-                  _row(Ic.tune, 'Versi', '1.0.0'),
+                  _row(Ic.tune, L.t('version'), '1.1.0'),
                 ],
               ),
             ),

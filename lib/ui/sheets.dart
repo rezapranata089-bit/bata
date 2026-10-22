@@ -144,7 +144,7 @@ class _SuccessCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 18),
-            const Text('Tersimpan', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
+            Text(L.t('saved'), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
             const SizedBox(height: 8),
             Text(
               message,
@@ -153,7 +153,7 @@ class _SuccessCard extends StatelessWidget {
             ),
             const SizedBox(height: 22),
             _BigBtn(
-              label: 'Ke Beranda',
+              label: L.t('go_home'),
               onTap: () {
                 StoreScope.read(context).setTab(0);
                 Navigator.of(context).pop();

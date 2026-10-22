@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oc_liquid_glass/oc_liquid_glass.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/store.dart';
 import 'ui/shell.dart';
@@ -30,7 +31,8 @@ Future<void> main() async {
   );
   unawaited(OCLiquidGlassGroup.precacheShader());
 
-  final store = AppStore()..start();
+  final prefs = await SharedPreferences.getInstance();
+  final store = AppStore(prefs)..start();
   runApp(BataApp(store: store));
 }
 
@@ -43,11 +45,14 @@ class BataApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreScope(
       store: store,
-      child: MaterialApp(
-        title: 'Usaha Bata',
-        debugShowCheckedModeBanner: false,
-        theme: buildTheme(),
-        home: const Shell(),
+      child: ListenableBuilder(
+        listenable: store,
+        builder: (context, _) => MaterialApp(
+          title: 'Usaha Bata',
+          debugShowCheckedModeBanner: false,
+          theme: buildTheme(store.pal.accent),
+          home: const Shell(),
+        ),
       ),
     );
   }

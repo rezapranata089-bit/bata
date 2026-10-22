@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../data/store.dart';
 import 'glass_nav.dart';
-import 'home_page.dart';
+import 'home_view.dart';
 import 'other_pages.dart';
 import 'stok_page.dart';
 
