@@ -188,7 +188,7 @@ class _Hero extends StatelessWidget {
             children: [
               Counter(
                 value: value,
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1.3),
               ),
               const SizedBox(width: 8),
               Padding(
@@ -223,7 +223,7 @@ class _Area extends StatelessWidget {
           const SizedBox(height: 8),
           Counter(
             value: value,
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1.3),
           ),
           const SizedBox(height: 4),
           Text('bata mentah', style: TextStyle(fontSize: 12, color: C.ink3)),
