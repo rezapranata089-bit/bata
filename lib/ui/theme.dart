@@ -152,6 +152,7 @@ ThemeData buildTheme(Color seed, bool dark) {
   return ThemeData(
     useMaterial3: true,
     brightness: b,
+    fontFamily: 'Satoshi',
     colorScheme: ColorScheme.fromSeed(seedColor: seed, brightness: b),
     scaffoldBackgroundColor: dark ? C.bgD : C.bgL,
     splashFactory: NoSplash.splashFactory,

@@ -61,7 +61,7 @@ class _CounterState extends State<Counter> {
               transformTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeInOut),
               opacityTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeOut),
               tabularNums: true,
-              style: widget.style,
+              style: widget.style.copyWith(fontFamily: 'Satoshi'),
             ),
           )
         : Text('${widget.symbol}${fmt(widget.value)}', style: widget.style);

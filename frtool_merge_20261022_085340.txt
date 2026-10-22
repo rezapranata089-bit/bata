@@ -1,0 +1,5227 @@
+### PROJECT STRUCTURE
+bata
+├── .dart_tool
+│   ├── dartpad
+│   │   └── web_plugin_registrant.dart
+│   ├── package_config.json
+│   ├── package_graph.json
+│   └── version
+├── .github
+│   └── workflows
+│       └── build-apk.yml
+├── android
+│   ├── app
+│   │   ├── src
+│   │   │   ├── debug
+│   │   │   │   └── AndroidManifest.xml
+│   │   │   ├── main
+│   │   │   │   ├── java
+│   │   │   │   │   └── io
+│   │   │   │   │       └── flutter
+│   │   │   │   │           └── plugins
+│   │   │   │   │               └── GeneratedPluginRegistrant.java
+│   │   │   │   ├── kotlin
+│   │   │   │   │   └── com
+│   │   │   │   │       └── example
+│   │   │   │   │           └── bata
+│   │   │   │   │               └── MainActivity.kt
+│   │   │   │   ├── res
+│   │   │   │   │   ├── drawable
+│   │   │   │   │   │   └── launch_background.xml
+│   │   │   │   │   ├── drawable-v21
+│   │   │   │   │   │   └── launch_background.xml
+│   │   │   │   │   ├── mipmap-hdpi
+│   │   │   │   │   │   └── ic_launcher.png
+│   │   │   │   │   ├── mipmap-mdpi
+│   │   │   │   │   │   └── ic_launcher.png
+│   │   │   │   │   ├── mipmap-xhdpi
+│   │   │   │   │   │   └── ic_launcher.png
+│   │   │   │   │   ├── mipmap-xxhdpi
+│   │   │   │   │   │   └── ic_launcher.png
+│   │   │   │   │   ├── mipmap-xxxhdpi
+│   │   │   │   │   │   └── ic_launcher.png
+│   │   │   │   │   ├── values
+│   │   │   │   │   │   └── styles.xml
+│   │   │   │   │   └── values-night
+│   │   │   │   │       └── styles.xml
+│   │   │   │   └── AndroidManifest.xml
+│   │   │   └── profile
+│   │   │       └── AndroidManifest.xml
+│   │   └── build.gradle.kts
+│   ├── gradle
+│   │   └── wrapper
+│   │       ├── gradle-wrapper.jar
+│   │       └── gradle-wrapper.properties
+│   ├── .gitignore
+│   ├── bata_android.iml
+│   ├── build.gradle.kts
+│   ├── gradle.properties
+│   ├── gradlew
+│   ├── gradlew.bat
+│   ├── local.properties
+│   └── settings.gradle.kts
+├── lib
+│   ├── data
+│   │   ├── models.dart
+│   │   └── store.dart
+│   ├── ui
+│   │   ├── extras.dart
+│   │   ├── glass_nav.dart
+│   │   ├── home_view.dart
+│   │   ├── icons.dart
+│   │   ├── other_pages.dart
+│   │   ├── settings_pages.dart
+│   │   ├── sheets.dart
+│   │   ├── shell.dart
+│   │   ├── stok_page.dart
+│   │   ├── theme.dart
+│   │   └── widgets.dart
+│   └── main.dart
+├── web
+│   ├── icons
+│   │   ├── Icon-192.png
+│   │   ├── Icon-512.png
+│   │   ├── Icon-maskable-192.png
+│   │   └── Icon-maskable-512.png
+│   ├── favicon.png
+│   ├── index.html
+│   └── manifest.json
+├── .flutter-plugins-dependencies
+├── .gitignore
+├── .metadata
+├── analysis_options.yaml
+├── bata.iml
+├── pubspec.lock
+├── pubspec.yaml
+└── README.md
+
+### FILE: .dart_tool/dartpad/web_plugin_registrant.dart
+// Flutter web plugin registrant file.
+//
+// Generated file. Do not edit.
+//
+
+// @dart = 2.13
+// ignore_for_file: type=lint
+
+import 'package:cloud_firestore_web/cloud_firestore_web.dart';
+import 'package:firebase_core_web/firebase_core_web.dart';
+import 'package:shared_preferences_web/shared_preferences_web.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+
+void registerPlugins([final Registrar? pluginRegistrar]) {
+  final Registrar registrar = pluginRegistrar ?? webPluginRegistrar;
+  FirebaseFirestoreWeb.registerWith(registrar);
+  FirebaseCoreWeb.registerWith(registrar);
+  SharedPreferencesPlugin.registerWith(registrar);
+  registrar.registerMessageHandler();
+}
+
+
+### FILE: .dart_tool/package_config.json
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "_flutterfire_internals",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/_flutterfire_internals-1.3.77",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "args",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/args-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "async",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/async-2.13.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "boolean_selector",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/boolean_selector-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "characters",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/characters-1.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "clock",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/clock-1.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "cloud_firestore",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/cloud_firestore-6.10.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/cloud_firestore_platform_interface-8.0.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "cloud_firestore_web",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/cloud_firestore_web-5.7.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "collection",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/collection-1.19.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "cupertino_icons",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.9",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "fake_async",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/fake_async-1.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "ffi",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/ffi-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "file",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/file-7.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "firebase_core",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/firebase_core-4.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/firebase_core_platform_interface-8.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "firebase_core_web",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/firebase_core_web-3.12.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "flutter",
+      "rootUri": "file:///root/flutter/packages/flutter",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "flutter_lints",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/flutter_lints-6.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
+      "name": "flutter_test",
+      "rootUri": "file:///root/flutter/packages/flutter_test",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///root/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/intl-0.20.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "jni",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/jni-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "jni_util",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/jni_util-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "leak_tracker",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/leak_tracker-11.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "leak_tracker_flutter_testing",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.10",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "leak_tracker_testing",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/leak_tracker_testing-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "lints",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/lints-6.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
+      "name": "matcher",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/matcher-0.12.20",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "material_color_utilities",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/material_color_utilities-0.13.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "meta",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/meta-1.18.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "number_flow_flutter",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/number_flow_flutter-0.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "oc_liquid_glass",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/oc_liquid_glass-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "package_config",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/package_config-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "path",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/path-1.9.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "path_provider_linux",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/path_provider_platform_interface-2.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "path_provider_windows",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "platform",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/platform-3.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "shared_preferences",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences-2.5.6",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "shared_preferences_android",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_android-2.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.12"
+    },
+    {
+      "name": "shared_preferences_foundation",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.9"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "shared_preferences_windows",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "sky_engine",
+      "rootUri": "file:///root/flutter/bin/cache/pkg/sky_engine",
+      "packageUri": "lib/",
+      "languageVersion": "3.11"
+    },
+    {
+      "name": "solar_icons",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/solar_icons-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "source_span",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/source_span-1.10.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "stack_trace",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/stack_trace-1.12.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "stream_channel",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "string_scanner",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/string_scanner-1.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "term_glyph",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/term_glyph-1.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "test_api",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/test_api-0.7.12",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "vector_math",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/vector_math-2.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "vm_service",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/vm_service-15.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "web",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/web-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "xdg_directories",
+      "rootUri": "file:///root/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "bata",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.13"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.13.1",
+  "flutterRoot": "file:///root/flutter",
+  "flutterVersion": "3.47.1",
+  "pubCache": "file:///root/.pub-cache"
+}
+
+
+### FILE: .dart_tool/package_graph.json
+{
+  "roots": [
+    "bata"
+  ],
+  "packages": [
+    {
+      "name": "bata",
+      "version": "1.0.0+1",
+      "dependencies": [
+        "cloud_firestore",
+        "cupertino_icons",
+        "firebase_core",
+        "flutter",
+        "number_flow_flutter",
+        "oc_liquid_glass",
+        "shared_preferences",
+        "solar_icons"
+      ],
+      "devDependencies": [
+        "flutter_lints",
+        "flutter_test"
+      ]
+    },
+    {
+      "name": "flutter_lints",
+      "version": "6.0.0",
+      "dependencies": [
+        "lints"
+      ]
+    },
+    {
+      "name": "flutter_test",
+      "version": "0.0.0",
+      "dependencies": [
+        "clock",
+        "collection",
+        "fake_async",
+        "flutter",
+        "leak_tracker_flutter_testing",
+        "matcher",
+        "meta",
+        "path",
+        "stack_trace",
+        "stream_channel",
+        "test_api",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "number_flow_flutter",
+      "version": "0.1.0",
+      "dependencies": [
+        "flutter",
+        "intl"
+      ]
+    },
+    {
+      "name": "solar_icons",
+      "version": "0.2.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "oc_liquid_glass",
+      "version": "0.3.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "cloud_firestore",
+      "version": "6.10.0",
+      "dependencies": [
+        "cloud_firestore_platform_interface",
+        "cloud_firestore_web",
+        "collection",
+        "firebase_core",
+        "firebase_core_platform_interface",
+        "flutter",
+        "meta"
+      ]
+    },
+    {
+      "name": "firebase_core",
+      "version": "4.15.0",
+      "dependencies": [
+        "firebase_core_platform_interface",
+        "firebase_core_web",
+        "flutter",
+        "meta"
+      ]
+    },
+    {
+      "name": "cupertino_icons",
+      "version": "1.0.9",
+      "dependencies": []
+    },
+    {
+      "name": "flutter",
+      "version": "0.0.0",
+      "dependencies": [
+        "characters",
+        "collection",
+        "material_color_utilities",
+        "meta",
+        "sky_engine",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "lints",
+      "version": "6.1.0",
+      "dependencies": []
+    },
+    {
+      "name": "stream_channel",
+      "version": "2.1.4",
+      "dependencies": [
+        "async"
+      ]
+    },
+    {
+      "name": "meta",
+      "version": "1.18.3",
+      "dependencies": []
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
+      "dependencies": []
+    },
+    {
+      "name": "leak_tracker_flutter_testing",
+      "version": "3.0.10",
+      "dependencies": [
+        "flutter",
+        "leak_tracker",
+        "leak_tracker_testing",
+        "matcher",
+        "meta"
+      ]
+    },
+    {
+      "name": "vector_math",
+      "version": "2.4.2",
+      "dependencies": []
+    },
+    {
+      "name": "stack_trace",
+      "version": "1.12.2",
+      "dependencies": [
+        "path"
+      ]
+    },
+    {
+      "name": "clock",
+      "version": "1.1.3",
+      "dependencies": []
+    },
+    {
+      "name": "fake_async",
+      "version": "1.3.3",
+      "dependencies": [
+        "clock",
+        "collection"
+      ]
+    },
+    {
+      "name": "path",
+      "version": "1.9.1",
+      "dependencies": []
+    },
+    {
+      "name": "matcher",
+      "version": "0.12.20",
+      "dependencies": [
+        "async",
+        "meta",
+        "stack_trace",
+        "term_glyph",
+        "test_api"
+      ]
+    },
+    {
+      "name": "test_api",
+      "version": "0.7.12",
+      "dependencies": [
+        "async",
+        "boolean_selector",
+        "collection",
+        "meta",
+        "source_span",
+        "stack_trace",
+        "stream_channel",
+        "string_scanner",
+        "term_glyph"
+      ]
+    },
+    {
+      "name": "firebase_core_platform_interface",
+      "version": "8.1.1",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "meta",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "cloud_firestore_web",
+      "version": "5.7.3",
+      "dependencies": [
+        "_flutterfire_internals",
+        "cloud_firestore_platform_interface",
+        "collection",
+        "firebase_core",
+        "firebase_core_web",
+        "flutter",
+        "flutter_web_plugins"
+      ]
+    },
+    {
+      "name": "cloud_firestore_platform_interface",
+      "version": "8.0.7",
+      "dependencies": [
+        "_flutterfire_internals",
+        "collection",
+        "firebase_core",
+        "flutter",
+        "meta",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "firebase_core_web",
+      "version": "3.12.0",
+      "dependencies": [
+        "firebase_core_platform_interface",
+        "meta",
+        "web"
+      ]
+    },
+    {
+      "name": "sky_engine",
+      "version": "0.0.0",
+      "dependencies": []
+    },
+    {
+      "name": "material_color_utilities",
+      "version": "0.13.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "characters",
+      "version": "1.4.1",
+      "dependencies": []
+    },
+    {
+      "name": "async",
+      "version": "2.13.1",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "leak_tracker_testing",
+      "version": "3.0.2",
+      "dependencies": [
+        "leak_tracker",
+        "matcher",
+        "meta"
+      ]
+    },
+    {
+      "name": "leak_tracker",
+      "version": "11.0.2",
+      "dependencies": [
+        "clock",
+        "collection",
+        "meta",
+        "path",
+        "vm_service"
+      ]
+    },
+    {
+      "name": "term_glyph",
+      "version": "1.2.2",
+      "dependencies": []
+    },
+    {
+      "name": "string_scanner",
+      "version": "1.4.1",
+      "dependencies": [
+        "source_span"
+      ]
+    },
+    {
+      "name": "source_span",
+      "version": "1.10.2",
+      "dependencies": [
+        "collection",
+        "path",
+        "term_glyph"
+      ]
+    },
+    {
+      "name": "boolean_selector",
+      "version": "2.1.2",
+      "dependencies": [
+        "source_span",
+        "string_scanner"
+      ]
+    },
+    {
+      "name": "flutter_web_plugins",
+      "version": "0.0.0",
+      "dependencies": [
+        "flutter"
+      ]
+    },
+    {
+      "name": "_flutterfire_internals",
+      "version": "1.3.77",
+      "dependencies": [
+        "collection",
+        "firebase_core",
+        "firebase_core_platform_interface",
+        "flutter",
+        "meta"
+      ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "vm_service",
+      "version": "15.4.0",
+      "dependencies": []
+    },
+    {
+      "name": "intl",
+      "version": "0.20.3",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "version": "2.4.2",
+      "dependencies": [
+        "flutter",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "shared_preferences_foundation",
+      "version": "2.5.7",
+      "dependencies": [
+        "flutter",
+        "meta",
+        "shared_preferences_platform_interface"
+      ]
+    },
+    {
+      "name": "shared_preferences",
+      "version": "2.5.6",
+      "dependencies": [
+        "flutter",
+        "shared_preferences_android",
+        "shared_preferences_foundation",
+        "shared_preferences_linux",
+        "shared_preferences_platform_interface",
+        "shared_preferences_web",
+        "shared_preferences_windows"
+      ]
+    },
+    {
+      "name": "shared_preferences_windows",
+      "version": "2.4.1",
+      "dependencies": [
+        "file",
+        "flutter",
+        "path",
+        "path_provider_platform_interface",
+        "path_provider_windows",
+        "shared_preferences_platform_interface"
+      ]
+    },
+    {
+      "name": "shared_preferences_linux",
+      "version": "2.4.1",
+      "dependencies": [
+        "file",
+        "flutter",
+        "path",
+        "path_provider_linux",
+        "path_provider_platform_interface",
+        "shared_preferences_platform_interface"
+      ]
+    },
+    {
+      "name": "shared_preferences_web",
+      "version": "2.4.3",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins",
+        "shared_preferences_platform_interface",
+        "web"
+      ]
+    },
+    {
+      "name": "file",
+      "version": "7.0.1",
+      "dependencies": [
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "path_provider_platform_interface",
+      "version": "2.1.3",
+      "dependencies": [
+        "flutter",
+        "platform",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "platform",
+      "version": "3.2.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "path_provider_linux",
+      "version": "2.2.2",
+      "dependencies": [
+        "ffi",
+        "flutter",
+        "path",
+        "path_provider_platform_interface",
+        "xdg_directories"
+      ]
+    },
+    {
+      "name": "xdg_directories",
+      "version": "1.1.0",
+      "dependencies": [
+        "meta",
+        "path"
+      ]
+    },
+    {
+      "name": "ffi",
+      "version": "2.2.0",
+      "dependencies": []
+    },
+    {
+      "name": "path_provider_windows",
+      "version": "2.3.0",
+      "dependencies": [
+        "ffi",
+        "flutter",
+        "path",
+        "path_provider_platform_interface"
+      ]
+    },
+    {
+      "name": "shared_preferences_android",
+      "version": "2.5.1",
+      "dependencies": [
+        "flutter",
+        "jni",
+        "meta",
+        "shared_preferences_platform_interface"
+      ]
+    },
+    {
+      "name": "jni",
+      "version": "1.1.0",
+      "dependencies": [
+        "args",
+        "collection",
+        "ffi",
+        "jni_util",
+        "meta",
+        "package_config",
+        "path",
+        "plugin_platform_interface"
+      ]
+    },
+    {
+      "name": "jni_util",
+      "version": "1.0.0",
+      "dependencies": [
+        "path"
+      ]
+    },
+    {
+      "name": "args",
+      "version": "2.7.0",
+      "dependencies": []
+    },
+    {
+      "name": "package_config",
+      "version": "3.0.0",
+      "dependencies": [
+        "meta"
+      ]
+    }
+  ],
+  "configVersion": 1
+}
+
+### FILE: .github/workflows/build-apk.yml
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.1
+          cache: true
+
+      - name: Pub get
+        run: flutter pub get
+
+      - name: Build APK (release)
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: usaha-bata-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+
+### FILE: analysis_options.yaml
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+
+### FILE: android/app/build.gradle.kts
+plugins {
+    id("com.android.application")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
+}
+
+android {
+    namespace = "com.example.bata"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.bata"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
+        // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
+        // You can force using the value of versionCode by specifying the `-P force-version-code-ignoring-abi=true`
+        // flag during build.
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.getByName("debug")
+        }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+
+### FILE: android/app/src/debug/AndroidManifest.xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+
+
+### FILE: android/app/src/main/AndroidManifest.xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:label="Usaha Bata"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+    <!-- Required to query activities that can process text, see:
+         https://developer.android.com/training/package-visibility and
+         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+
+         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+</manifest>
+
+
+### FILE: android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+package io.flutter.plugins;
+
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import io.flutter.Log;
+
+import io.flutter.embedding.engine.FlutterEngine;
+
+/**
+ * Generated file. Do not edit.
+ * This file is generated by the Flutter tool based on the
+ * plugins that support the Android platform.
+ */
+@Keep
+public final class GeneratedPluginRegistrant {
+  private static final String TAG = "GeneratedPluginRegistrant";
+  public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestorePlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin cloud_firestore, io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestorePlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin firebase_core, io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.github.dart_lang.jni.JniPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin jni, com.github.dart_lang.jni.JniPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin shared_preferences_android, io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin", e);
+    }
+  }
+}
+
+
+### FILE: android/app/src/main/kotlin/com/example/bata/MainActivity.kt
+package com.example.bata
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
+
+
+### FILE: android/app/src/main/res/drawable-v21/launch_background.xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="?android:colorBackground" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+
+
+### FILE: android/app/src/main/res/drawable/launch_background.xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+
+
+### FILE: android/app/src/main/res/values-night/styles.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is on -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+
+
+### FILE: android/app/src/main/res/values/styles.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+
+
+### FILE: android/app/src/profile/AndroidManifest.xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+
+
+### FILE: android/build.gradle.kts
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+val newBuildDir: Directory =
+    rootProject.layout.buildDirectory
+        .dir("../../build")
+        .get()
+rootProject.layout.buildDirectory.value(newBuildDir)
+
+subprojects {
+    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(newSubprojectBuildDir)
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
+}
+
+
+### FILE: android/gradle.properties
+org.gradle.jvmargs=-Xmx8G -XX:MaxMetaspaceSize=4G -XX:ReservedCodeCacheSize=512m -XX:+HeapDumpOnOutOfMemoryError
+android.useAndroidX=true
+# This newDsl flag was added by the Flutter template
+android.newDsl=false
+# This builtInKotlin flag was added by the Flutter template
+android.builtInKotlin=false
+
+
+### FILE: android/gradle/wrapper/gradle-wrapper.properties
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.3.1-all.zip
+
+
+### FILE: android/local.properties
+sdk.dir=/root/android-sdk
+flutter.sdk=/root/flutter
+
+### FILE: android/settings.gradle.kts
+pluginManagement {
+    val flutterSdkPath =
+        run {
+            val properties = java.util.Properties()
+            file("local.properties").inputStream().use { properties.load(it) }
+            val flutterSdkPath = properties.getProperty("flutter.sdk")
+            require(flutterSdkPath != null) { "flutter.sdk not set in local.properties" }
+            flutterSdkPath
+        }
+
+    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+plugins {
+    id("dev.flutter.flutter-plugin-loader") version "1.0.0"
+    id("com.android.application") version "9.1.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.4.0" apply false
+}
+
+include(":app")
+
+
+### FILE: lib/data/models.dart
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+num toNum(dynamic v) {
+  if (v is num) return v;
+  if (v is String) return num.tryParse(v) ?? 0;
+  return 0;
+}
+
+class Aktivitas {
+  Aktivitas({
+    required this.id,
+    required this.col,
+    required this.tipe,
+    required this.arus,
+    required this.keterangan,
+    required this.tanggal,
+    required this.tempat,
+    required this.tujuan,
+    required this.nominal,
+    required this.harga,
+    required this.waktu,
+    required this.siklusAktif,
+  });
+
+  final String id, col, tipe, arus, keterangan, tanggal, tempat, tujuan;
+  final num nominal, harga;
+  final DateTime waktu;
+  final bool siklusAktif;
+
+  bool get isMasuk => arus == 'masuk';
+  bool get isKeluar => arus == 'keluar';
+  bool get isUang => col == 'aktivitas_dompeng';
+
+  factory Aktivitas.fromDoc(String col, QueryDocumentSnapshot<Map<String, dynamic>> d) {
+    final m = d.data();
+    final ts = m['createdAt'];
+    return Aktivitas(
+      id: d.id,
+      col: col,
+      tipe: (m['tipe'] ?? '').toString(),
+      arus: (m['arus'] ?? '').toString(),
+      keterangan: (m['keterangan'] ?? '').toString(),
+      tanggal: (m['tanggal'] ?? '').toString(),
+      tempat: (m['tempat'] ?? '').toString(),
+      tujuan: (m['tujuan'] ?? '').toString(),
+      nominal: toNum(m['nominal']),
+      harga: toNum(m['harga']),
+      waktu: ts is Timestamp ? ts.toDate() : DateTime.fromMillisecondsSinceEpoch(0),
+      siklusAktif: m['isSiklusAktif'] != false,
+    );
+  }
+}
+
+### FILE: lib/data/store.dart
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../ui/theme.dart';
+import 'models.dart';
+
+/// Sama persis dengan hitungBiayaBakar() di stok-tab.js
+Map<String, dynamic> hitungBiayaBakar(num jumlah, [num karung = 0, num hargaMerang = 0]) {
+  final dompeng = (jumlah / 1000) * 60000;
+  final cetak = (jumlah / 1000) * 80000;
+  final tanahMobil = (jumlah / 5000).ceil();
+  final tanah = tanahMobil * 270000;
+  final merang = karung * hargaMerang;
+  return {
+    'dompeng': dompeng,
+    'cetak': cetak,
+    'tanahMobil': tanahMobil,
+    'tanah': tanah,
+    'karungMerang': karung,
+    'hargaMerang': hargaMerang,
+    'merang': merang,
+    'total': dompeng + cetak + tanah + merang,
+  };
+}
+
+class StoreScope extends InheritedNotifier<AppStore> {
+  const StoreScope({super.key, required AppStore store, required super.child}) : super(notifier: store);
+
+  static AppStore of(BuildContext c) {
+    Theme.of(c); // ikut rebuild saat tema terang/gelap berubah
+    return c.dependOnInheritedWidgetOfExactType<StoreScope>()!.notifier!;
+  }
+  static AppStore read(BuildContext c) => c.getInheritedWidgetOfExactType<StoreScope>()!.notifier!;
+}
+
+class AppStore extends ChangeNotifier {
+  AppStore(this._prefs) {
+    paletteIdx = (_prefs.getInt('palette') ?? 0).clamp(0, palettes.length - 1).toInt();
+    themeMode = (_prefs.getInt('theme_mode') ?? 0).clamp(0, 2).toInt();
+    counterAnim = _prefs.getBool('counter_anim') ?? true;
+    haptic = _prefs.getBool('haptic') ?? true;
+    hideSaldo = _prefs.getBool('hide_saldo') ?? false;
+    L.en = _prefs.getString('lang') == 'en';
+  }
+
+  final SharedPreferences _prefs;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  // pengaturan tampilan
+  int paletteIdx = 0;
+  int themeMode = 0; // 0 sistem, 1 terang, 2 gelap
+  bool counterAnim = true;
+  bool haptic = true;
+  Pal get pal => palettes[paletteIdx];
+  bool get en => L.en;
+  final List<StreamSubscription<dynamic>> _subs = [];
+
+  int tab = 0;
+  int stokTab = 0;
+  bool hideSaldo = false;
+  bool ready = false;
+  String? error;
+
+  // app_state/*
+  num totalUtama = 0, batu = 0, siapJual = 0, mentahKulon = 0, mentahEtan = 0;
+  Map<String, dynamic> bon = {};
+  int sesiCount = 0;
+  bool burning = false;
+  List<Map<String, dynamic>> sesi = [];
+
+  // aktivitas_*
+  List<Aktivitas> dompeng = [], mentah = [], beranda = [], siapjual = [];
+  List<Aktivitas>? _semua;
+
+  void setTab(int i) {
+    if (tab == i) return;
+    tab = i;
+    notifyListeners();
+  }
+
+  void toggleSaldo() {
+    hideSaldo = !hideSaldo;
+    _prefs.setBool('hide_saldo', hideSaldo);
+    notifyListeners();
+  }
+
+  void setPalette(int i) {
+    paletteIdx = i;
+    _prefs.setInt('palette', i);
+    notifyListeners();
+  }
+
+  void setThemeMode(int i) {
+    themeMode = i;
+    _prefs.setInt('theme_mode', i);
+    notifyListeners();
+  }
+
+  void setLang(bool english) {
+    L.en = english;
+    _prefs.setString('lang', english ? 'en' : 'id');
+    notifyListeners();
+  }
+
+  void toggleCounter() {
+    counterAnim = !counterAnim;
+    _prefs.setBool('counter_anim', counterAnim);
+    notifyListeners();
+  }
+
+  void toggleHaptic() {
+    haptic = !haptic;
+    _prefs.setBool('haptic', haptic);
+    notifyListeners();
+  }
+
+  void setStokTab(int i) {
+    if (stokTab == i) return;
+    stokTab = i;
+    notifyListeners();
+  }
+
+  /// Buka tab Stok langsung di sub-tab tertentu (0 mentah, 1 tungku, 2 siap jual)
+  void openStok(int i) {
+    stokTab = i;
+    tab = 1;
+    notifyListeners();
+  }
+
+  // ───────────── LISTENERS ─────────────
+  void start() {
+    _state('dompeng', (d) => totalUtama = toNum(d['total_utama']));
+    _state('batu', (d) => batu = toNum(d['total']));
+    _state('siapjual', (d) => siapJual = toNum(d['total']));
+    _state('mentah', (d) {
+      mentahKulon = toNum(d['kulon']);
+      mentahEtan = toNum(d['etan']);
+    });
+    _state('bon', (d) => bon = d);
+    _state('bakar', (d) {
+      sesiCount = toNum(d['sesiCount']).toInt();
+      burning = d['status'] == 'burning';
+      final raw = (d['riwayatSesi'] as List<dynamic>?) ?? const [];
+      sesi = raw.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    });
+
+    // dompeng dibaca penuh (perlu untuk hitung siklus, sama seperti web)
+    _col('aktivitas_dompeng', null, (l) => dompeng = l);
+    _col('aktivitas_mentah', 100, (l) => mentah = l);
+    _col('aktivitas_beranda', 100, (l) => beranda = l);
+    _col('aktivitas_siapjual', 100, (l) => siapjual = l);
+  }
+
+  void _state(String id, void Function(Map<String, dynamic>) apply) {
+    _subs.add(_db.collection('app_state').doc(id).snapshots().listen((s) {
+      apply(s.data() ?? <String, dynamic>{});
+      _changed();
+    }, onError: _onErr));
+  }
+
+  void _col(String col, int? limit, void Function(List<Aktivitas>) apply) {
+    Query<Map<String, dynamic>> q = _db.collection(col).orderBy('createdAt', descending: true);
+    if (limit != null) q = q.limit(limit);
+    _subs.add(q.snapshots().listen((s) {
+      apply(s.docs.map((d) => Aktivitas.fromDoc(col, d)).toList());
+      _changed();
+    }, onError: _onErr));
+  }
+
+  void _onErr(Object e) {
+    error = e.toString();
+    notifyListeners();
+  }
+
+  void _changed() {
+    _semua = null;
+    ready = true;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    for (final s in _subs) {
+      s.cancel();
+    }
+    super.dispose();
+  }
+
+  // ───────────── TURUNAN ─────────────
+  Map<String, dynamic>? get sesiAktif => burning && sesi.isNotEmpty ? sesi.last : null;
+
+  /// Siklus = semua transaksi dompeng dengan isSiklusAktif != false
+  num get siklus {
+    num t = 0;
+    for (final a in dompeng) {
+      if (!a.siklusAktif) continue;
+      if (a.isMasuk) {
+        t += a.nominal;
+      } else if (a.isKeluar) {
+        t -= a.nominal;
+      }
+    }
+    return t;
+  }
+
+  num get kas => totalUtama + siklus;
+
+  bool _uang(Aktivitas a) => a.tipe != 'Kirim ke Total Utama' && a.tipe != 'Penyesuaian Saldo';
+
+  String get _bulan => tanggalHariIni().substring(0, 7);
+
+  num get pemasukanBulan => dompeng
+      .where((a) => a.isMasuk && _uang(a) && a.tanggal.startsWith(_bulan))
+      .fold<num>(0, (t, a) => t + a.nominal);
+
+  num get pengeluaranBulan => dompeng
+      .where((a) => a.isKeluar && _uang(a) && a.tanggal.startsWith(_bulan))
+      .fold<num>(0, (t, a) => t + a.nominal);
+
+  /// 0 = semua, 1 = kas, 2 = stok
+  List<Aktivitas> feed(int f) {
+    if (f == 1) return dompeng.take(150).toList();
+    _semua ??= _gabung();
+    if (f == 2) return _semua!.where((a) => !a.isUang).toList();
+    return _semua!;
+  }
+
+  List<Aktivitas> _gabung() {
+    // sisi kembar dari satu transaksi disembunyikan supaya tidak dobel
+    const sembunyi = {'Bakar Bata', 'Batu Siap Jual', 'Penjualan Bata'};
+    final l = <Aktivitas>[...dompeng.take(120), ...mentah, ...beranda, ...siapjual]
+        .where((a) => !sembunyi.contains(a.tipe))
+        .toList();
+    l.sort((a, b) => b.waktu.compareTo(a.waktu));
+    return l.take(200).toList();
+  }
+
+  // ───────────── HELPER TULIS ─────────────
+  DocumentReference<Map<String, dynamic>> _st(String id) => _db.collection('app_state').doc(id);
+  DocumentReference<Map<String, dynamic>> _ref(String col, String id) => _db.collection(col).doc(id);
+  String _id(String p) => '${p}_${DateTime.now().microsecondsSinceEpoch}';
+
+  /// Tidak di-await supaya jalan offline-first seperti versi web
+  void _go(WriteBatch b) {
+    unawaited(b.commit().catchError((Object e) {
+      error = e.toString();
+      notifyListeners();
+    }));
+  }
+
+  Map<String, dynamic> _akt({
+    required String tipe,
+    required String arus,
+    required num nominal,
+    String ket = '',
+    Map<String, dynamic> extra = const {},
+  }) {
+    return {
+      'tipe': tipe,
+      'arus': arus,
+      'nominal': nominal,
+      'keterangan': ket,
+      'tanggal': tanggalHariIni(),
+      'createdAt': Timestamp.now(),
+      ...extra,
+    };
+  }
+
+  // ───────────── WORKFLOW (return null = sukses, selain itu pesan error) ─────────────
+
+  /// 1. Cetak bata -> stok mentah (kulon / etan)
+  String? cetakBata({required String tempat, required int jumlah, String ket = ''}) {
+    if (jumlah <= 0) return 'Jumlah bata harus lebih dari 0';
+    final b = _db.batch();
+    b.set(_st('mentah'), {tempat: FieldValue.increment(jumlah)}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_mentah', _id('cb')),
+      _akt(tipe: 'Cetak Bata', arus: 'masuk', nominal: jumlah, ket: ket, extra: {'tempat': tempat}),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// 2. Mentah -> tungku (Total Stok Batu)
+  String? pindahKeTungku({required String tempat, required int jumlah, String ket = ''}) {
+    final stok = tempat == 'kulon' ? mentahKulon : mentahEtan;
+    if (jumlah <= 0) return 'Jumlah bata harus lebih dari 0';
+    if (jumlah > stok) return 'Stok mentah ${areaLabel(tempat)} hanya ${fmt(stok)} bata';
+    final id = _id('bkr');
+    final b = _db.batch();
+    b.set(_st('mentah'), {tempat: FieldValue.increment(-jumlah)}, SetOptions(merge: true));
+    b.set(_st('batu'), {'total': FieldValue.increment(jumlah)}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_mentah', id),
+      _akt(tipe: 'Bakar Bata', arus: 'keluar', nominal: jumlah, ket: ket, extra: {'tempat': tempat}),
+    );
+    b.set(
+      _ref('aktivitas_beranda', id),
+      _akt(
+        tipe: 'Bata Mentah Masuk',
+        arus: 'masuk',
+        nominal: jumlah,
+        ket: ket.isEmpty ? 'Dari mentah ${areaLabel(tempat)}' : ket,
+      ),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// 3a. Mulai sesi bakar
+  String? mulaiBakar() {
+    if (burning) return 'Masih ada sesi bakar yang berjalan';
+    if (batu <= 0) return 'Stok di tungku masih kosong';
+    final n = sesiCount + 1;
+    final id = _id('bkr');
+    final t = tanggalHariIni();
+    final Map<String, dynamic> item = {
+      'id': id,
+      'sesi': n,
+      'nominal': batu,
+      'tanggal': t,
+      'tanggalMulai': t,
+      'biaya': hitungBiayaBakar(batu),
+    };
+    final b = _db.batch();
+    b.set(
+      _st('bakar'),
+      {
+        'sesiCount': n,
+        'status': 'burning',
+        'riwayatSesi': [...sesi, item],
+      },
+      SetOptions(merge: true),
+    );
+    b.set(
+      _ref('aktivitas_beranda', id),
+      _akt(tipe: 'Mulai Bakar', arus: 'netral', nominal: batu, ket: 'Sesi $n'),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// 3b. Selesai bakar (biaya merang opsional)
+  String? selesaiBakar({int karung = 0, int hargaMerang = 0}) {
+    if (sesiAktif == null) return 'Tidak ada sesi bakar yang berjalan';
+    final list = sesi.map((e) => Map<String, dynamic>.from(e)).toList();
+    final last = list.last;
+    final nominal = toNum(last['nominal']);
+    final sn = last['sesi'];
+    last['selesai'] = true;
+    last['tanggalSelesai'] = tanggalHariIni();
+    last['biaya'] = hitungBiayaBakar(nominal, karung, hargaMerang);
+    final b = _db.batch();
+    b.set(_st('bakar'), {'status': 'idle', 'riwayatSesi': list}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_beranda', _id('bkr')),
+      _akt(tipe: 'Batu Selesai Dibakar', arus: 'masuk', nominal: nominal, ket: 'Sesi $sn'),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// 4. Tungku -> gudang siap jual
+  String? susunSiapJual({required int jumlah, String ket = ''}) {
+    if (jumlah <= 0) return 'Jumlah bata harus lebih dari 0';
+    if (jumlah > batu) return 'Stok di tungku hanya ${fmt(batu)} bata';
+    final id = _id('bkr');
+    final b = _db.batch();
+    b.set(_st('batu'), {'total': FieldValue.increment(-jumlah)}, SetOptions(merge: true));
+    b.set(_st('siapjual'), {'total': FieldValue.increment(jumlah)}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_beranda', id),
+      _akt(
+        tipe: 'Batu Telah Disusun',
+        arus: 'keluar',
+        nominal: jumlah,
+        ket: ket.isEmpty ? 'Disusun ke gudang Siap Jual' : ket,
+      ),
+    );
+    b.set(
+      _ref('aktivitas_siapjual', id),
+      _akt(
+        tipe: 'Batu Siap Jual',
+        arus: 'masuk',
+        nominal: jumlah,
+        ket: ket.isEmpty ? 'Masuk dari pembakaran' : ket,
+      ),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// 5. Kirim / jual bata -> pendapatan masuk siklus dompeng
+  String? kirimBata({required String tujuan, required int jumlah, required int harga, String ket = ''}) {
+    if (tujuan.trim().isEmpty) return 'Isi tujuan pengiriman';
+    if (jumlah <= 0) return 'Jumlah bata harus lebih dari 0';
+    if (jumlah > siapJual) return 'Stok siap jual hanya ${fmt(siapJual)} bata';
+    final detail = ket.isEmpty ? '$tujuan • ${fmt(jumlah)} bata' : ket;
+    final b = _db.batch();
+    b.set(_st('siapjual'), {'total': FieldValue.increment(-jumlah)}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_siapjual', _id('krm')),
+      _akt(
+        tipe: 'Pengiriman Bata',
+        arus: 'keluar',
+        nominal: jumlah,
+        ket: detail,
+        extra: {'harga': harga, 'tujuan': tujuan.trim()},
+      ),
+    );
+    if (harga > 0) {
+      b.set(
+        _ref('aktivitas_dompeng', _id('jual')),
+        _akt(
+          tipe: 'Penjualan Bata',
+          arus: 'masuk',
+          nominal: jumlah * harga,
+          ket: detail,
+          extra: {'isSiklusAktif': true},
+        ),
+      );
+    }
+    _go(b);
+    return null;
+  }
+
+  /// Catat pengeluaran (tidak masuk hitungan siklus)
+  String? catatPengeluaran({required String kategori, required int nominal, String ket = ''}) {
+    if (nominal <= 0) return 'Nominal harus lebih dari 0';
+    final b = _db.batch();
+    b.set(
+      _ref('aktivitas_dompeng', _id('out')),
+      _akt(tipe: kategori, arus: 'keluar', nominal: nominal, ket: ket, extra: {'isSiklusAktif': false}),
+    );
+    _go(b);
+    return null;
+  }
+
+  /// Kirim ke Total Utama: siklus ditutup dan dijumlahkan ke total_utama
+  String? kirimKeUtama() {
+    final aktif = dompeng.where((a) => a.siklusAktif).toList();
+    if (aktif.isEmpty) return 'Belum ada transaksi di siklus ini';
+    final sk = siklus;
+    final num baru = totalUtama + sk < 0 ? 0 : totalUtama + sk;
+    final jumlahMasuk = aktif.where((a) => a.isMasuk).length;
+    var b = _db.batch();
+    var ops = 0;
+    for (final a in aktif) {
+      b.update(_ref('aktivitas_dompeng', a.id), {'isSiklusAktif': false});
+      ops++;
+      if (ops >= 400) {
+        _go(b);
+        b = _db.batch();
+        ops = 0;
+      }
+    }
+    b.set(_st('dompeng'), {'total_utama': baru}, SetOptions(merge: true));
+    b.set(
+      _ref('aktivitas_dompeng', _id('krm')),
+      _akt(
+        tipe: 'Kirim ke Total Utama',
+        arus: sk >= 0 ? 'masuk' : 'keluar',
+        nominal: sk.abs(),
+        ket: '$jumlahMasuk dompengan dikirim',
+        extra: {'isPermanent': true, 'isSiklusAktif': false},
+      ),
+    );
+    _go(b);
+    return null;
+  }
+}
+
+### FILE: lib/main.dart
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:oc_liquid_glass/oc_liquid_glass.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'data/store.dart';
+import 'ui/shell.dart';
+import 'ui/theme.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // Config publik yang sama dengan index.html (Firestore project usaha-batu)
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: 'AIzaSyB4cwBDTbZurNctceQNa9abXp90IQ5LWN0',
+      appId: '1:508756450060:web:776ac8311c8e031106c729',
+      messagingSenderId: '508756450060',
+      projectId: 'usaha-batu',
+      storageBucket: 'usaha-batu.firebasestorage.app',
+    ),
+  );
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
+    cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+  );
+  unawaited(OCLiquidGlassGroup.precacheShader());
+
+  final prefs = await SharedPreferences.getInstance();
+  final store = AppStore(prefs)..start();
+  runApp(BataApp(store: store));
+}
+
+class BataApp extends StatelessWidget {
+  const BataApp({super.key, required this.store});
+
+  final AppStore store;
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreScope(
+      store: store,
+      child: ListenableBuilder(
+        listenable: store,
+        builder: (context, _) => MaterialApp(
+          title: 'Usaha Bata',
+          debugShowCheckedModeBanner: false,
+          themeMode: switch (store.themeMode) {
+            1 => ThemeMode.light,
+            2 => ThemeMode.dark,
+            _ => ThemeMode.system,
+          },
+          theme: buildTheme(store.pal.accent, false),
+          darkTheme: buildTheme(store.pal.accent, true),
+          builder: (context, child) {
+            C.dark = Theme.of(context).brightness == Brightness.dark;
+            return child!;
+          },
+          home: const Shell(),
+        ),
+      ),
+    );
+  }
+}
+
+
+### FILE: lib/ui/extras.dart
+import 'dart:ui' show ImageFilter;
+
+import 'package:flutter/material.dart';
+import 'package:number_flow_flutter/number_flow_flutter.dart';
+
+import '../data/store.dart';
+import 'icons.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+/// Angka dengan efek counter (count-up + roll) seperti di My Finance.
+/// [hidden] = true membuat angka ter-blur halus.
+class Counter extends StatefulWidget {
+  const Counter({
+    super.key,
+    required this.value,
+    required this.style,
+    this.symbol = '',
+    this.hidden = false,
+  });
+
+  final num value;
+  final TextStyle style;
+  final String symbol;
+  final bool hidden;
+
+  @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  num _shown = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() => _shown = widget.value);
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant Counter oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.value != widget.value) _shown = widget.value;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final Widget number = s.counterAnim
+        ? RepaintBoundary(
+            child: NumberFlow(
+              value: _shown,
+              locale: 'id_ID',
+              format: NumberFlowFormat.currency(currencyCode: 'IDR', symbol: widget.symbol),
+              spring: NumberFlowSpring.bouncy,
+              motionBlur: 5.5,
+              digitSquish: 0.32,
+              stagger: const Duration(milliseconds: 40),
+              transformTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeInOut),
+              opacityTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeOut),
+              tabularNums: true,
+              style: widget.style,
+            ),
+          )
+        : Text('${widget.symbol}${fmt(widget.value)}', style: widget.style);
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(end: widget.hidden ? 12.0 : 0.0),
+      duration: const Duration(milliseconds: 320),
+      curve: Curves.easeOutCubic,
+      builder: (context, sigma, child) => sigma < 0.05
+          ? child!
+          : ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma, tileMode: TileMode.decal),
+              child: child,
+            ),
+      child: number,
+    );
+  }
+}
+
+// Pengaturan dipindah ke settings_pages.dart (sub panel fullscreen)
+
+
+### FILE: lib/ui/glass_nav.dart
+import 'package:flutter/material.dart';
+import 'package:oc_liquid_glass/oc_liquid_glass.dart';
+
+import 'icons.dart';
+import 'theme.dart';
+
+class _NavItem {
+  const _NavItem(this.on, this.off, this.label);
+
+  final IconData on, off;
+  final String label;
+}
+
+const _items = [
+  _NavItem(Ic.homeOn, Ic.home, 'nav_home'),
+  _NavItem(Ic.boxOn, Ic.box, 'nav_stok'),
+  _NavItem(Ic.chartOn, Ic.chart, 'nav_act'),
+  _NavItem(Ic.userOn, Ic.user, 'nav_profile'),
+];
+
+/// Bottom nav melayang berbahan liquid glass (oc_liquid_glass)
+class GlassNav extends StatelessWidget {
+  const GlassNav({super.key, required this.index, required this.onChanged});
+
+  final int index;
+  final ValueChanged<int> onChanged;
+
+  static const double _h = 68;
+
+  @override
+  Widget build(BuildContext context) {
+    final bottom = MediaQuery.paddingOf(context).bottom;
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 0, 16, bottom + 10),
+      child: LayoutBuilder(
+        builder: (context, c) {
+          final w = c.maxWidth;
+          return SizedBox(
+            width: w,
+            height: _h,
+            child: OCLiquidGlassGroup(
+              settings: const OCLiquidGlassSettings(
+                refractStrength: -0.08,
+                blurRadiusPx: 4,
+                blendPx: 10,
+                distortFalloffPx: 30,
+                specStrength: 10,
+                specWidth: 1.5,
+                specPower: 6,
+                lightbandStrength: 0.5,
+                lightbandColor: Colors.white,
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 0,
+                    top: 0,
+                    child: OCLiquidGlass(
+                      width: w,
+                      height: _h,
+                      borderRadius: _h / 2,
+                      color: (C.dark ? Colors.black : Colors.white).withValues(alpha: 0.35),
+                      shadow: BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.10),
+                        blurRadius: 24,
+                        offset: const Offset(0, 8),
+                      ),
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                  // tepi tipis + isi ringan (juga jadi cadangan bila shader tidak aktif)
+                  Positioned.fill(
+                    child: IgnorePointer(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: C.dark ? 0.05 : 0.18),
+                          borderRadius: BorderRadius.circular(_h / 2),
+                          border: Border.all(color: Colors.white.withValues(alpha: C.dark ? 0.14 : 0.65)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: Row(
+                        children: [
+                          for (var i = 0; i < _items.length; i++)
+                            Expanded(
+                              child: _NavBtn(
+                                item: _items[i],
+                                selected: i == index,
+                                onTap: () => onChanged(i),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _NavBtn extends StatelessWidget {
+  const _NavBtn({required this.item, required this.selected, required this.onTap});
+
+  final _NavItem item;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 240),
+        curve: Curves.easeOutCubic,
+        decoration: BoxDecoration(
+          color: selected ? Colors.white.withValues(alpha: C.dark ? 0.14 : 0.78) : Colors.transparent,
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(selected ? item.on : item.off, size: 24, color: selected ? C.ink : C.ink2),
+            const SizedBox(height: 2),
+            Text(
+              L.t(item.label),
+              style: TextStyle(
+                fontSize: 10.5,
+                fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                color: selected ? C.ink : C.ink2,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+### FILE: lib/ui/home_view.dart
+import 'package:flutter/material.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'extras.dart';
+import 'icons.dart';
+import 'sheets.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  String _sapa() {
+    final h = DateTime.now().hour;
+    if (h < 11) return L.t('hi_morning');
+    if (h < 15) return L.t('hi_noon');
+    if (h < 18) return L.t('hi_evening');
+    return L.t('hi_night');
+  }
+
+  Widget _aksi(IconData icon, String label, VoidCallback onTap) {
+    return Expanded(
+      child: Tap(
+        onTap: onTap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: C.card,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: C.dark ? null : const [BoxShadow(color: Color(0x1F0D1220), blurRadius: 16, offset: Offset(0, 6))],
+              ),
+              child: Icon(icon, size: 26, color: C.ink),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.w600),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final top = MediaQuery.paddingOf(context).top;
+    final minH = MediaQuery.sizeOf(context).height - 430;
+    final feed = s.feed(0).take(6).toList();
+    final sk = s.siklus;
+    final plus = sk > 0 ? '+' : '';
+    final sub = s.hideSaldo
+        ? '${L.t('cycle')} •••• · ${L.t('main')} ••••'
+        : '${L.t('cycle')} $plus${rp(sk)} · ${L.t('main')} ${rp(s.totalUtama)}';
+
+    return Stack(
+      children: [
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 520)),
+        ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 28),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 46,
+                        height: 46,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withValues(alpha: 0.2),
+                          border: Border.all(color: Colors.white.withValues(alpha: 0.5), width: 1.5),
+                        ),
+                        child: const Text(
+                          'R',
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${_sapa()} 👋',
+                              style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13),
+                            ),
+                            const Text(
+                              'Reza',
+                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+                      RoundIconBtn(icon: Ic.search, onTap: () => s.setTab(2)),
+                      const SizedBox(width: 10),
+                      RoundIconBtn(icon: Ic.bell, dot: s.burning),
+                    ],
+                  ),
+                  if (s.error != null) ...[
+                    const SizedBox(height: 14),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.92),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: Text(
+                        '${L.t('sync_error')}: ${s.error}',
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: C.red, fontSize: 12),
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: 26),
+                  Text(L.t('total_cash'), style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 14)),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Counter(
+                          value: s.kas,
+                          symbol: 'Rp ',
+                          hidden: s.hideSaldo,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 36,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -1.2,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: s.toggleSaldo,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Icon(
+                            s.hideSaldo ? Ic.eyeOff : Ic.eye,
+                            color: Colors.white.withValues(alpha: 0.75),
+                            size: 22,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(sub, style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 12.5)),
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      _aksi(Ic.add, L.t('act_print'), () => openTx(context, TxKind.cetak)),
+                      _aksi(Ic.fire, L.t('act_kiln'), () => openTx(context, TxKind.pindah)),
+                      _aksi(Ic.truck, L.t('act_send'), () => openTx(context, TxKind.kirim)),
+                      _aksi(Ic.wallet, L.t('act_cost'), () => openTx(context, TxKind.pengeluaran)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              constraints: BoxConstraints(minHeight: minH),
+              padding: const EdgeInsets.fromLTRB(20, 22, 20, 130),
+              decoration: BoxDecoration(
+                color: C.card,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: C.dark ? 0.35 : 0.10),
+                    blurRadius: 24,
+                    offset: const Offset(0, -6),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _SesiCard(s),
+                  const SizedBox(height: 26),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          L.t('latest'),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: C.ink),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => s.setTab(2),
+                        child: Text(
+                          L.t('see_all'),
+                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: s.pal.accent),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  FeedCard(items: feed, loading: !s.ready, flat: true),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _SesiCard extends StatelessWidget {
+  const _SesiCard(this.s);
+
+  final AppStore s;
+
+  @override
+  Widget build(BuildContext context) {
+    final a = s.sesiAktif;
+    final String info;
+    final String cta;
+    final VoidCallback onTap;
+    if (a != null) {
+      info = L
+          .t('sesi_running')
+          .replaceAll('{n}', '${a['sesi']}')
+          .replaceAll('{b}', fmt(toNum(a['nominal'])));
+      cta = L.t('cta_finish');
+      onTap = () => openTx(context, TxKind.selesaiBakar);
+    } else if (s.batu > 0) {
+      info = L.t('sesi_ready').replaceAll('{b}', fmt(s.batu));
+      cta = L.t('cta_start');
+      onTap = () => openTx(context, TxKind.mulaiBakar);
+    } else {
+      info = L.t('sesi_empty');
+      cta = L.t('cta_move');
+      onTap = () => openTx(context, TxKind.pindah);
+    }
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(22)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Ic.fire, color: s.pal.accent, size: 22),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  L.t('sesi_title'),
+                  style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w700, color: C.ink),
+                ),
+              ),
+              if (a != null)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: C.amber.withValues(alpha: 0.14),
+                    borderRadius: BorderRadius.circular(99),
+                  ),
+                  child: Text(
+                    L.t('running'),
+                    style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: C.amber),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
+          const SizedBox(height: 12),
+          Tap(
+            onTap: onTap,
+            child: Container(
+              height: 46,
+              decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(14)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(cta, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink)),
+                  const SizedBox(width: 8),
+                  Icon(Ic.arrowRight, size: 18, color: C.ink),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+### FILE: lib/ui/icons.dart
+import 'package:flutter/widgets.dart';
+import 'package:solar_icons/solar_icons.dart';
+
+/// Semua ikon aplikasi lewat sini. Kalau ada nama Solar yang beda di versi
+/// package-nya, cukup ganti di file ini saja.
+class Ic {
+  // navigasi (nonaktif = outline, aktif = bold)
+  static const IconData home = SolarIconsOutline.home;
+  static const IconData homeOn = SolarIconsBold.home;
+  static const IconData box = SolarIconsOutline.box;
+  static const IconData boxOn = SolarIconsBold.box;
+  static const IconData chart = SolarIconsOutline.chart;
+  static const IconData chartOn = SolarIconsBold.chart;
+  static const IconData user = SolarIconsOutline.userCircle;
+  static const IconData userOn = SolarIconsBold.userCircle;
+
+  // umum
+  static const IconData search = SolarIconsOutline.magnifier;
+  static const IconData bell = SolarIconsOutline.bell;
+  static const IconData eye = SolarIconsOutline.eye;
+  static const IconData eyeOff = SolarIconsOutline.eyeClosed;
+  static const IconData close = SolarIconsOutline.closeCircle;
+  static const IconData check = SolarIconsBold.checkCircle;
+  static const IconData checkLine = SolarIconsOutline.checkCircle;
+  static const IconData arrowRight = SolarIconsOutline.arrowRight;
+  static const IconData arrowDown = SolarIconsOutline.arrowDown;
+  static const IconData info = SolarIconsOutline.infoCircle;
+  static const IconData cloud = SolarIconsOutline.cloud;
+
+  // alur usaha bata
+  static const IconData add = SolarIconsOutline.addCircle;
+  static const IconData fire = SolarIconsOutline.fire;
+  static const IconData play = SolarIconsOutline.play;
+  static const IconData stock = SolarIconsOutline.boxMinimalistic;
+  static const IconData truck = SolarIconsOutline.delivery;
+  static const IconData wallet = SolarIconsOutline.wallet;
+  static const IconData money = SolarIconsOutline.moneyBag;
+  static const IconData hand = SolarIconsOutline.handMoney;
+  static const IconData send = SolarIconsOutline.plain;
+  static const IconData tune = SolarIconsOutline.tuning;
+  static const IconData incoming = SolarIconsOutline.arrowLeftDown;
+  static const IconData outgoing = SolarIconsOutline.arrowRightUp;
+}
+
+### FILE: lib/ui/other_pages.dart
+import 'package:flutter/material.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'extras.dart';
+import 'icons.dart';
+import 'settings_pages.dart';
+import 'sheets.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+// ───────────────────────── AKTIVITAS ─────────────────────────
+class AktivitasPage extends StatefulWidget {
+  const AktivitasPage({super.key});
+
+  @override
+  State<AktivitasPage> createState() => _AktivitasPageState();
+}
+
+class _AktivitasPageState extends State<AktivitasPage> {
+  int _f = 0;
+
+  Widget _flow(String label, num v, Color c, IconData icon) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(color: c.withValues(alpha: 0.12), shape: BoxShape.circle),
+                child: Icon(icon, size: 16, color: c),
+              ),
+              const SizedBox(width: 8),
+              Text(label, style: TextStyle(fontSize: 12.5, color: C.ink2)),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Counter(
+            value: v,
+            symbol: 'Rp ',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _label(String t) => t == tanggalHariIni() ? 'Hari ini' : tglCantik(t);
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final top = MediaQuery.paddingOf(context).top;
+    final feed = s.feed(_f).take(120).toList();
+    final groups = <String, List<Aktivitas>>{};
+    for (final a in feed) {
+      groups.putIfAbsent(a.tanggal.isEmpty ? '-' : a.tanggal, () => <Aktivitas>[]).add(a);
+    }
+    return Stack(
+      children: [
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
+        ListView(
+          padding: EdgeInsets.fromLTRB(20, top + 18, 20, 130),
+          children: [
+            Text(L.t('activity_title'), style: pageTitle),
+            const SizedBox(height: 4),
+            Text(L.t('activity_sub'), style: pageSub),
+            const SizedBox(height: 20),
+            WhiteCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(L.t('this_month'), style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink3)),
+                  const SizedBox(height: 14),
+                  Row(
+                    children: [
+                      _flow(L.t('income'), s.pemasukanBulan, C.green, Ic.incoming),
+                      SizedBox(height: 40, child: VerticalDivider(width: 24, color: C.line)),
+                      _flow(L.t('expense'), s.pengeluaranBulan, C.red, Ic.outgoing),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: ActBtn(label: L.t('expense'), icon: Ic.wallet, onTap: () => openTx(context, TxKind.pengeluaran)),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ActBtn(
+                    label: L.t('send_main'),
+                    icon: Ic.send,
+                    dark: true,
+                    onTap: () => openTx(context, TxKind.kirimUtama),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            FilterChips(
+              items: [L.t('f_all'), L.t('f_cash'), L.t('f_stock')],
+              index: _f,
+              onChanged: (i) => setState(() => _f = i),
+            ),
+            const SizedBox(height: 14),
+            if (feed.isEmpty) FeedCard(items: feed, loading: !s.ready),
+            for (final e in groups.entries) ...[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 8, 4, 8),
+                child: Text(
+                  _label(e.key),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: C.ink2),
+                ),
+              ),
+              FeedCard(items: e.value, loading: false),
+              const SizedBox(height: 6),
+            ],
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── PROFIL ─────────────────────────
+class ProfilPage extends StatelessWidget {
+  const ProfilPage({super.key});
+
+  String _onOff(bool v) => v ? L.t('on') : L.t('off');
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final top = MediaQuery.paddingOf(context).top;
+    final aktif = s.bon['kasbonActive'] == true;
+    final modes = [L.t('mode_system'), L.t('mode_light'), L.t('mode_dark')];
+    final sync = s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'));
+    return Stack(
+      children: [
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
+        ListView(
+          padding: EdgeInsets.fromLTRB(20, top + 18, 20, 130),
+          children: [
+            Text(L.t('profile'), style: pageTitle),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Container(
+                  width: 64,
+                  height: 64,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withValues(alpha: 0.2),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.55), width: 1.5),
+                  ),
+                  child: const Text('R', style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w800)),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Reza', style: TextStyle(color: Colors.white, fontSize: 21, fontWeight: FontWeight.w800)),
+                      const SizedBox(height: 2),
+                      Text(L.t('role'), style: const TextStyle(color: Colors.white70, fontSize: 13)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 26),
+            SetGroup(
+              title: L.t('business'),
+              children: [
+                SetTile(
+                  icon: Ic.hand,
+                  color: C.amber,
+                  title: L.t('kasbon'),
+                  value: aktif ? L.t('active') : L.t('none'),
+                  onTap: () => openPage(context, const KasbonPage()),
+                ),
+              ],
+            ),
+            SetGroup(
+              title: L.t('settings'),
+              children: [
+                SetTile(
+                  icon: Icons.palette_outlined,
+                  color: C.violet,
+                  title: L.t('appearance'),
+                  value: '${s.pal.name} · ${modes[s.themeMode]}',
+                  onTap: () => openPage(context, const AppearancePage()),
+                ),
+                SetTile(
+                  icon: Icons.language_rounded,
+                  color: C.blue,
+                  title: L.t('language'),
+                  value: L.en ? 'English' : 'Bahasa Indonesia',
+                  onTap: () => openPage(context, const LanguagePage()),
+                ),
+                SetTile(
+                  icon: Icons.auto_awesome_rounded,
+                  color: C.green,
+                  title: L.t('anim_haptic'),
+                  value: '${L.t('counter_anim')}: ${_onOff(s.counterAnim)}',
+                  onTap: () => openPage(context, const GeneralPage()),
+                ),
+                SetTile(
+                  icon: Ic.eyeOff,
+                  color: C.red,
+                  title: L.t('privacy'),
+                  value: '${L.t('hide_balance')}: ${_onOff(s.hideSaldo)}',
+                  onTap: () => openPage(context, const PrivacyPage()),
+                ),
+              ],
+            ),
+            SetGroup(
+              title: L.t('about'),
+              children: [
+                SetTile(
+                  icon: Ic.cloud,
+                  color: C.ink2,
+                  title: L.t('sync_about'),
+                  value: sync,
+                  onTap: () => openPage(context, const AboutPage()),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+
+### FILE: lib/ui/settings_pages.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'icons.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+/// Buka halaman fullscreen dengan transisi geser + fade
+void openPage(BuildContext context, Widget page) {
+  Navigator.of(context).push(
+    PageRouteBuilder<void>(
+      transitionDuration: const Duration(milliseconds: 320),
+      reverseTransitionDuration: const Duration(milliseconds: 260),
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder: (_, a, __, child) {
+        final c = CurvedAnimation(parent: a, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
+        return FadeTransition(
+          opacity: c,
+          child: SlideTransition(
+            position: Tween<Offset>(begin: const Offset(0.08, 0), end: Offset.zero).animate(c),
+            child: child,
+          ),
+        );
+      },
+    ),
+  );
+}
+
+/// Kerangka halaman pengaturan fullscreen
+class SubPage extends StatelessWidget {
+  const SubPage({super.key, required this.title, this.subtitle, required this.children});
+
+  final String title;
+  final String? subtitle;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    StoreScope.of(context);
+    final top = MediaQuery.paddingOf(context).top;
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+      ),
+      child: Scaffold(
+        backgroundColor: C.bg,
+        body: Stack(
+          children: [
+            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 300)),
+            ListView(
+              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 40),
+              children: [
+                Row(
+                  children: [
+                    RoundIconBtn(icon: Icons.arrow_back_ios_new_rounded, onTap: () => Navigator.of(context).maybePop()),
+                    const SizedBox(width: 14),
+                    Expanded(child: Text(title, style: pageTitle.copyWith(fontSize: 24))),
+                  ],
+                ),
+                if (subtitle != null)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 58, top: 2),
+                    child: Text(subtitle!, style: pageSub),
+                  ),
+                const SizedBox(height: 26),
+                ...children,
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Grup baris pengaturan dalam satu kartu
+class SetGroup extends StatelessWidget {
+  const SetGroup({super.key, this.title, required this.children});
+
+  final String? title;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (title != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(6, 0, 6, 10),
+            child: Text(title!, style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: C.ink3)),
+          ),
+        WhiteCard(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          child: Column(
+            children: [
+              for (var i = 0; i < children.length; i++) ...[
+                children[i],
+                if (i != children.length - 1) Divider(height: 1, color: C.div),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 22),
+      ],
+    );
+  }
+}
+
+/// Satu baris pengaturan (ikon, judul, keterangan, panah / kontrol)
+class SetTile extends StatelessWidget {
+  const SetTile({super.key, required this.icon, required this.title, this.value, this.onTap, this.trailing, this.color});
+
+  final IconData icon;
+  final String title;
+  final String? value;
+  final VoidCallback? onTap;
+  final Widget? trailing;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color ?? StoreScope.of(context).pal.accent;
+    return Tap(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(color: c.withValues(alpha: 0.13), borderRadius: BorderRadius.circular(13)),
+              child: Icon(icon, size: 21, color: c),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: C.ink)),
+                  if (value != null) ...[
+                    const SizedBox(height: 2),
+                    Text(value!, style: TextStyle(fontSize: 12.5, color: C.ink3)),
+                  ],
+                ],
+              ),
+            ),
+            if (trailing != null)
+              trailing!
+            else if (onTap != null)
+              Icon(Icons.chevron_right_rounded, size: 22, color: C.ink3),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget _val(String v) => Text(v, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: C.ink));
+
+// ───────────────────────── TAMPILAN ─────────────────────────
+class AppearancePage extends StatelessWidget {
+  const AppearancePage({super.key});
+
+  Widget _preview(AppStore s) {
+    final p = s.pal;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      height: 130,
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(26),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [p.top, p.mid, p.soft],
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(L.t('total_cash'), style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13)),
+          const SizedBox(height: 4),
+          Text(
+            rp(s.kas),
+            style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -0.8),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _mode(AppStore s, int i, IconData icon, String label) {
+    final sel = s.themeMode == i;
+    final acc = s.pal.accent;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => s.setThemeMode(i),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          decoration: BoxDecoration(
+            color: sel ? acc.withValues(alpha: 0.12) : C.field,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: sel ? acc : Colors.transparent, width: 1.8),
+          ),
+          child: Column(
+            children: [
+              Icon(icon, size: 26, color: sel ? acc : C.ink2),
+              const SizedBox(height: 8),
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: sel ? FontWeight.w700 : FontWeight.w600,
+                  color: sel ? acc : C.ink2,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    return SubPage(
+      title: L.t('appearance'),
+      subtitle: L.t('appearance_sub'),
+      children: [
+        _preview(s),
+        const SizedBox(height: 22),
+        SetGroup(
+          title: L.t('screen_mode'),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Row(
+                children: [
+                  _mode(s, 0, Icons.brightness_auto_rounded, L.t('mode_system')),
+                  const SizedBox(width: 10),
+                  _mode(s, 1, Icons.light_mode_rounded, L.t('mode_light')),
+                  const SizedBox(width: 10),
+                  _mode(s, 2, Icons.dark_mode_rounded, L.t('mode_dark')),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SetGroup(
+          title: L.t('theme_color'),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Wrap(
+                spacing: 12,
+                runSpacing: 16,
+                children: [
+                  for (var i = 0; i < palettes.length; i++)
+                    GestureDetector(
+                      onTap: () => s.setPalette(i),
+                      child: SizedBox(
+                        width: 60,
+                        child: Column(
+                          children: [
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 220),
+                              width: 46,
+                              height: 46,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [palettes[i].top, palettes[i].soft],
+                                ),
+                                border: Border.all(
+                                  color: s.paletteIdx == i ? C.ink : Colors.transparent,
+                                  width: 2.5,
+                                ),
+                              ),
+                              child: s.paletteIdx == i
+                                  ? const Icon(Icons.check_rounded, color: Colors.white, size: 22)
+                                  : null,
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              palettes[i].name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: s.paletteIdx == i ? FontWeight.w700 : FontWeight.w500,
+                                color: s.paletteIdx == i ? C.ink : C.ink3,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── BAHASA ─────────────────────────
+class LanguagePage extends StatelessWidget {
+  const LanguagePage({super.key});
+
+  Widget _opt(AppStore s, String label, String code, bool english) {
+    final sel = L.en == english;
+    return SetTile(
+      icon: Icons.translate_rounded,
+      color: C.blue,
+      title: label,
+      value: code,
+      onTap: () => s.setLang(english),
+      trailing: Icon(
+        sel ? Icons.check_circle_rounded : Icons.radio_button_unchecked_rounded,
+        size: 24,
+        color: sel ? s.pal.accent : C.ink3,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    return SubPage(
+      title: L.t('language'),
+      subtitle: L.t('language_sub'),
+      children: [
+        SetGroup(
+          children: [
+            _opt(s, 'Bahasa Indonesia', 'ID', false),
+            _opt(s, 'English', 'EN', true),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── ANIMASI & GETAR ─────────────────────────
+class GeneralPage extends StatelessWidget {
+  const GeneralPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    return SubPage(
+      title: L.t('anim_haptic'),
+      subtitle: L.t('anim_sub'),
+      children: [
+        SetGroup(
+          children: [
+            SetTile(
+              icon: Icons.speed_rounded,
+              color: C.green,
+              title: L.t('counter_anim'),
+              value: L.t('counter_desc'),
+              onTap: s.toggleCounter,
+              trailing: Switch(value: s.counterAnim, onChanged: (_) => s.toggleCounter()),
+            ),
+            SetTile(
+              icon: Icons.vibration_rounded,
+              color: C.amber,
+              title: L.t('haptic'),
+              value: L.t('haptic_desc'),
+              onTap: s.toggleHaptic,
+              trailing: Switch(value: s.haptic, onChanged: (_) => s.toggleHaptic()),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── PRIVASI ─────────────────────────
+class PrivacyPage extends StatelessWidget {
+  const PrivacyPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    return SubPage(
+      title: L.t('privacy'),
+      subtitle: L.t('privacy_sub'),
+      children: [
+        SetGroup(
+          children: [
+            SetTile(
+              icon: Ic.eyeOff,
+              color: C.red,
+              title: L.t('hide_balance'),
+              value: L.t('hide_desc'),
+              onTap: s.toggleSaldo,
+              trailing: Switch(value: s.hideSaldo, onChanged: (_) => s.toggleSaldo()),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── KASBON PEKERJA ─────────────────────────
+class KasbonPage extends StatelessWidget {
+  const KasbonPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final aktif = s.bon['kasbonActive'] == true;
+    return SubPage(
+      title: L.t('kasbon'),
+      subtitle: L.t('kasbon_sub'),
+      children: [
+        SetGroup(
+          children: [
+            SetTile(icon: Ic.hand, color: C.amber, title: L.t('status'), trailing: _val(aktif ? L.t('active') : L.t('none'))),
+            SetTile(icon: Ic.box, color: C.green, title: L.t('rest_brick'), trailing: _val(fmt(toNum(s.bon['sisaBata'])))),
+            SetTile(icon: Ic.money, color: C.red, title: L.t('rest_debt'), trailing: _val(rp(toNum(s.bon['sisaRp'])))),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── SINKRON & TENTANG ─────────────────────────
+class AboutPage extends StatelessWidget {
+  const AboutPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final sync = s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'));
+    return SubPage(
+      title: L.t('sync_about'),
+      subtitle: L.t('sync_sub'),
+      children: [
+        SetGroup(
+          children: [
+            SetTile(icon: Ic.cloud, color: s.error != null ? C.red : C.green, title: L.t('sync'), trailing: _val(sync)),
+            SetTile(icon: Ic.info, color: C.blue, title: L.t('project'), trailing: _val('usaha-batu')),
+            SetTile(icon: Ic.tune, color: C.violet, title: L.t('version'), trailing: _val('1.2.0')),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+### FILE: lib/ui/sheets.dart
+import 'dart:ui' show ImageFilter;
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:oc_liquid_glass/oc_liquid_glass.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'icons.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+enum TxKind { cetak, pindah, mulaiBakar, selesaiBakar, susun, kirim, pengeluaran, kirimUtama }
+
+/// Sheet / dialog dengan latar yang ter-blur (seperti pada desain)
+Future<T?> _blurRoute<T>(BuildContext context, {required Widget child, required bool sheet}) {
+  return showGeneralDialog<T>(
+    context: context,
+    barrierDismissible: true,
+    barrierLabel: 'Tutup',
+    barrierColor: Colors.black.withValues(alpha: 0.12),
+    transitionDuration: const Duration(milliseconds: 340),
+    pageBuilder: (c, a1, a2) {
+      final page = Material(type: MaterialType.transparency, child: child);
+      if (sheet) {
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(c).bottom), child: page),
+        );
+      }
+      return Center(child: page);
+    },
+    transitionBuilder: (c, anim, a2, page) {
+      final curve = CurvedAnimation(parent: anim, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
+      return Stack(
+        children: [
+          Positioned.fill(
+            child: AnimatedBuilder(
+              animation: curve,
+              builder: (context, _) {
+                final v = 14 * curve.value;
+                return BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: v, sigmaY: v),
+                  child: const SizedBox.expand(),
+                );
+              },
+            ),
+          ),
+          if (sheet)
+            SlideTransition(
+              position: Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero).animate(curve),
+              child: page,
+            )
+          else
+            FadeTransition(
+              opacity: curve,
+              child: ScaleTransition(scale: Tween<double>(begin: 0.92, end: 1).animate(curve), child: page),
+            ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> openTx(BuildContext context, TxKind kind, {String? tempat}) async {
+  final msg = await _blurRoute<String>(context, sheet: true, child: TxSheet(kind: kind, tempat: tempat));
+  if (msg != null && context.mounted) {
+    await _blurRoute<void>(context, sheet: false, child: _SuccessCard(message: msg));
+  }
+}
+
+class ThousandsFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    final digits = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
+    if (digits.isEmpty) return const TextEditingValue(text: '');
+    final t = fmt(int.parse(digits));
+    return TextEditingValue(text: t, selection: TextSelection.collapsed(offset: t.length));
+  }
+}
+
+// ───────────────────────── SUKSES ─────────────────────────
+class _SuccessCard extends StatelessWidget {
+  const _SuccessCard({required this.message});
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 360),
+        padding: const EdgeInsets.fromLTRB(22, 26, 22, 22),
+        decoration: BoxDecoration(
+          color: C.card,
+          borderRadius: BorderRadius.circular(30),
+          border: C.dark ? Border.all(color: C.line) : null,
+          boxShadow: const [BoxShadow(color: Color(0x290D1220), blurRadius: 40, offset: Offset(0, 16))],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 84,
+              height: 84,
+              child: OCLiquidGlassGroup(
+                settings: const OCLiquidGlassSettings(
+                  refractStrength: -0.07,
+                  blurRadiusPx: 1.5,
+                  blendPx: 8,
+                  distortFalloffPx: 24,
+                  specStrength: 8,
+                  specWidth: 1.5,
+                  specPower: 6,
+                  lightbandStrength: 0.4,
+                ),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 84,
+                      height: 84,
+                      decoration: BoxDecoration(color: C.field, shape: BoxShape.circle),
+                    ),
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: OCLiquidGlass(
+                        width: 84,
+                        height: 84,
+                        borderRadius: 42,
+                        color: C.blue.withValues(alpha: 0.10),
+                        child: const SizedBox.expand(),
+                      ),
+                    ),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(color: C.ink, shape: BoxShape.circle),
+                      child: Icon(Ic.check, color: C.inv, size: 30),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 18),
+            Text(L.t('saved'), style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
+            const SizedBox(height: 8),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 14, height: 1.4, color: C.ink2),
+            ),
+            const SizedBox(height: 22),
+            _BigBtn(
+              label: L.t('go_home'),
+              onTap: () {
+                StoreScope.read(context).setTab(0);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BigBtn extends StatelessWidget {
+  const _BigBtn({required this.label, required this.onTap});
+
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tap(
+      onTap: onTap,
+      child: Container(
+        height: 56,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: C.ink, borderRadius: BorderRadius.circular(28)),
+        child: Text(label, style: TextStyle(color: C.inv, fontSize: 16, fontWeight: FontWeight.w700)),
+      ),
+    );
+  }
+}
+
+// ───────────────────────── FORM + KONFIRMASI ─────────────────────────
+class TxSheet extends StatefulWidget {
+  const TxSheet({super.key, required this.kind, this.tempat});
+
+  final TxKind kind;
+  final String? tempat;
+
+  @override
+  State<TxSheet> createState() => _TxSheetState();
+}
+
+class _TxSheetState extends State<TxSheet> {
+  final _jumlah = TextEditingController();
+  final _harga = TextEditingController();
+  final _tujuan = TextEditingController();
+  final _ket = TextEditingController();
+  final _nominal = TextEditingController();
+  final _karung = TextEditingController();
+  final _hargaMerang = TextEditingController();
+
+  late String _tempat = widget.tempat ?? 'kulon';
+  String _kat = 'Solar';
+  late int _step = _hasFields ? 0 : 1;
+  String? _err;
+
+  bool get _hasFields => widget.kind != TxKind.mulaiBakar && widget.kind != TxKind.kirimUtama;
+
+  @override
+  void dispose() {
+    _jumlah.dispose();
+    _harga.dispose();
+    _tujuan.dispose();
+    _ket.dispose();
+    _nominal.dispose();
+    _karung.dispose();
+    _hargaMerang.dispose();
+    super.dispose();
+  }
+
+  int _int(TextEditingController c) => int.tryParse(c.text.replaceAll('.', '')) ?? 0;
+
+  String get _title => switch (widget.kind) {
+        TxKind.cetak => 'Cetak Bata',
+        TxKind.pindah => 'Pindah ke Tungku',
+        TxKind.mulaiBakar => 'Mulai Bakar',
+        TxKind.selesaiBakar => 'Selesai Bakar',
+        TxKind.susun => 'Susun ke Siap Jual',
+        TxKind.kirim => 'Kirim / Jual Bata',
+        TxKind.pengeluaran => 'Catat Pengeluaran',
+        TxKind.kirimUtama => 'Kirim ke Total Utama',
+      };
+
+  IconData get _icon => switch (widget.kind) {
+        TxKind.cetak => Ic.add,
+        TxKind.pindah => Ic.fire,
+        TxKind.mulaiBakar => Ic.play,
+        TxKind.selesaiBakar => Ic.checkLine,
+        TxKind.susun => Ic.stock,
+        TxKind.kirim => Ic.truck,
+        TxKind.pengeluaran => Ic.wallet,
+        TxKind.kirimUtama => Ic.send,
+      };
+
+  String get _headline => switch (widget.kind) {
+        TxKind.cetak => 'Cetak Bata – Stok Mentah',
+        TxKind.pindah => 'Bata Mentah – Tungku',
+        TxKind.mulaiBakar => 'Sesi Bakar Baru',
+        TxKind.selesaiBakar => 'Pembakaran Selesai',
+        TxKind.susun => 'Tungku – Gudang Siap Jual',
+        TxKind.kirim => 'Pengiriman – Penjualan Bata',
+        TxKind.pengeluaran => 'Pengeluaran Usaha',
+        TxKind.kirimUtama => 'Tutup Siklus Kas',
+      };
+
+  String? _validate(AppStore s) {
+    final j = _int(_jumlah);
+    switch (widget.kind) {
+      case TxKind.cetak:
+        return j <= 0 ? 'Isi jumlah bata yang dicetak' : null;
+      case TxKind.pindah:
+        final stok = _tempat == 'kulon' ? s.mentahKulon : s.mentahEtan;
+        if (j <= 0) return 'Isi jumlah bata';
+        if (j > stok) return 'Stok mentah ${areaLabel(_tempat)} hanya ${fmt(stok)} bata';
+        return null;
+      case TxKind.susun:
+        if (j <= 0) return 'Isi jumlah bata';
+        if (j > s.batu) return 'Stok di tungku hanya ${fmt(s.batu)} bata';
+        return null;
+      case TxKind.kirim:
+        if (_tujuan.text.trim().isEmpty) return 'Isi tujuan pengiriman';
+        if (j <= 0) return 'Isi jumlah bata';
+        if (j > s.siapJual) return 'Stok siap jual hanya ${fmt(s.siapJual)} bata';
+        return null;
+      case TxKind.pengeluaran:
+        return _int(_nominal) <= 0 ? 'Isi nominal pengeluaran' : null;
+      case TxKind.selesaiBakar:
+      case TxKind.mulaiBakar:
+      case TxKind.kirimUtama:
+        return null;
+    }
+  }
+
+  List<List<String>> _rows(AppStore s) {
+    final j = _int(_jumlah);
+    final harga = _int(_harga);
+    switch (widget.kind) {
+      case TxKind.cetak:
+        return [
+          ['Jenis', 'Cetak bata mentah'],
+          ['Area', areaLabel(_tempat)],
+          ['Jumlah', '${fmt(j)} bata'],
+        ];
+      case TxKind.pindah:
+        return [
+          ['Dari', 'Mentah ${areaLabel(_tempat)}'],
+          ['Ke', 'Tungku bakar'],
+          ['Jumlah', '${fmt(j)} bata'],
+        ];
+      case TxKind.mulaiBakar:
+        return [
+          ['Sesi', 'Sesi ke-${s.sesiCount + 1}'],
+          ['Batu di tungku', '${fmt(s.batu)} bata'],
+          ['Estimasi biaya', rp(toNum(hitungBiayaBakar(s.batu)['total']))],
+        ];
+      case TxKind.selesaiBakar:
+        final a = s.sesiAktif;
+        final n = a == null ? 0 : toNum(a['nominal']);
+        return [
+          ['Sesi', '${a == null ? '-' : a['sesi']}'],
+          ['Batu dibakar', '${fmt(n)} bata'],
+          ['Merang', '${_int(_karung)} karung × ${rp(_int(_hargaMerang))}'],
+        ];
+      case TxKind.susun:
+        return [
+          ['Dari', 'Tungku bakar'],
+          ['Ke', 'Gudang siap jual'],
+          ['Jumlah', '${fmt(j)} bata'],
+        ];
+      case TxKind.kirim:
+        return [
+          ['Tujuan', _tujuan.text.trim()],
+          ['Dari', 'Stok siap jual'],
+          ['Jumlah', '${fmt(j)} bata'],
+          ['Harga / bata', harga > 0 ? rp(harga) : 'Tanpa harga'],
+        ];
+      case TxKind.pengeluaran:
+        return [
+          ['Kategori', _kat],
+          ['Catatan', _ket.text.trim().isEmpty ? '-' : _ket.text.trim()],
+        ];
+      case TxKind.kirimUtama:
+        return [
+          ['Total utama', rp(s.totalUtama)],
+          ['Siklus berjalan', rp(s.siklus)],
+        ];
+    }
+  }
+
+  List<String> _total(AppStore s) {
+    final j = _int(_jumlah);
+    switch (widget.kind) {
+      case TxKind.cetak:
+      case TxKind.pindah:
+      case TxKind.susun:
+        return ['Total', '${fmt(j)} bata'];
+      case TxKind.mulaiBakar:
+        return ['Batu dibakar', '${fmt(s.batu)} bata'];
+      case TxKind.selesaiBakar:
+        final a = s.sesiAktif;
+        final n = a == null ? 0 : toNum(a['nominal']);
+        final t = toNum(hitungBiayaBakar(n, _int(_karung), _int(_hargaMerang))['total']);
+        return ['Total biaya', rp(t)];
+      case TxKind.kirim:
+        final h = _int(_harga);
+        return h > 0 ? ['Total', rp(j * h)] : ['Total', '${fmt(j)} bata'];
+      case TxKind.pengeluaran:
+        return ['Total', rp(_int(_nominal))];
+      case TxKind.kirimUtama:
+        final baru = s.totalUtama + s.siklus;
+        return ['Utama baru', rp(baru < 0 ? 0 : baru)];
+    }
+  }
+
+  void _next(AppStore s) {
+    final e = _validate(s);
+    setState(() {
+      _err = e;
+      if (e == null) _step = 1;
+    });
+  }
+
+  void _submit(AppStore s) {
+    final j = _int(_jumlah);
+    final ket = _ket.text.trim();
+    String? err;
+    String msg;
+    switch (widget.kind) {
+      case TxKind.cetak:
+        err = s.cetakBata(tempat: _tempat, jumlah: j, ket: ket);
+        msg = '${fmt(j)} bata mentah area ${areaLabel(_tempat)} sudah dicatat.';
+      case TxKind.pindah:
+        err = s.pindahKeTungku(tempat: _tempat, jumlah: j, ket: ket);
+        msg = '${fmt(j)} bata dipindahkan dari mentah ${areaLabel(_tempat)} ke tungku.';
+      case TxKind.mulaiBakar:
+        err = s.mulaiBakar();
+        msg = 'Sesi bakar dimulai dengan ${fmt(s.batu)} bata di tungku.';
+      case TxKind.selesaiBakar:
+        err = s.selesaiBakar(karung: _int(_karung), hargaMerang: _int(_hargaMerang));
+        msg = 'Sesi bakar ditandai selesai. Bata siap disusun ke gudang.';
+      case TxKind.susun:
+        err = s.susunSiapJual(jumlah: j, ket: ket);
+        msg = '${fmt(j)} bata sudah disusun ke stok siap jual.';
+      case TxKind.kirim:
+        err = s.kirimBata(tujuan: _tujuan.text, jumlah: j, harga: _int(_harga), ket: ket);
+        msg = 'Pengiriman ${fmt(j)} bata ke ${_tujuan.text.trim()} sudah dicatat.';
+      case TxKind.pengeluaran:
+        err = s.catatPengeluaran(kategori: _kat, nominal: _int(_nominal), ket: ket);
+        msg = 'Pengeluaran $_kat sebesar ${rp(_int(_nominal))} sudah dicatat.';
+      case TxKind.kirimUtama:
+        err = s.kirimKeUtama();
+        msg = 'Siklus kas sudah dikirim ke total utama.';
+    }
+    if (err != null) {
+      setState(() {
+        _err = err;
+        if (_hasFields) _step = 0;
+      });
+      return;
+    }
+    Navigator.of(context).pop(msg);
+  }
+
+  // ───────── UI helpers ─────────
+  Widget _label(String t) => Padding(
+        padding: const EdgeInsets.only(bottom: 6),
+        child: Text(t, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: C.ink2)),
+      );
+
+  Widget _tf(String label, TextEditingController c, {String hint = '', bool number = false, String? suffix}) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _label(label),
+          TextField(
+            controller: c,
+            keyboardType: number ? TextInputType.number : TextInputType.text,
+            inputFormatters: number
+                ? <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(11),
+                    ThousandsFormatter(),
+                  ]
+                : null,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: C.ink),
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: TextStyle(color: C.ink3),
+              suffixText: suffix,
+              suffixStyle: TextStyle(color: C.ink3),
+              filled: true,
+              fillColor: C.card,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _chips(List<String> opts, String cur, ValueChanged<String> pick, String Function(String) text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          for (final o in opts)
+            GestureDetector(
+              onTap: () => setState(() => pick(o)),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 180),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                  color: o == cur ? C.ink : C.card,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Text(
+                  text(o),
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13.5, color: o == cur ? C.inv : C.ink2),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _hint(String t) => Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: Text(t, style: TextStyle(fontSize: 12.5, color: C.ink3)),
+      );
+
+  Widget _input(AppStore s) {
+    final kids = <Widget>[];
+    switch (widget.kind) {
+      case TxKind.cetak:
+        kids.addAll([
+          _label('Area'),
+          _chips(['kulon', 'etan'], _tempat, (v) => _tempat = v, areaLabel),
+          _tf('Jumlah bata', _jumlah, number: true, hint: '0', suffix: 'bata'),
+          _tf('Keterangan (opsional)', _ket),
+        ]);
+      case TxKind.pindah:
+        final stok = _tempat == 'kulon' ? s.mentahKulon : s.mentahEtan;
+        kids.addAll([
+          _label('Ambil dari'),
+          _chips(['kulon', 'etan'], _tempat, (v) => _tempat = v, areaLabel),
+          _hint('Tersedia ${fmt(stok)} bata di mentah ${areaLabel(_tempat)}'),
+          _tf('Jumlah bata', _jumlah, number: true, hint: '0', suffix: 'bata'),
+          _tf('Keterangan (opsional)', _ket),
+        ]);
+      case TxKind.susun:
+        kids.addAll([
+          _hint('Tersedia ${fmt(s.batu)} bata di tungku'),
+          _tf('Jumlah bata', _jumlah, number: true, hint: '0', suffix: 'bata'),
+          _tf('Keterangan (opsional)', _ket),
+        ]);
+      case TxKind.kirim:
+        kids.addAll([
+          _hint('Tersedia ${fmt(s.siapJual)} bata siap jual'),
+          _tf('Tujuan', _tujuan, hint: 'Nama pembeli / lokasi'),
+          _tf('Jumlah bata', _jumlah, number: true, hint: '0', suffix: 'bata'),
+          _tf('Harga per bata (opsional)', _harga, number: true, hint: '0', suffix: 'Rp'),
+          _tf('Keterangan (opsional)', _ket),
+        ]);
+      case TxKind.pengeluaran:
+        kids.addAll([
+          _label('Kategori'),
+          _chips(['Solar', 'Kayu Bakar', 'Gaji', 'Lainnya'], _kat, (v) => _kat = v, (v) => v),
+          _tf('Nominal', _nominal, number: true, hint: '0', suffix: 'Rp'),
+          _tf('Catatan (opsional)', _ket),
+        ]);
+      case TxKind.selesaiBakar:
+        kids.addAll([
+          _hint('Isi bila ada biaya merang. Boleh dikosongkan.'),
+          _tf('Jumlah karung merang', _karung, number: true, hint: '0', suffix: 'karung'),
+          _tf('Harga per karung', _hargaMerang, number: true, hint: '0', suffix: 'Rp'),
+        ]);
+      case TxKind.mulaiBakar:
+      case TxKind.kirimUtama:
+        break;
+    }
+    return Column(
+      key: const ValueKey(0),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(20)),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: kids),
+        ),
+      ],
+    );
+  }
+
+  Widget _confirm(AppStore s) {
+    final rows = _rows(s);
+    final tot = _total(s);
+    return Column(
+      key: const ValueKey(1),
+      children: [
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(20)),
+          child: Row(
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(14)),
+                child: Icon(_icon, color: s.pal.accent, size: 22),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(_headline, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: C.ink)),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(22)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 2, 4, 8),
+                child: Text('Ringkasan', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: C.ink)),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(16)),
+                child: Column(
+                  children: [
+                    for (var i = 0; i < rows.length; i++) ...[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(rows[i][0], style: TextStyle(fontSize: 13, color: C.ink3)),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                rows[i][1],
+                                textAlign: TextAlign.right,
+                                style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: C.ink),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (i != rows.length - 1) Divider(height: 1, color: C.div),
+                    ],
+                  ],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+                decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(16)),
+                child: Row(
+                  children: [
+                    Text(tot[0], style: TextStyle(fontSize: 13, color: C.ink3)),
+                    const Spacer(),
+                    Text(tot[1], style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: C.ink)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final maxH = MediaQuery.sizeOf(context).height * 0.92;
+    return Container(
+      constraints: BoxConstraints(maxHeight: maxH),
+      decoration: BoxDecoration(
+        color: C.card,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+      ),
+      padding: EdgeInsets.fromLTRB(20, 18, 20, MediaQuery.paddingOf(context).bottom + 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(
+            height: 44,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Text(
+                  _step == 0 ? _title : 'Konfirmasi $_title',
+                  style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: C.line)),
+                      child: Icon(Ic.close, size: 22, color: C.ink),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 14),
+          Flexible(
+            child: SingleChildScrollView(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 220),
+                child: _step == 0 ? _input(s) : _confirm(s),
+              ),
+            ),
+          ),
+          if (_err != null) ...[
+            const SizedBox(height: 10),
+            Text(_err!, textAlign: TextAlign.center, style: const TextStyle(color: C.red, fontSize: 13)),
+          ],
+          const SizedBox(height: 14),
+          _BigBtn(
+            label: _step == 0 ? 'Lanjut' : 'Konfirmasi',
+            onTap: () => _step == 0 ? _next(s) : _submit(s),
+          ),
+          if (_step == 1 && _hasFields)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: GestureDetector(
+                onTap: () => setState(() => _step = 0),
+                child: Text('Ubah data', style: TextStyle(color: C.ink2, fontWeight: FontWeight.w600)),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+
+### FILE: lib/ui/shell.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../data/store.dart';
+import 'glass_nav.dart';
+import 'home_view.dart';
+import 'other_pages.dart';
+import 'stok_page.dart';
+
+class Shell extends StatelessWidget {
+  const Shell({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent,
+      ),
+      child: Scaffold(
+        extendBody: true,
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: IndexedStack(
+                index: s.tab,
+                children: const [HomePage(), StokPage(), AktivitasPage(), ProfilPage()],
+              ),
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: GlassNav(index: s.tab, onChanged: s.setTab),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+### FILE: lib/ui/stok_page.dart
+import 'package:flutter/material.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'extras.dart';
+import 'icons.dart';
+import 'sheets.dart';
+import 'theme.dart';
+import 'widgets.dart';
+
+/// Tab Stok: sub-tab Mentah / Tungku / Siap Jual (bisa di-swipe)
+class StokPage extends StatelessWidget {
+  const StokPage({super.key});
+
+  static List<String> get _labels => [L.t('raw'), L.t('kiln'), L.t('ready')];
+
+  @override
+  Widget build(BuildContext context) {
+    final s = StoreScope.of(context);
+    final top = MediaQuery.paddingOf(context).top;
+    final i = s.stokTab;
+    final total = s.mentahKulon + s.mentahEtan + s.batu + s.siapJual;
+    final Widget body = switch (i) {
+      0 => _Mentah(s),
+      1 => _Tungku(s),
+      _ => _SiapJual(s),
+    };
+    return Stack(
+      children: [
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 300)),
+        Positioned.fill(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, top + 18, 20, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(L.t('stok_title'), style: pageTitle),
+                    const SizedBox(height: 4),
+                    Text(L.t('stok_total').replaceAll('{n}', fmt(total)), style: pageSub),
+                    const SizedBox(height: 18),
+                    _SegTabs(labels: _labels, index: i, onChanged: s.setStokTab),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onHorizontalDragEnd: (d) {
+                    final v = d.primaryVelocity ?? 0;
+                    if (v < -300 && i < 2) s.setStokTab(i + 1);
+                    if (v > 300 && i > 0) s.setStokTab(i - 1);
+                  },
+                  child: AnimatedSwitcher(duration: const Duration(milliseconds: 240), child: body),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SegTabs extends StatelessWidget {
+  const _SegTabs({required this.labels, required this.index, required this.onChanged});
+
+  final List<String> labels;
+  final int index;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 48,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+      ),
+      child: Row(
+        children: [
+          for (var i = 0; i < labels.length; i++)
+            Expanded(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => onChanged(i),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 220),
+                  curve: Curves.easeOutCubic,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: i == index ? C.card : Colors.transparent,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    labels[i],
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: i == index ? FontWeight.w700 : FontWeight.w600,
+                      color: i == index ? C.ink : Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Section extends StatelessWidget {
+  const _Section(this.title);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    StoreScope.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: 26, bottom: 12),
+      child: Text(title, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: C.ink)),
+    );
+  }
+}
+
+class _Pill extends StatelessWidget {
+  const _Pill(this.text, this.color);
+
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(99)),
+      child: Text(text, style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: color)),
+    );
+  }
+}
+
+class _Hero extends StatelessWidget {
+  const _Hero({
+    required this.label,
+    required this.value,
+    required this.icon,
+    required this.color,
+    this.pill,
+    this.sub,
+  });
+
+  final String label;
+  final num value;
+  final IconData icon;
+  final Color color;
+  final String? pill;
+  final String? sub;
+
+  @override
+  Widget build(BuildContext context) {
+    return WhiteCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(14)),
+                child: Icon(icon, color: color, size: 22),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink2)),
+              ),
+              if (pill != null) _Pill(pill!, color),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Counter(
+                value: value,
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+              ),
+              const SizedBox(width: 8),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Text('bata', style: TextStyle(fontSize: 14, color: C.ink3)),
+              ),
+            ],
+          ),
+          if (sub != null) ...[
+            const SizedBox(height: 8),
+            Text(sub!, style: TextStyle(fontSize: 12.5, color: C.ink3)),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _Area extends StatelessWidget {
+  const _Area(this.label, this.value);
+
+  final String label;
+  final num value;
+
+  @override
+  Widget build(BuildContext context) {
+    return WhiteCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Area $label', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: C.ink2)),
+          const SizedBox(height: 8),
+          Counter(
+            value: value,
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: C.ink, height: 1),
+          ),
+          const SizedBox(height: 4),
+          Text('bata mentah', style: TextStyle(fontSize: 12, color: C.ink3)),
+        ],
+      ),
+    );
+  }
+}
+
+// ───────────────────────── SUB-TAB: MENTAH ─────────────────────────
+class _Mentah extends StatelessWidget {
+  const _Mentah(this.s);
+
+  final AppStore s;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      key: const ValueKey('mentah'),
+      padding: const EdgeInsets.fromLTRB(20, 4, 20, 130),
+      children: [
+        Row(
+          children: [
+            Expanded(child: _Area('Kulon', s.mentahKulon)),
+            const SizedBox(width: 12),
+            Expanded(child: _Area('Etan', s.mentahEtan)),
+          ],
+        ),
+        const SizedBox(height: 14),
+        Row(
+          children: [
+            Expanded(
+              child: ActBtn(label: 'Cetak bata', icon: Ic.add, dark: true, onTap: () => openTx(context, TxKind.cetak)),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: ActBtn(label: 'Ke tungku', icon: Ic.fire, onTap: () => openTx(context, TxKind.pindah)),
+            ),
+          ],
+        ),
+        _Section(L.t('h_raw')),
+        FeedCard(items: s.mentah.take(15).toList(), loading: !s.ready),
+      ],
+    );
+  }
+}
+
+// ───────────────────────── SUB-TAB: TUNGKU ─────────────────────────
+class _Tungku extends StatelessWidget {
+  const _Tungku(this.s);
+
+  final AppStore s;
+
+  @override
+  Widget build(BuildContext context) {
+    final a = s.sesiAktif;
+    final sn = a?['sesi'];
+    final sesi = s.sesi.reversed.take(5).toList();
+    return ListView(
+      key: const ValueKey('tungku'),
+      padding: const EdgeInsets.fromLTRB(20, 4, 20, 130),
+      children: [
+        _Hero(
+          label: 'Stok di tungku',
+          value: s.batu,
+          icon: Ic.fire,
+          color: C.amber,
+          pill: s.burning ? 'Sedang dibakar' : 'Menunggu',
+          sub: a != null ? 'Sesi $sn · ${fmt(toNum(a['nominal']))} bata sedang dibakar' : null,
+        ),
+        const SizedBox(height: 14),
+        Row(
+          children: [
+            Expanded(
+              child: s.burning
+                  ? ActBtn(
+                      label: 'Selesai bakar',
+                      icon: Ic.checkLine,
+                      dark: true,
+                      onTap: () => openTx(context, TxKind.selesaiBakar),
+                    )
+                  : ActBtn(
+                      label: 'Mulai bakar',
+                      icon: Ic.play,
+                      dark: true,
+                      onTap: () => openTx(context, TxKind.mulaiBakar),
+                    ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: ActBtn(label: 'Pindah mentah', icon: Ic.arrowDown, onTap: () => openTx(context, TxKind.pindah)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        ActBtn(label: 'Susun ke siap jual', icon: Ic.stock, onTap: () => openTx(context, TxKind.susun)),
+        _Section(L.t('h_sessions')),
+        WhiteCard(
+          padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
+          child: sesi.isEmpty
+              ? SizedBox(
+                  height: 80,
+                  child: Center(child: Text(L.t('no_session'), style: TextStyle(color: C.ink3))),
+                )
+              : Column(
+                  children: [
+                    for (var i = 0; i < sesi.length; i++) ...[
+                      _SesiTile(sesi[i]),
+                      if (i != sesi.length - 1) Divider(height: 1, color: C.div),
+                    ],
+                  ],
+                ),
+        ),
+        _Section(L.t('h_kiln')),
+        FeedCard(items: s.beranda.take(10).toList(), loading: !s.ready),
+      ],
+    );
+  }
+}
+
+class _SesiTile extends StatelessWidget {
+  const _SesiTile(this.e);
+
+  final Map<String, dynamic> e;
+
+  @override
+  Widget build(BuildContext context) {
+    final selesai = e['selesai'] == true;
+    final biaya = e['biaya'];
+    final total = biaya is Map ? toNum(biaya['total']) : 0;
+    final tgl = (e['tanggalMulai'] ?? e['tanggal'] ?? '').toString();
+    final sn = e['sesi'];
+    final c = selesai ? C.green : C.amber;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(color: c.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(14)),
+            child: Icon(selesai ? Ic.check : Ic.fire, color: c, size: 22),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Sesi $sn', style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink)),
+                const SizedBox(height: 2),
+                Text(
+                  '${tglCantik(tgl)} · ${selesai ? 'Selesai' : 'Berjalan'}',
+                  style: TextStyle(fontSize: 12, color: C.ink3),
+                ),
+              ],
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '${fmt(toNum(e['nominal']))} bata',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: C.ink),
+              ),
+              if (total > 0) Text(rp(total), style: TextStyle(fontSize: 11.5, color: C.ink3)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ───────────────────────── SUB-TAB: SIAP JUAL ─────────────────────────
+class _SiapJual extends StatelessWidget {
+  const _SiapJual(this.s);
+
+  final AppStore s;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      key: const ValueKey('siapjual'),
+      padding: const EdgeInsets.fromLTRB(20, 4, 20, 130),
+      children: [
+        _Hero(label: 'Stok siap jual', value: s.siapJual, icon: Ic.stock, color: C.blue, sub: 'Tertata di gudang'),
+        const SizedBox(height: 14),
+        Row(
+          children: [
+            Expanded(
+              child: ActBtn(
+                label: 'Susun dari tungku',
+                icon: Ic.stock,
+                dark: true,
+                onTap: () => openTx(context, TxKind.susun),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: ActBtn(label: 'Kirim / jual', icon: Ic.truck, onTap: () => openTx(context, TxKind.kirim)),
+            ),
+          ],
+        ),
+        _Section(L.t('h_ready')),
+        FeedCard(items: s.siapjual.take(15).toList(), loading: !s.ready),
+      ],
+    );
+  }
+}
+
+
+### FILE: lib/ui/theme.dart
+import 'package:flutter/material.dart';
+
+class C {
+  /// diatur oleh MaterialApp.builder (lihat main.dart)
+  static bool dark = false;
+
+  static const blue = Color(0xFF2F55D4);
+  static const green = Color(0xFF12A150);
+  static const red = Color(0xFFE5484D);
+  static const amber = Color(0xFFF59E0B);
+  static const violet = Color(0xFF7C4DDB);
+
+  static const bgL = Color(0xFFF4F6FA);
+  static const bgD = Color(0xFF0B0E17);
+
+  static Color get bg => dark ? bgD : bgL;
+  static Color get card => dark ? const Color(0xFF151A27) : Colors.white;
+  static Color get field => dark ? const Color(0xFF1D2333) : const Color(0xFFF4F5F7);
+  static Color get line => dark ? const Color(0xFF2A3145) : const Color(0xFFE6E8ED);
+  static Color get div => dark ? const Color(0xFF232A3C) : const Color(0xFFF0F1F4);
+  static Color get ink => dark ? const Color(0xFFF1F4FA) : const Color(0xFF0D1220);
+
+  /// warna kebalikan ink (teks di atas tombol ink)
+  static Color get inv => dark ? const Color(0xFF0D1220) : Colors.white;
+  static Color get ink2 => dark ? const Color(0xFFA3ABBA) : const Color(0xFF6B7280);
+  static Color get ink3 => dark ? const Color(0xFF7B8496) : const Color(0xFF9AA1AD);
+}
+
+class Pal {
+  const Pal(this.name, this.top, this.mid, this.soft, this.accent);
+
+  final String name;
+  final Color top, mid, soft, accent;
+}
+
+const palettes = [
+  Pal('Biru', Color(0xFF2848C9), Color(0xFF3A63DE), Color(0xFF9DBBF5), Color(0xFF2F55D4)),
+  Pal('Ungu', Color(0xFF5B3CC4), Color(0xFF7655D8), Color(0xFFC4B2F2), Color(0xFF7655D8)),
+  Pal('Hijau', Color(0xFF12803F), Color(0xFF24A148), Color(0xFFA7E3BD), Color(0xFF12A150)),
+  Pal('Rose', Color(0xFFC03A5A), Color(0xFFE05270), Color(0xFFF7BFCC), Color(0xFFE05270)),
+  Pal('Oranye', Color(0xFFD9730A), Color(0xFFF59E0B), Color(0xFFFBD99A), Color(0xFFE08A00)),
+  Pal('Teal', Color(0xFF0F766E), Color(0xFF14A89C), Color(0xFFA3E6DF), Color(0xFF0F9488)),
+  Pal('Slate', Color(0xFF1F2A44), Color(0xFF334266), Color(0xFF9AA8C7), Color(0xFF334266)),
+  Pal('Samudra', Color(0xFF0B5FA5), Color(0xFF2196F3), Color(0xFFA8D4F7), Color(0xFF1E88E5)),
+];
+
+/// Terjemahan sederhana: [id, en]
+class L {
+  static bool en = false;
+
+  static String t(String k) {
+    final v = _m[k];
+    if (v == null) return k;
+    return en ? v[1] : v[0];
+  }
+
+  static const _m = <String, List<String>>{
+    'hi_morning': ['Selamat Pagi', 'Good Morning'],
+    'hi_noon': ['Selamat Siang', 'Good Afternoon'],
+    'hi_evening': ['Selamat Sore', 'Good Evening'],
+    'hi_night': ['Selamat Malam', 'Good Night'],
+    'total_cash': ['Total Kas', 'Total Cash'],
+    'cycle': ['Siklus', 'Cycle'],
+    'main': ['Utama', 'Main'],
+    'act_print': ['Cetak', 'Print'],
+    'act_kiln': ['Ke Tungku', 'To Kiln'],
+    'act_send': ['Kirim', 'Send'],
+    'act_cost': ['Biaya', 'Costs'],
+    'sesi_title': ['Sesi Bakar', 'Burn Session'],
+    'sesi_running': ['Sesi {n} sedang berjalan dengan {b} bata di tungku.', 'Session {n} is running with {b} bricks in the kiln.'],
+    'sesi_ready': ['{b} bata sudah di tungku dan siap dibakar.', '{b} bricks are in the kiln, ready to burn.'],
+    'sesi_empty': ['Tungku masih kosong. Pindahkan bata mentah untuk memulai sesi bakar.', 'The kiln is empty. Move raw bricks to start a session.'],
+    'cta_finish': ['Selesai bakar', 'Finish burning'],
+    'cta_start': ['Mulai bakar', 'Start burning'],
+    'cta_move': ['Pindah ke tungku', 'Move to kiln'],
+    'running': ['Berjalan', 'Running'],
+    'latest': ['Aktivitas Terbaru', 'Recent Activity'],
+    'see_all': ['Lihat semua', 'See all'],
+    'sync_error': ['Sinkron bermasalah', 'Sync problem'],
+    'nav_home': ['Beranda', 'Home'],
+    'nav_stok': ['Stok', 'Stock'],
+    'nav_act': ['Aktivitas', 'Activity'],
+    'nav_profile': ['Profil', 'Profile'],
+    'profile': ['Profil', 'Profile'],
+    'activity_title': ['Aktivitas', 'Activity'],
+    'activity_sub': ['Riwayat kas dan stok usaha bata', 'Cash and stock history'],
+    'this_month': ['Bulan ini', 'This month'],
+    'income': ['Pemasukan', 'Income'],
+    'expense': ['Pengeluaran', 'Expenses'],
+    'send_main': ['Kirim ke utama', 'Send to main'],
+    'f_all': ['Semua', 'All'],
+    'f_cash': ['Kas', 'Cash'],
+    'f_stock': ['Stok', 'Stock'],
+    'stok_title': ['Stok Bata', 'Brick Stock'],
+    'raw': ['Mentah', 'Raw'],
+    'kiln': ['Tungku', 'Kiln'],
+    'ready': ['Siap Jual', 'Ready'],
+    'status': ['Status', 'Status'],
+    'active': ['Aktif', 'Active'],
+    'none': ['Tidak ada', 'None'],
+    'rest_brick': ['Sisa bata', 'Bricks left'],
+    'rest_debt': ['Sisa hutang', 'Debt left'],
+    'hide_balance': ['Sembunyikan saldo', 'Hide balance'],
+    'sync': ['Sinkron', 'Sync'],
+    'connected': ['Tersambung', 'Connected'],
+    'connecting': ['Menghubungkan', 'Connecting'],
+    'problem': ['Bermasalah', 'Problem'],
+    'version': ['Versi', 'Version'],
+    'settings': ['Pengaturan', 'Settings'],
+    'theme_color': ['Warna tema', 'Theme color'],
+    'language': ['Bahasa', 'Language'],
+    'counter_anim': ['Animasi angka', 'Number animation'],
+    'haptic': ['Getar saat ditekan', 'Haptic feedback'],
+    'saved': ['Tersimpan', 'Saved'],
+    'go_home': ['Ke Beranda', 'Go Home'],
+    'role': ['Pemilik Usaha Bata', 'Brick Business Owner'],
+    'business': ['Usaha', 'Business'],
+    'about': ['Tentang', 'About'],
+    'appearance': ['Tampilan', 'Appearance'],
+    'appearance_sub': ['Mode layar dan warna tema', 'Screen mode and theme color'],
+    'screen_mode': ['Mode layar', 'Screen mode'],
+    'mode_system': ['Sistem', 'System'],
+    'mode_light': ['Terang', 'Light'],
+    'mode_dark': ['Gelap', 'Dark'],
+    'language_sub': ['Pilih bahasa aplikasi', 'Choose the app language'],
+    'anim_haptic': ['Animasi & Getar', 'Animation & Haptics'],
+    'anim_sub': ['Efek angka dan getar', 'Number effects and haptics'],
+    'counter_desc': ['Angka bergulir saat nilai berubah', 'Numbers roll when values change'],
+    'haptic_desc': ['Getar halus saat menekan tombol', 'Light vibration on taps'],
+    'privacy': ['Privasi', 'Privacy'],
+    'privacy_sub': ['Atur tampilan data sensitif', 'Control sensitive data display'],
+    'hide_desc': ['Saldo kas diblur di Beranda', 'Cash balance is blurred on Home'],
+    'kasbon': ['Kasbon Pekerja', 'Worker Advance'],
+    'kasbon_sub': ['Ringkasan kasbon pekerja', 'Worker advance summary'],
+    'sync_about': ['Sinkronisasi & Tentang', 'Sync & About'],
+    'sync_sub': ['Status koneksi dan info aplikasi', 'Connection status and app info'],
+    'project': ['Project', 'Project'],
+    'on': ['Aktif', 'On'],
+    'off': ['Mati', 'Off'],
+    'stok_total': ['Total {n} bata di semua tahap', 'Total {n} bricks across all stages'],
+    'h_raw': ['Riwayat Mentah', 'Raw History'],
+    'h_sessions': ['Sesi Bakar', 'Burn Sessions'],
+    'h_kiln': ['Aktivitas Tungku', 'Kiln Activity'],
+    'h_ready': ['Riwayat Siap Jual', 'Ready History'],
+    'no_session': ['Belum ada sesi bakar', 'No burn sessions yet'],
+    'no_activity': ['Belum ada aktivitas', 'No activity yet'],
+  };
+}
+
+ThemeData buildTheme(Color seed, bool dark) {
+  final b = dark ? Brightness.dark : Brightness.light;
+  return ThemeData(
+    useMaterial3: true,
+    brightness: b,
+    colorScheme: ColorScheme.fromSeed(seedColor: seed, brightness: b),
+    scaffoldBackgroundColor: dark ? C.bgD : C.bgL,
+    splashFactory: NoSplash.splashFactory,
+    highlightColor: Colors.transparent,
+  );
+}
+
+/// 12000 -> "12.000"
+String fmt(num n) {
+  final neg = n < 0;
+  final s = n.abs().round().toString();
+  final b = StringBuffer();
+  for (var i = 0; i < s.length; i++) {
+    if (i > 0 && (s.length - i) % 3 == 0) b.write('.');
+    b.write(s[i]);
+  }
+  return neg ? '-$b' : b.toString();
+}
+
+String rp(num n) => n < 0 ? '-Rp ${fmt(n.abs())}' : 'Rp ${fmt(n)}';
+
+String tanggalHariIni([DateTime? d]) {
+  final n = d ?? DateTime.now();
+  final m = n.month.toString().padLeft(2, '0');
+  final h = n.day.toString().padLeft(2, '0');
+  return '${n.year}-$m-$h';
+}
+
+const _bln = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+String tglCantik(String ymd) {
+  final p = ymd.split('-');
+  if (p.length != 3) return ymd;
+  final m = int.tryParse(p[1]) ?? 1;
+  final d = int.tryParse(p[2]) ?? 0;
+  return '$d ${_bln[(m - 1).clamp(0, 11).toInt()]}';
+}
+
+String areaLabel(String t) => t == 'kulon' ? 'Kulon' : 'Etan';
+
+### FILE: lib/ui/widgets.dart
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../data/models.dart';
+import '../data/store.dart';
+import 'icons.dart';
+import 'theme.dart';
+
+const pageTitle = TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -0.5);
+
+final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
+
+/// Tombol aksi lebar (terang / gelap)
+class ActBtn extends StatelessWidget {
+  const ActBtn({super.key, required this.label, required this.icon, this.onTap, this.dark = false});
+
+  final String label;
+  final IconData icon;
+  final VoidCallback? onTap;
+  final bool dark;
+
+  @override
+  Widget build(BuildContext context) {
+    final fg = dark ? C.inv : C.ink;
+    return Tap(
+      onTap: onTap,
+      child: Container(
+        height: 52,
+        decoration: BoxDecoration(
+          color: dark ? C.ink : C.card,
+          borderRadius: BorderRadius.circular(16),
+          border: dark ? null : Border.all(color: C.line),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 20, color: fg),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: fg),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TopGradient extends StatelessWidget {
+  const TopGradient({super.key, this.height = 560});
+
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = StoreScope.of(context).pal;
+    final dk = C.dark;
+    Color d(Color c, double t) => dk ? Color.lerp(c, Colors.black, t)! : c;
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      height: height,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            d(p.top, 0.45),
+            d(p.mid, 0.5),
+            dk ? Color.lerp(p.soft, C.bg, 0.78)! : p.soft,
+            C.bg,
+          ],
+          stops: const [0, 0.42, 0.78, 1],
+        ),
+      ),
+    );
+  }
+}
+
+class Tap extends StatefulWidget {
+  const Tap({super.key, required this.child, this.onTap});
+
+  final Widget child;
+  final VoidCallback? onTap;
+
+  @override
+  State<Tap> createState() => _TapState();
+}
+
+class _TapState extends State<Tap> {
+  bool _down = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTapDown: (_) => setState(() => _down = true),
+      onTapUp: (_) => setState(() => _down = false),
+      onTapCancel: () => setState(() => _down = false),
+      onTap: widget.onTap == null
+          ? null
+          : () {
+              if (StoreScope.read(context).haptic) HapticFeedback.selectionClick();
+              widget.onTap!();
+            },
+      child: AnimatedScale(
+        scale: _down ? 0.97 : 1,
+        duration: const Duration(milliseconds: 90),
+        child: widget.child,
+      ),
+    );
+  }
+}
+
+class RoundIconBtn extends StatelessWidget {
+  const RoundIconBtn({super.key, required this.icon, this.onTap, this.dot = false});
+
+  final IconData icon;
+  final VoidCallback? onTap;
+  final bool dot;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tap(
+      onTap: onTap,
+      child: Container(
+        width: 44,
+        height: 44,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white.withValues(alpha: 0.16),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Icon(icon, color: Colors.white, size: 22),
+            if (dot)
+              Positioned(
+                top: 11,
+                right: 12,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: const BoxDecoration(color: Color(0xFFFF6B5E), shape: BoxShape.circle),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WhiteCard extends StatelessWidget {
+  const WhiteCard({super.key, required this.child, this.padding = const EdgeInsets.all(16)});
+
+  final Widget child;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        color: C.card,
+        borderRadius: BorderRadius.circular(24),
+        border: C.dark ? Border.all(color: C.line) : null,
+        boxShadow: C.dark ? null : const [BoxShadow(color: Color(0x0F101828), blurRadius: 20, offset: Offset(0, 8))],
+      ),
+      child: child,
+    );
+  }
+}
+
+class FilterChips extends StatelessWidget {
+  const FilterChips({super.key, required this.items, required this.index, required this.onChanged});
+
+  final List<String> items;
+  final int index;
+  final ValueChanged<int> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        for (var i = 0; i < items.length; i++)
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: GestureDetector(
+              onTap: () => onChanged(i),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                decoration: BoxDecoration(
+                  color: i == index ? C.ink : C.card,
+                  borderRadius: BorderRadius.circular(99),
+                  border: Border.all(color: i == index ? C.ink : C.line),
+                ),
+                child: Text(
+                  items[i],
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w600,
+                    color: i == index ? C.inv : C.ink2,
+                  ),
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class ActStyle {
+  const ActStyle(this.icon, this.color, this.title);
+
+  final IconData icon;
+  final Color color;
+  final String title;
+}
+
+ActStyle styleFor(Aktivitas a) {
+  switch (a.tipe) {
+    case 'Cetak Bata':
+      return const ActStyle(Ic.add, C.green, 'Cetak Bata');
+    case 'Bata Mentah Masuk':
+    case 'Bakar Bata':
+      return const ActStyle(Ic.fire, C.amber, 'Masuk Tungku');
+    case 'Mulai Bakar':
+      return const ActStyle(Ic.play, C.amber, 'Mulai Bakar');
+    case 'Batu Selesai Dibakar':
+      return const ActStyle(Ic.check, C.green, 'Selesai Dibakar');
+    case 'Batu Telah Disusun':
+    case 'Batu Siap Jual':
+      return const ActStyle(Ic.stock, C.blue, 'Disusun Siap Jual');
+    case 'Pengiriman Bata':
+      return const ActStyle(Ic.truck, C.blue, 'Pengiriman Bata');
+    case 'Penjualan Bata':
+      return const ActStyle(Ic.money, C.green, 'Penjualan Bata');
+    case 'Kirim ke Total Utama':
+      return const ActStyle(Ic.send, C.violet, 'Kirim ke Total Utama');
+    case 'Penyesuaian Saldo':
+      return ActStyle(Ic.tune, C.ink2, 'Penyesuaian Saldo');
+  }
+  final title = a.tipe.isEmpty ? 'Aktivitas' : a.tipe;
+  if (a.isKeluar) return ActStyle(Ic.outgoing, C.red, title);
+  if (a.isMasuk) return ActStyle(Ic.incoming, C.green, title);
+  return ActStyle(Ic.tune, C.ink2, title);
+}
+
+class ActivityTile extends StatelessWidget {
+  const ActivityTile(this.a, {super.key});
+
+  final Aktivitas a;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = styleFor(a);
+    String amt;
+    Color col;
+    if (a.isUang) {
+      if (a.isMasuk) {
+        amt = '+${rp(a.nominal)}';
+        col = C.green;
+      } else if (a.isKeluar) {
+        amt = '-${rp(a.nominal)}';
+        col = C.red;
+      } else {
+        amt = 'Rp 0';
+        col = C.ink3;
+      }
+    } else if (a.isMasuk) {
+      amt = '+${fmt(a.nominal)}';
+      col = C.green;
+    } else if (a.isKeluar) {
+      amt = '-${fmt(a.nominal)}';
+      col = C.red;
+    } else {
+      amt = fmt(a.nominal);
+      col = C.ink2;
+    }
+    final detail = a.keterangan.isNotEmpty
+        ? a.keterangan
+        : (a.tempat.isNotEmpty ? 'Area ${areaLabel(a.tempat)}' : a.col.replaceAll('aktivitas_', ''));
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 9),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(14)),
+            child: Icon(s.icon, color: s.color, size: 22),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  s.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: C.ink),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '${tglCantik(a.tanggal)} · $detail',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 12, color: C.ink3),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(amt, style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700, color: col)),
+              if (!a.isUang) Text('bata', style: TextStyle(fontSize: 10.5, color: C.ink3)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class FeedCard extends StatelessWidget {
+  const FeedCard({super.key, required this.items, required this.loading, this.flat = false});
+
+  final List<Aktivitas> items;
+  final bool loading;
+
+  /// true = tanpa kartu (dipakai di dalam sheet)
+  final bool flat;
+
+  @override
+  Widget build(BuildContext context) {
+    if (items.isEmpty) {
+      final empty = SizedBox(
+        height: 90,
+        child: Center(
+          child: loading
+              ? const CircularProgressIndicator(strokeWidth: 2.5)
+              : Text(L.t('no_activity'), style: TextStyle(color: C.ink3)),
+        ),
+      );
+      return flat ? empty : WhiteCard(child: empty);
+    }
+    final list = Column(
+      children: [
+        for (var i = 0; i < items.length; i++) ...[
+          ActivityTile(items[i]),
+          if (i != items.length - 1) Divider(height: 1, color: C.div),
+        ],
+      ],
+    );
+    if (flat) return list;
+    return WhiteCard(
+      padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
+      child: list,
+    );
+  }
+}
+
+
+### FILE: pubspec.yaml
+name: bata
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+  firebase_core: ^4.0.0
+  cloud_firestore: ^6.0.0
+  oc_liquid_glass: ^0.3.0
+  solar_icons: ^0.2.0
+  number_flow_flutter: ^0.1.0
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
+
+
+### FILE: web/manifest.json
+{
+    "name": "bata",
+    "short_name": "bata",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A new Flutter project.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

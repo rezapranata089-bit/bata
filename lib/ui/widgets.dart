@@ -6,7 +6,7 @@ import '../data/store.dart';
 import 'icons.dart';
 import 'theme.dart';
 
-const pageTitle = TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -0.5);
+const pageTitle = TextStyle(color: Colors.white, fontFamily: 'DM Serif Display', fontSize: 32, letterSpacing: -0.5);
 
 final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
 
