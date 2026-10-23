@@ -60,11 +60,17 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 780,
+          child: DecoratedBox(decoration: BoxDecoration(gradient: _homeGrad(s))),
+        ),
         ListView(
           padding: EdgeInsets.zero,
           children: [
             Container(
-              decoration: BoxDecoration(gradient: _homeGrad(s)),
               child: Padding(
               padding: EdgeInsets.fromLTRB(20, top + 14, 20, 64),
               child: Column(
@@ -215,10 +221,11 @@ LinearGradient _homeGrad(AppStore s) {
     colors: [
       d(p.top, 0.45),
       d(p.mid, 0.5),
-      dk ? Color.lerp(p.soft, C.bg, 0.78)! : p.soft,
+      dk ? Color.lerp(p.soft, C.bg, 0.6)! : p.soft,
+      dk ? Color.lerp(p.soft, C.bg, 0.9)! : Color.lerp(p.soft, C.bg, 0.6)!,
       C.bg,
     ],
-    stops: const [0, 0.5, 0.85, 1],
+    stops: const [0, 0.3, 0.55, 0.8, 1],
   );
 }
 
@@ -251,7 +258,14 @@ class _SesiCard extends StatelessWidget {
     }
     return Container(
       padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(22)),
+      decoration: BoxDecoration(
+        color: C.card,
+        borderRadius: BorderRadius.circular(24),
+        border: C.dark ? Border.all(color: C.line) : null,
+        boxShadow: C.dark
+            ? null
+            : const [BoxShadow(color: Color(0x1A101828), blurRadius: 24, offset: Offset(0, 8))],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -280,13 +294,18 @@ class _SesiCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(16)),
+            child: Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
+          ),
           const SizedBox(height: 12),
           Tap(
             onTap: onTap,
             child: Container(
               height: 46,
-              decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(14)),
+              decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(14)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
