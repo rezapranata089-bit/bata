@@ -133,9 +133,9 @@ class _AktivitasPageState extends State<AktivitasPage> {
 }
 
 // ───────────────────────── PROFIL (gaya iOS) ─────────────────────────
-Color get _pPage => C.dark ? C.bg : Colors.white;
-Color get _pBox => C.dark ? C.card : C.field;
-Color get _pChip => C.dark ? C.field : Colors.white;
+Color get _pPage => C.bg;
+Color get _pBox => C.card;
+Color get _pChip => C.field;
 
 class _PSection extends StatelessWidget {
   const _PSection(this.title, this.children);
@@ -307,17 +307,20 @@ class ProfilPage extends StatelessWidget {
     final modes = [L.t('mode_system'), L.t('mode_light'), L.t('mode_dark')];
     final sync = s.error != null ? L.t('problem') : (s.ready ? L.t('connected') : L.t('connecting'));
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: (C.dark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark).copyWith(
+      value: SystemUiOverlayStyle.light.copyWith(
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.transparent,
       ),
       child: ColoredBox(
         color: _pPage,
-        child: ListView(
+        child: Stack(
+          children: [
+            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 420)),
+            ListView(
           padding: EdgeInsets.fromLTRB(20, top + 16, 20, 130),
           children: [
             Center(
-              child: Text(L.t('profile'), style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: C.ink)),
+              child: const Text('Profil', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: Colors.white)),
             ),
             const SizedBox(height: 22),
             Center(
@@ -329,7 +332,7 @@ class ProfilPage extends StatelessWidget {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Avatar(size: 104, border: false, fill: acc.withValues(alpha: 0.15), fg: acc),
+                      const Avatar(size: 104),
                       Positioned(
                         right: 0,
                         bottom: 0,
@@ -339,7 +342,7 @@ class ProfilPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: acc,
                             shape: BoxShape.circle,
-                            border: Border.all(color: _pPage, width: 3),
+                            border: Border.all(color: Colors.white, width: 3),
                           ),
                           child: const Icon(CupertinoIcons.pencil, size: 16, color: Colors.white),
                         ),
@@ -351,10 +354,10 @@ class ProfilPage extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             Center(
-              child: Text('Reza', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: C.ink)),
+              child: const Text('Reza', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
             ),
             const SizedBox(height: 2),
-            Center(child: Text(L.t('role'), style: TextStyle(fontSize: 13.5, color: C.ink3))),
+            Center(child: Text(L.t('role'), style: const TextStyle(fontSize: 13.5, color: Colors.white70))),
             const SizedBox(height: 24),
             Row(
               children: [
@@ -409,6 +412,8 @@ class ProfilPage extends StatelessWidget {
                 onTap: () => openPage(context, const AboutPage()),
               ),
             ]),
+          ],
+        ),
           ],
         ),
       ),

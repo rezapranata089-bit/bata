@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
@@ -51,18 +52,20 @@ class SubPage extends StatelessWidget {
           children: [
             const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 300)),
             ListView(
-              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 40),
+              padding: EdgeInsets.fromLTRB(20, top + 12, 20, 40),
               children: [
-                Row(
-                  children: [
-                    RoundIconBtn(icon: Icons.arrow_back_ios_new_rounded, onTap: () => Navigator.of(context).maybePop()),
-                    const SizedBox(width: 14),
-                    Expanded(child: Text(title, style: pageTitle.copyWith(fontSize: 24))),
-                  ],
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: RoundIconBtn(
+                    icon: Icons.arrow_back_ios_new_rounded,
+                    onTap: () => Navigator.of(context).maybePop(),
+                  ),
                 ),
+                const SizedBox(height: 18),
+                Text(title, style: pageTitle),
                 if (subtitle != null)
                   Padding(
-                    padding: const EdgeInsets.only(left: 58, top: 2),
+                    padding: const EdgeInsets.only(top: 4),
                     child: Text(subtitle!, style: pageSub),
                   ),
                 const SizedBox(height: 26),
@@ -91,7 +94,10 @@ class SetGroup extends StatelessWidget {
         if (title != null)
           Padding(
             padding: const EdgeInsets.fromLTRB(6, 0, 6, 10),
-            child: Text(title!, style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: C.ink3)),
+            child: Text(
+              title!.toUpperCase(),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 0.5, color: C.ink3),
+            ),
           ),
         WhiteCard(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -99,7 +105,7 @@ class SetGroup extends StatelessWidget {
             children: [
               for (var i = 0; i < children.length; i++) ...[
                 children[i],
-                if (i != children.length - 1) Divider(height: 1, color: C.div),
+                if (i != children.length - 1) Divider(height: 1, indent: 52, color: C.div),
               ],
             ],
           ),
@@ -133,8 +139,8 @@ class SetTile extends StatelessWidget {
             Container(
               width: 40,
               height: 40,
-              decoration: BoxDecoration(color: c.withValues(alpha: 0.13), borderRadius: BorderRadius.circular(13)),
-              child: Icon(icon, size: 21, color: c),
+              decoration: BoxDecoration(color: c, borderRadius: BorderRadius.circular(10)),
+              child: Icon(icon, size: 21, color: Colors.white),
             ),
             const SizedBox(width: 12),
             Expanded(
@@ -373,7 +379,12 @@ class GeneralPage extends StatelessWidget {
               title: L.t('counter_anim'),
               value: L.t('counter_desc'),
               onTap: s.toggleCounter,
-              trailing: Switch(value: s.counterAnim, onChanged: (_) => s.toggleCounter()),
+              trailing: GlassSwitch(
+                value: s.counterAnim,
+                onChanged: (_) => s.toggleCounter(),
+                useOwnLayer: true,
+                activeColor: s.pal.accent,
+              ),
             ),
             SetTile(
               icon: Icons.vibration_rounded,
@@ -381,7 +392,12 @@ class GeneralPage extends StatelessWidget {
               title: L.t('haptic'),
               value: L.t('haptic_desc'),
               onTap: s.toggleHaptic,
-              trailing: Switch(value: s.haptic, onChanged: (_) => s.toggleHaptic()),
+              trailing: GlassSwitch(
+                value: s.haptic,
+                onChanged: (_) => s.toggleHaptic(),
+                useOwnLayer: true,
+                activeColor: s.pal.accent,
+              ),
             ),
           ],
         ),
@@ -409,7 +425,12 @@ class PrivacyPage extends StatelessWidget {
               title: L.t('hide_balance'),
               value: L.t('hide_desc'),
               onTap: s.toggleSaldo,
-              trailing: Switch(value: s.hideSaldo, onChanged: (_) => s.toggleSaldo()),
+              trailing: GlassSwitch(
+                value: s.hideSaldo,
+                onChanged: (_) => s.toggleSaldo(),
+                useOwnLayer: true,
+                activeColor: s.pal.accent,
+              ),
             ),
           ],
         ),
