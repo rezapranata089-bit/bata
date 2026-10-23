@@ -60,13 +60,13 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 504)),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 472)),
         ListView(
           padding: EdgeInsets.zero,
           children: [
             Container(
               child: Padding(
-              padding: EdgeInsets.fromLTRB(24, top + 16, 24, 56),
+              padding: EdgeInsets.fromLTRB(24, top + 16, 24, 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
