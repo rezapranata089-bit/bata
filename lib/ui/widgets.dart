@@ -6,7 +6,7 @@ import '../data/store.dart';
 import 'icons.dart';
 import 'theme.dart';
 
-const pageTitle = TextStyle(color: Colors.white, fontFamily: 'DM Serif Display', fontSize: 32, letterSpacing: -0.5);
+const pageTitle = TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w800, letterSpacing: -0.8);
 
 final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
 
@@ -295,7 +295,7 @@ class ActivityTile extends StatelessWidget {
           Container(
             width: 44,
             height: 44,
-            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(14)),
+            decoration: BoxDecoration(color: s.color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(9)),
             child: Icon(s.icon, color: s.color, size: 22),
           ),
           const SizedBox(width: 12),

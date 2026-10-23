@@ -1,43 +1,41 @@
-import 'package:flutter/widgets.dart';
-import 'package:solar_icons/solar_icons.dart';
+import 'package:flutter/cupertino.dart';
 
-/// Semua ikon aplikasi lewat sini. Kalau ada nama Solar yang beda di versi
-/// package-nya, cukup ganti di file ini saja.
+/// Semua ikon aplikasi lewat sini (gaya SF Symbols / Apple Music).
 class Ic {
-  // navigasi (nonaktif = outline, aktif = bold)
-  static const IconData home = SolarIconsOutline.home;
-  static const IconData homeOn = SolarIconsBold.home;
-  static const IconData box = SolarIconsOutline.box;
-  static const IconData boxOn = SolarIconsBold.box;
-  static const IconData chart = SolarIconsOutline.chart;
-  static const IconData chartOn = SolarIconsBold.chart;
-  static const IconData user = SolarIconsOutline.userCircle;
-  static const IconData userOn = SolarIconsBold.userCircle;
+  // navigasi (nonaktif = outline, aktif = fill)
+  static const IconData home = CupertinoIcons.house;
+  static const IconData homeOn = CupertinoIcons.house_fill;
+  static const IconData box = CupertinoIcons.cube_box;
+  static const IconData boxOn = CupertinoIcons.cube_box_fill;
+  static const IconData chart = CupertinoIcons.chart_bar;
+  static const IconData chartOn = CupertinoIcons.chart_bar_fill;
+  static const IconData user = CupertinoIcons.person_crop_circle;
+  static const IconData userOn = CupertinoIcons.person_crop_circle_fill;
 
   // umum
-  static const IconData search = SolarIconsOutline.magnifier;
-  static const IconData bell = SolarIconsOutline.bell;
-  static const IconData eye = SolarIconsOutline.eye;
-  static const IconData eyeOff = SolarIconsOutline.eyeClosed;
-  static const IconData close = SolarIconsOutline.closeCircle;
-  static const IconData check = SolarIconsBold.checkCircle;
-  static const IconData checkLine = SolarIconsOutline.checkCircle;
-  static const IconData arrowRight = SolarIconsOutline.arrowRight;
-  static const IconData arrowDown = SolarIconsOutline.arrowDown;
-  static const IconData info = SolarIconsOutline.infoCircle;
-  static const IconData cloud = SolarIconsOutline.cloud;
+  static const IconData search = CupertinoIcons.search;
+  static const IconData bell = CupertinoIcons.bell;
+  static const IconData eye = CupertinoIcons.eye;
+  static const IconData eyeOff = CupertinoIcons.eye_slash;
+  static const IconData close = CupertinoIcons.xmark_circle;
+  static const IconData check = CupertinoIcons.checkmark_circle_fill;
+  static const IconData checkLine = CupertinoIcons.checkmark_circle;
+  static const IconData arrowRight = CupertinoIcons.arrow_right;
+  static const IconData arrowDown = CupertinoIcons.arrow_down;
+  static const IconData info = CupertinoIcons.info_circle;
+  static const IconData cloud = CupertinoIcons.cloud;
 
   // alur usaha bata
-  static const IconData add = SolarIconsOutline.addCircle;
-  static const IconData fire = SolarIconsOutline.fire;
-  static const IconData play = SolarIconsOutline.play;
-  static const IconData stock = SolarIconsOutline.boxMinimalistic;
-  static const IconData truck = SolarIconsOutline.delivery;
-  static const IconData wallet = SolarIconsOutline.wallet;
-  static const IconData money = SolarIconsOutline.moneyBag;
-  static const IconData hand = SolarIconsOutline.handMoney;
-  static const IconData send = SolarIconsOutline.plain;
-  static const IconData tune = SolarIconsOutline.tuning;
-  static const IconData incoming = SolarIconsOutline.arrowLeftDown;
-  static const IconData outgoing = SolarIconsOutline.arrowRightUp;
+  static const IconData add = CupertinoIcons.plus_circle;
+  static const IconData fire = CupertinoIcons.flame;
+  static const IconData play = CupertinoIcons.play_fill;
+  static const IconData stock = CupertinoIcons.archivebox;
+  static const IconData truck = CupertinoIcons.car;
+  static const IconData wallet = CupertinoIcons.creditcard;
+  static const IconData money = CupertinoIcons.money_dollar_circle;
+  static const IconData hand = CupertinoIcons.hand_raised;
+  static const IconData send = CupertinoIcons.paperplane;
+  static const IconData tune = CupertinoIcons.slider_horizontal_3;
+  static const IconData incoming = CupertinoIcons.arrow_down_left;
+  static const IconData outgoing = CupertinoIcons.arrow_up_right;
 }

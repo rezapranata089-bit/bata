@@ -4,26 +4,26 @@ class C {
   /// diatur oleh MaterialApp.builder (lihat main.dart)
   static bool dark = false;
 
-  static const blue = Color(0xFF2F55D4);
-  static const green = Color(0xFF12A150);
-  static const red = Color(0xFFE5484D);
-  static const amber = Color(0xFFF59E0B);
-  static const violet = Color(0xFF7C4DDB);
+  static const blue = Color(0xFF0A84FF);
+  static const green = Color(0xFF30D158);
+  static const red = Color(0xFFFF453A);
+  static const amber = Color(0xFFFF9F0A);
+  static const violet = Color(0xFFBF5AF2);
 
-  static const bgL = Color(0xFFF4F6FA);
-  static const bgD = Color(0xFF0B0E17);
+  static const bgL = Color(0xFFF2F2F7);
+  static const bgD = Color(0xFF000000);
 
   static Color get bg => dark ? bgD : bgL;
-  static Color get card => dark ? const Color(0xFF151A27) : Colors.white;
-  static Color get field => dark ? const Color(0xFF1D2333) : const Color(0xFFF4F5F7);
-  static Color get line => dark ? const Color(0xFF2A3145) : const Color(0xFFE6E8ED);
-  static Color get div => dark ? const Color(0xFF232A3C) : const Color(0xFFF0F1F4);
-  static Color get ink => dark ? const Color(0xFFF1F4FA) : const Color(0xFF0D1220);
+  static Color get card => dark ? const Color(0xFF1C1C1E) : Colors.white;
+  static Color get field => dark ? const Color(0xFF2C2C2E) : const Color(0xFFF2F2F7);
+  static Color get line => dark ? const Color(0xFF38383A) : const Color(0xFFE5E5EA);
+  static Color get div => dark ? const Color(0xFF2C2C2E) : const Color(0xFFEFEFF4);
+  static Color get ink => dark ? const Color(0xFFFFFFFF) : const Color(0xFF000000);
 
   /// warna kebalikan ink (teks di atas tombol ink)
-  static Color get inv => dark ? const Color(0xFF0D1220) : Colors.white;
-  static Color get ink2 => dark ? const Color(0xFFA3ABBA) : const Color(0xFF6B7280);
-  static Color get ink3 => dark ? const Color(0xFF7B8496) : const Color(0xFF9AA1AD);
+  static Color get inv => dark ? const Color(0xFF000000) : Colors.white;
+  static Color get ink2 => dark ? const Color(0xFFAEAEB2) : const Color(0xFF6C6C70);
+  static Color get ink3 => dark ? const Color(0xFF8E8E93) : const Color(0xFF8E8E93);
 }
 
 class Pal {
@@ -34,6 +34,7 @@ class Pal {
 }
 
 const palettes = [
+  Pal('Music', Color(0xFFFA233B), Color(0xFFFB5C74), Color(0xFFFFD0D6), Color(0xFFFA243C)),
   Pal('Biru', Color(0xFF2848C9), Color(0xFF3A63DE), Color(0xFF9DBBF5), Color(0xFF2F55D4)),
   Pal('Ungu', Color(0xFF5B3CC4), Color(0xFF7655D8), Color(0xFFC4B2F2), Color(0xFF7655D8)),
   Pal('Hijau', Color(0xFF12803F), Color(0xFF24A148), Color(0xFFA7E3BD), Color(0xFF12A150)),

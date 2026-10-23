@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
+import '../data/store.dart';
 import 'icons.dart';
 import 'theme.dart';
 
@@ -29,6 +30,7 @@ class GlassNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = C.dark;
+    final accent = StoreScope.of(context).pal.accent;
     return GlassTabBar.bottom(
       selectedIndex: index,
       onTabSelected: onChanged,
@@ -41,9 +43,9 @@ class GlassNav extends StatelessWidget {
       iconLabelSpacing: 2,
       quality: GlassQuality.premium,
       interactionBehavior: GlassInteractionBehavior.full,
-      selectedIconColor: C.ink,
+      selectedIconColor: accent,
       unselectedIconColor: C.ink2,
-      selectedLabelColor: C.ink,
+      selectedLabelColor: accent,
       unselectedLabelColor: C.ink2,
       selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
       unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
