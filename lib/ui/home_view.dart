@@ -19,47 +19,26 @@ class HomePage extends StatelessWidget {
     return L.t('hi_night');
   }
 
-  Widget _stat(String label, num value, IconData icon, VoidCallback onTap) {
+  Widget _btn(IconData icon, String label, VoidCallback onTap) {
     return Expanded(
       child: Tap(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.16),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          height: 52,
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  Icon(icon, size: 15, color: Colors.white.withValues(alpha: 0.85)),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Text(
-                      label,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Text(
-                fmt(value),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: -0.5,
+              Icon(icon, size: 20, color: const Color(0xFF0D1220)),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w600, color: Color(0xFF0D1220)),
                 ),
               ),
-              Text('bata', style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 11)),
             ],
           ),
         ),
@@ -81,12 +60,13 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 520)),
         ListView(
           padding: EdgeInsets.zero,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 28),
+            Container(
+              decoration: BoxDecoration(gradient: _homeGrad(s)),
+              child: Padding(
+              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 64),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -166,30 +146,31 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      _stat(L.t('raw'), s.mentahKulon + s.mentahEtan, Ic.box, () => s.openStok(0)),
-                      const SizedBox(width: 10),
-                      _stat(L.t('kiln'), s.batu, Ic.fire, () => s.openStok(1)),
-                      const SizedBox(width: 10),
-                      _stat(L.t('ready'), s.siapJual, Ic.stock, () => s.openStok(2)),
+                      _btn(Ic.add, L.t('act_print'), () => openTx(context, TxKind.cetak)),
+                      const SizedBox(width: 12),
+                      _btn(Ic.fire, L.t('act_kiln'), () => openTx(context, TxKind.pindah)),
+                      const SizedBox(width: 12),
+                      Tap(
+                        onTap: () => openTx(context, TxKind.kirim),
+                        child: Container(
+                          width: 52,
+                          height: 52,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0B0E17),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Icon(Ic.truck, size: 22, color: Colors.white),
+                        ),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
+            ),
             Container(
               constraints: BoxConstraints(minHeight: minH),
-              padding: const EdgeInsets.fromLTRB(20, 22, 20, 130),
-              decoration: BoxDecoration(
-                color: C.card,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: C.dark ? 0.35 : 0.10),
-                    blurRadius: 24,
-                    offset: const Offset(0, -6),
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 130),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -222,6 +203,23 @@ class HomePage extends StatelessWidget {
       ],
     );
   }
+}
+
+LinearGradient _homeGrad(AppStore s) {
+  final p = s.pal;
+  final dk = C.dark;
+  Color d(Color c, double t) => dk ? Color.lerp(c, Colors.black, t)! : c;
+  return LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      d(p.top, 0.45),
+      d(p.mid, 0.5),
+      dk ? Color.lerp(p.soft, C.bg, 0.78)! : p.soft,
+      C.bg,
+    ],
+    stops: const [0, 0.5, 0.85, 1],
+  );
 }
 
 class _SesiCard extends StatelessWidget {
