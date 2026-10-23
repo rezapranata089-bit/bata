@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ],
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   Text(L.t('total_cash'), style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 14)),
                   const SizedBox(height: 4),
                   Row(
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
                           hidden: s.hideSaldo,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 36,
+                            fontSize: 32,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.2,
                           ),

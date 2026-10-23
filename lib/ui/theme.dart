@@ -60,7 +60,7 @@ class L {
     'hi_noon': ['Selamat Siang', 'Good Afternoon'],
     'hi_evening': ['Selamat Sore', 'Good Evening'],
     'hi_night': ['Selamat Malam', 'Good Night'],
-    'total_cash': ['Total Kas', 'Total Cash'],
+    'total_cash': ['Saldo Kas Usaha', 'Business Cash Balance'],
     'cycle': ['Siklus', 'Cycle'],
     'main': ['Utama', 'Main'],
     'act_print': ['Cetak', 'Print'],
