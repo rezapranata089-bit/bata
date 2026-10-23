@@ -50,7 +50,7 @@ class SubPage extends StatelessWidget {
         backgroundColor: C.bg,
         body: Stack(
           children: [
-            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 300)),
+            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
             ListView(
               padding: EdgeInsets.fromLTRB(20, top + 12, 20, 40),
               children: [

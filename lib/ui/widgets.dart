@@ -104,10 +104,11 @@ class TopGradient extends StatelessWidget {
           colors: [
             d(p.top, 0.45),
             d(p.mid, 0.5),
-            dk ? Color.lerp(p.soft, C.bg, 0.78)! : p.soft,
+            dk ? Color.lerp(p.soft, C.bg, 0.7)! : p.soft,
+            dk ? Color.lerp(p.soft, C.bg, 0.92)! : Color.lerp(p.soft, C.bg, 0.65)!,
             C.bg,
           ],
-          stops: const [0, 0.42, 0.78, 1],
+          stops: const [0, 0.36, 0.66, 0.86, 1],
         ),
       ),
     );

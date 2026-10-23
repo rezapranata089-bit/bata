@@ -28,7 +28,7 @@ class StokPage extends StatelessWidget {
     };
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 300)),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
         Positioned.fill(
           child: Column(
             children: [

@@ -315,7 +315,7 @@ class ProfilPage extends StatelessWidget {
         color: _pPage,
         child: Stack(
           children: [
-            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 420)),
+            const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 360)),
             ListView(
           padding: EdgeInsets.fromLTRB(20, top + 16, 20, 130),
           children: [

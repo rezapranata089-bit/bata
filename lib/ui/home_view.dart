@@ -60,13 +60,7 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        Positioned(
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 780,
-          child: DecoratedBox(decoration: BoxDecoration(gradient: _homeGrad(s))),
-        ),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 560)),
         ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -211,23 +205,6 @@ class HomePage extends StatelessWidget {
   }
 }
 
-LinearGradient _homeGrad(AppStore s) {
-  final p = s.pal;
-  final dk = C.dark;
-  Color d(Color c, double t) => dk ? Color.lerp(c, Colors.black, t)! : c;
-  return LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      d(p.top, 0.45),
-      d(p.mid, 0.5),
-      dk ? Color.lerp(p.soft, C.bg, 0.6)! : p.soft,
-      dk ? Color.lerp(p.soft, C.bg, 0.9)! : Color.lerp(p.soft, C.bg, 0.6)!,
-      C.bg,
-    ],
-    stops: const [0, 0.3, 0.55, 0.8, 1],
-  );
-}
 
 class _SesiCard extends StatelessWidget {
   const _SesiCard(this.s);
