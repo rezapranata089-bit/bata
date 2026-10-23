@@ -19,31 +19,49 @@ class HomePage extends StatelessWidget {
     return L.t('hi_night');
   }
 
-  Widget _aksi(IconData icon, String label, VoidCallback onTap) {
+  Widget _stat(String label, num value, IconData icon, VoidCallback onTap) {
     return Expanded(
       child: Tap(
         onTap: onTap,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: C.card,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: C.dark ? null : const [BoxShadow(color: Color(0x1F0D1220), blurRadius: 16, offset: Offset(0, 6))],
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.16),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(icon, size: 15, color: Colors.white.withValues(alpha: 0.85)),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 12),
+                    ),
+                  ),
+                ],
               ),
-              child: Icon(icon, size: 26, color: C.ink),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              label,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(color: Colors.white, fontSize: 12.5, fontWeight: FontWeight.w600),
-            ),
-          ],
+              const SizedBox(height: 8),
+              Text(
+                fmt(value),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.5,
+                ),
+              ),
+              Text('bata', style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 11)),
+            ],
+          ),
         ),
       ),
     );
@@ -161,10 +179,11 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      _aksi(Ic.add, L.t('act_print'), () => openTx(context, TxKind.cetak)),
-                      _aksi(Ic.fire, L.t('act_kiln'), () => openTx(context, TxKind.pindah)),
-                      _aksi(Ic.truck, L.t('act_send'), () => openTx(context, TxKind.kirim)),
-                      _aksi(Ic.wallet, L.t('act_cost'), () => openTx(context, TxKind.pengeluaran)),
+                      _stat(L.t('raw'), s.mentahKulon + s.mentahEtan, Ic.box, () => s.openStok(0)),
+                      const SizedBox(width: 10),
+                      _stat(L.t('kiln'), s.batu, Ic.fire, () => s.openStok(1)),
+                      const SizedBox(width: 10),
+                      _stat(L.t('ready'), s.siapJual, Ic.stock, () => s.openStok(2)),
                     ],
                   ),
                 ],
