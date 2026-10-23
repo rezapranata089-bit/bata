@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
@@ -73,42 +74,30 @@ class _SegTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+    return GlassTabBar.inline(
+      selectedIndex: index,
+      onTabSelected: onChanged,
+      barHeight: 48,
+      barBorderRadius: 24,
+      labelFontSize: 13.5,
+      quality: GlassQuality.premium,
+      selectedLabelColor: Colors.white,
+      unselectedLabelColor: Colors.white.withValues(alpha: 0.8),
+      selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w700),
+      unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+      indicatorColor: Colors.white.withValues(alpha: 0.28),
+      settings: LiquidGlassSettings(
+        glassColor: Colors.white.withValues(alpha: 0.12),
+        thickness: 20,
+        blur: 4,
+        chromaticAberration: 0.01,
+        lightIntensity: 0.6,
+        refractiveIndex: 1.2,
+        saturation: 1.2,
       ),
-      child: Row(
-        children: [
-          for (var i = 0; i < labels.length; i++)
-            Expanded(
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => onChanged(i),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 220),
-                  curve: Curves.easeOutCubic,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: i == index ? C.card : Colors.transparent,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    labels[i],
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      fontWeight: i == index ? FontWeight.w700 : FontWeight.w600,
-                      color: i == index ? C.ink : Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
+      tabs: [
+        for (final l in labels) GlassTab(label: l),
+      ],
     );
   }
 }
