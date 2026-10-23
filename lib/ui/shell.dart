@@ -20,15 +20,18 @@ class Shell extends StatelessWidget {
         statusBarColor: Colors.transparent,
         systemNavigationBarColor: Colors.transparent,
       ),
-      child: GlassScaffold(
-        backgroundColor: C.bg,
-        edgeFade: false,
-        extendBody: true,
-        body: IndexedStack(
-          index: s.tab,
-          children: const [HomePage(), StokPage(), AktivitasPage(), ProfilPage()],
+      child: Material(
+        color: C.bg,
+        child: GlassScaffold(
+          backgroundColor: C.bg,
+          edgeFade: false,
+          extendBody: true,
+          body: IndexedStack(
+            index: s.tab,
+            children: const [HomePage(), StokPage(), AktivitasPage(), ProfilPage()],
+          ),
+          bottomBar: GlassNav(index: s.tab, onChanged: s.setTab),
         ),
-        bottomBar: GlassNav(index: s.tab, onChanged: s.setTab),
       ),
     );
   }
