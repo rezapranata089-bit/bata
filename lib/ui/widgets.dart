@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
@@ -159,15 +160,21 @@ class RoundIconBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tap(
       onTap: onTap,
-      child: Container(
+      child: GlassContainer(
         width: 44,
         height: 44,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white.withValues(alpha: 0.16),
-          border: Border.all(color: Colors.white.withValues(alpha: 0.24)),
+        useOwnLayer: true,
+        shape: const LiquidRoundedSuperellipse(borderRadius: 22),
+        settings: LiquidGlassSettings(
+          glassColor: Colors.white.withValues(alpha: 0.14),
+          thickness: 18,
+          blur: 3,
+          chromaticAberration: 0.01,
+          lightIntensity: 0.6,
+          saturation: 1.2,
         ),
         child: Stack(
+          fit: StackFit.expand,
           alignment: Alignment.center,
           children: [
             Icon(icon, color: Colors.white, size: 22),

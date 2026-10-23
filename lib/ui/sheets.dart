@@ -38,7 +38,7 @@ Future<T?> _blurRoute<T>(BuildContext context, {required Widget child, required 
             child: AnimatedBuilder(
               animation: curve,
               builder: (context, _) {
-                final v = 14 * curve.value;
+                final v = 3.5 * curve.value;
                 return BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: v, sigmaY: v),
                   child: const SizedBox.expand(),
@@ -156,7 +156,17 @@ class _BigBtn extends StatelessWidget {
         height: 56,
         alignment: Alignment.center,
         decoration: BoxDecoration(color: C.ink, borderRadius: BorderRadius.circular(28)),
-        child: Text(label, style: TextStyle(color: C.inv, fontSize: 16, fontWeight: FontWeight.w700)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              label,
+              maxLines: 1,
+              style: TextStyle(color: C.inv, fontSize: 16, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -631,9 +641,16 @@ class _TxSheetState extends State<TxSheet> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Text(
-                  _step == 0 ? _title : 'Konfirmasi $_title',
-                  style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 52),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      _step == 0 ? _title : 'Konfirmasi $_title',
+                      maxLines: 1,
+                      style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink),
+                    ),
+                  ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,

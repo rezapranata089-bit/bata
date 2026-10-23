@@ -292,7 +292,14 @@ class _SesiCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(cta, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink)),
+                  Flexible(
+                    child: Text(
+                      cta,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: C.ink),
+                    ),
+                  ),
                   const SizedBox(width: 8),
                   Icon(Ic.arrowRight, size: 18, color: C.ink),
                 ],
