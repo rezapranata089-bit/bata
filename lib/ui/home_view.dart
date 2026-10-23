@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 560)),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 480)),
         ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -239,9 +239,6 @@ class _SesiCard extends StatelessWidget {
         color: C.card,
         borderRadius: BorderRadius.circular(24),
         border: C.dark ? Border.all(color: C.line) : null,
-        boxShadow: C.dark
-            ? null
-            : const [BoxShadow(color: Color(0x1A101828), blurRadius: 24, offset: Offset(0, 8))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
