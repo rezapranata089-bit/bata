@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               child: Padding(
-              padding: EdgeInsets.fromLTRB(20, top + 14, 20, 64),
+              padding: EdgeInsets.fromLTRB(24, top + 16, 24, 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -108,7 +108,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ],
-                  const SizedBox(height: 26),
+                  const SizedBox(height: 24),
                   Text(L.t('total_cash'), style: TextStyle(color: Colors.white.withValues(alpha: 0.75), fontSize: 14)),
                   const SizedBox(height: 4),
                   Row(
@@ -170,12 +170,12 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               constraints: BoxConstraints(minHeight: minH),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 130),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 128),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _SesiCard(s),
-                  const SizedBox(height: 26),
+                  const SizedBox(height: 24),
                   Row(
                     children: [
                       Expanded(
@@ -234,7 +234,7 @@ class _SesiCard extends StatelessWidget {
       onTap = () => openTx(context, TxKind.pindah);
     }
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: C.card,
         borderRadius: BorderRadius.circular(24),
@@ -267,14 +267,14 @@ class _SesiCard extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(16)),
             child: Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           Tap(
             onTap: onTap,
             child: Container(

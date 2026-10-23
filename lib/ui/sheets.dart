@@ -406,13 +406,13 @@ class _TxSheetState extends State<TxSheet> {
 
   // ───────── UI helpers ─────────
   Widget _label(String t) => Padding(
-        padding: const EdgeInsets.only(bottom: 6),
+        padding: const EdgeInsets.only(bottom: 8),
         child: Text(t, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: C.ink2)),
       );
 
   Widget _tf(String label, TextEditingController c, {String hint = '', bool number = false, String? suffix}) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -446,7 +446,7 @@ class _TxSheetState extends State<TxSheet> {
 
   Widget _chips(List<String> opts, String cur, ValueChanged<String> pick, String Function(String) text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 16),
       child: Wrap(
         spacing: 8,
         runSpacing: 8,
@@ -473,7 +473,7 @@ class _TxSheetState extends State<TxSheet> {
   }
 
   Widget _hint(String t) => Padding(
-        padding: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.only(bottom: 16),
         child: Text(t, style: TextStyle(fontSize: 12.5, color: C.ink3)),
       );
 
@@ -532,8 +532,8 @@ class _TxSheetState extends State<TxSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(20)),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(24)),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: kids),
         ),
       ],
@@ -547,8 +547,8 @@ class _TxSheetState extends State<TxSheet> {
       key: const ValueKey(1),
       children: [
         Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(20)),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(24)),
           child: Row(
             children: [
               Container(
@@ -632,7 +632,7 @@ class _TxSheetState extends State<TxSheet> {
         color: C.card,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
       ),
-      padding: EdgeInsets.fromLTRB(20, 18, 20, MediaQuery.paddingOf(context).bottom + 16),
+      padding: EdgeInsets.fromLTRB(24, 16, 24, MediaQuery.paddingOf(context).bottom + 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -667,7 +667,7 @@ class _TxSheetState extends State<TxSheet> {
               ],
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
           Flexible(
             child: SingleChildScrollView(
               child: AnimatedSwitcher(
@@ -680,7 +680,7 @@ class _TxSheetState extends State<TxSheet> {
             const SizedBox(height: 10),
             Text(_err!, textAlign: TextAlign.center, style: const TextStyle(color: C.red, fontSize: 13)),
           ],
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
           _BigBtn(
             label: _step == 0 ? 'Lanjut' : 'Konfirmasi',
             onTap: () => _step == 0 ? _next(s) : _submit(s),
