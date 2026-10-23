@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
                           hidden: s.hideSaldo,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 32,
+                            fontSize: 34,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.2,
                           ),
