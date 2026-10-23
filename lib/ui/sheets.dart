@@ -2,7 +2,7 @@ import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:oc_liquid_glass/oc_liquid_glass.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../data/models.dart';
 import '../data/store.dart';
@@ -101,47 +101,22 @@ class _SuccessCard extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
+            GlassContainer(
               width: 84,
               height: 84,
-              child: OCLiquidGlassGroup(
-                settings: const OCLiquidGlassSettings(
-                  refractStrength: -0.07,
-                  blurRadiusPx: 1.5,
-                  blendPx: 8,
-                  distortFalloffPx: 24,
-                  specStrength: 8,
-                  specWidth: 1.5,
-                  specPower: 6,
-                  lightbandStrength: 0.4,
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 84,
-                      height: 84,
-                      decoration: BoxDecoration(color: C.field, shape: BoxShape.circle),
-                    ),
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: OCLiquidGlass(
-                        width: 84,
-                        height: 84,
-                        borderRadius: 42,
-                        color: C.blue.withValues(alpha: 0.10),
-                        child: const SizedBox.expand(),
-                      ),
-                    ),
-                    Container(
-                      width: 48,
-                      height: 48,
-                      decoration: BoxDecoration(color: C.ink, shape: BoxShape.circle),
-                      child: Icon(Ic.check, color: C.inv, size: 30),
-                    ),
-                  ],
-                ),
+              useOwnLayer: true,
+              shape: const LiquidRoundedSuperellipse(borderRadius: 42),
+              settings: LiquidGlassSettings(
+                glassColor: C.blue.withValues(alpha: 0.10),
+                thickness: 20,
+                blur: 2,
+              ),
+              alignment: Alignment.center,
+              child: Container(
+                width: 48,
+                height: 48,
+                decoration: BoxDecoration(color: C.ink, shape: BoxShape.circle),
+                child: Icon(Ic.check, color: C.inv, size: 30),
               ),
             ),
             const SizedBox(height: 18),

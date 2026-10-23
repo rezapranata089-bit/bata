@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/store.dart';
@@ -13,6 +14,7 @@ import 'ui/theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  await LiquidGlassWidgets.initialize();
 
   // Di rilis, error saat build biasanya tampil layar kosong. Tampilkan teksnya.
   ErrorWidget.builder = (details) => Material(
@@ -96,7 +98,12 @@ class _BootState extends State<Boot> {
   @override
   Widget build(BuildContext context) {
     final s = _store;
-    if (s != null) return BataApp(store: s);
+    if (s != null) {
+      return LiquidGlassWidgets.wrap(
+        brightnessResolver: Theme.maybeBrightnessOf,
+        child: BataApp(store: s),
+      );
+    }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

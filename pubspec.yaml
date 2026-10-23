@@ -37,7 +37,7 @@ dependencies:
 
   firebase_core: ^4.0.0
   cloud_firestore: ^6.0.0
-  oc_liquid_glass: ^0.3.0
+  liquid_glass_widgets: ^1.14.1
   solar_icons: ^0.2.0
   number_flow_flutter: ^0.1.0
   shared_preferences: ^2.3.2
