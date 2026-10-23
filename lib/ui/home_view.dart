@@ -267,19 +267,19 @@ class _SesiCard extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(16)),
             child: Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           Tap(
             onTap: onTap,
             child: Container(
-              height: 56,
-              decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(14)),
+              height: 48,
+              decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(16)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

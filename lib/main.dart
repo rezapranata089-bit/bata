@@ -113,14 +113,7 @@ class _BootState extends State<Boot> {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: _err == null
-                  ? Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const CircularProgressIndicator(strokeWidth: 2.5),
-                        const SizedBox(height: 18),
-                        Text(_step, style: const TextStyle(color: Colors.white70, fontSize: 14)),
-                      ],
-                    )
+                  ? const SizedBox.shrink()
                   : SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
