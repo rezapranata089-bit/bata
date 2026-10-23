@@ -24,8 +24,8 @@ class HomePage extends StatelessWidget {
       child: Tap(
         onTap: onTap,
         child: Container(
-          height: 52,
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16)),
+          height: 56,
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -60,13 +60,13 @@ class HomePage extends StatelessWidget {
 
     return Stack(
       children: [
-        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 480)),
+        const Positioned(top: 0, left: 0, right: 0, child: TopGradient(height: 504)),
         ListView(
           padding: EdgeInsets.zero,
           children: [
             Container(
               child: Padding(
-              padding: EdgeInsets.fromLTRB(24, top + 16, 24, 40),
+              padding: EdgeInsets.fromLTRB(24, top + 16, 24, 56),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -153,11 +153,11 @@ class HomePage extends StatelessWidget {
                       Tap(
                         onTap: () => openTx(context, TxKind.kirim),
                         child: Container(
-                          width: 52,
-                          height: 52,
+                          width: 56,
+                          height: 56,
                           decoration: BoxDecoration(
                             color: const Color(0xFF0B0E17),
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           child: Icon(Ic.truck, size: 22, color: Colors.white),
                         ),
@@ -175,7 +175,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _SesiCard(s),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 32),
                   Row(
                     children: [
                       Expanded(
@@ -270,7 +270,7 @@ class _SesiCard extends StatelessWidget {
           const SizedBox(height: 12),
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(16)),
             child: Text(info, style: TextStyle(fontSize: 13.5, height: 1.4, color: C.ink2)),
           ),
@@ -278,7 +278,7 @@ class _SesiCard extends StatelessWidget {
           Tap(
             onTap: onTap,
             child: Container(
-              height: 46,
+              height: 56,
               decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(14)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
