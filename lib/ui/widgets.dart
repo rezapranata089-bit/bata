@@ -10,6 +10,38 @@ const pageTitle = TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontW
 
 final pageSub = TextStyle(color: Colors.white.withValues(alpha: 0.78), fontSize: 13.5);
 
+/// Avatar bulat: foto profil bila ada, kalau tidak huruf "R"
+class Avatar extends StatelessWidget {
+  const Avatar({super.key, required this.size, this.border = true, this.fill, this.fg});
+
+  final double size;
+  final bool border;
+  final Color? fill, fg;
+
+  @override
+  Widget build(BuildContext context) {
+    final img = StoreScope.of(context).avatar;
+    return Container(
+      width: size,
+      height: size,
+      alignment: Alignment.center,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: fill ?? Colors.white.withValues(alpha: 0.2),
+        border: border ? Border.all(color: Colors.white.withValues(alpha: 0.5), width: 1.5) : null,
+        image: img == null ? null : DecorationImage(image: MemoryImage(img), fit: BoxFit.cover),
+      ),
+      child: img == null
+          ? Text(
+              'R',
+              style: TextStyle(color: fg ?? Colors.white, fontSize: size * 0.4, fontWeight: FontWeight.w800),
+            )
+          : null,
+    );
+  }
+}
+
 /// Tombol aksi lebar (terang / gelap)
 class ActBtn extends StatelessWidget {
   const ActBtn({super.key, required this.label, required this.icon, this.onTap, this.dark = false});

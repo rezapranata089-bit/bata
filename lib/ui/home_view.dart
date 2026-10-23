@@ -92,20 +92,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        width: 46,
-                        height: 46,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white.withValues(alpha: 0.2),
-                          border: Border.all(color: Colors.white.withValues(alpha: 0.5), width: 1.5),
-                        ),
-                        child: const Text(
-                          'R',
-                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800),
-                        ),
-                      ),
+                      const Avatar(size: 46),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(

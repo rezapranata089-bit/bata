@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +46,12 @@ class AppStore extends ChangeNotifier {
     haptic = _prefs.getBool('haptic') ?? true;
     hideSaldo = _prefs.getBool('hide_saldo') ?? false;
     L.en = _prefs.getString('lang') == 'en';
+    final a = _prefs.getString('avatar');
+    if (a != null && a.isNotEmpty) {
+      try {
+        avatar = base64Decode(a);
+      } catch (_) {}
+    }
   }
 
   final SharedPreferences _prefs;
@@ -54,6 +62,7 @@ class AppStore extends ChangeNotifier {
   int themeMode = 0; // 0 sistem, 1 terang, 2 gelap
   bool counterAnim = true;
   bool haptic = true;
+  Uint8List? avatar;
   Pal get pal => palettes[paletteIdx];
   bool get en => L.en;
   final List<StreamSubscription<dynamic>> _subs = [];
@@ -102,6 +111,16 @@ class AppStore extends ChangeNotifier {
   void setLang(bool english) {
     L.en = english;
     _prefs.setString('lang', english ? 'en' : 'id');
+    notifyListeners();
+  }
+
+  void setAvatar(Uint8List? bytes) {
+    avatar = bytes;
+    if (bytes == null) {
+      _prefs.remove('avatar');
+    } else {
+      _prefs.setString('avatar', base64Encode(bytes));
+    }
     notifyListeners();
   }
 

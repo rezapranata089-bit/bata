@@ -41,6 +41,7 @@ dependencies:
   solar_icons: ^0.2.0
   number_flow_flutter: ^0.1.0
   shared_preferences: ^2.3.2
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

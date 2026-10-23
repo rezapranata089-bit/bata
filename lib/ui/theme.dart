@@ -145,6 +145,11 @@ class L {
     'h_ready': ['Riwayat Siap Jual', 'Ready History'],
     'no_session': ['Belum ada sesi bakar', 'No burn sessions yet'],
     'no_activity': ['Belum ada aktivitas', 'No activity yet'],
+    'profile_photo': ['Foto Profil', 'Profile Photo'],
+    'from_gallery': ['Pilih dari Galeri', 'Choose from Gallery'],
+    'take_photo': ['Ambil Foto', 'Take Photo'],
+    'remove_photo': ['Hapus Foto', 'Remove Photo'],
+    'cancel': ['Batal', 'Cancel'],
   };
 }
 
