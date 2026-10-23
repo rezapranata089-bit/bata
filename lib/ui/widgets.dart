@@ -21,7 +21,9 @@ class Avatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = StoreScope.of(context).avatar;
+    final st = StoreScope.of(context);
+    final img = st.avatar;
+    final nm = st.name.trim();
     return Container(
       width: size,
       height: size,
@@ -35,7 +37,7 @@ class Avatar extends StatelessWidget {
       ),
       child: img == null
           ? Text(
-              'R',
+              (nm.isEmpty ? 'R' : nm.substring(0, 1)).toUpperCase(),
               style: TextStyle(color: fg ?? Colors.white, fontSize: size * 0.4, fontWeight: FontWeight.w800),
             )
           : null,

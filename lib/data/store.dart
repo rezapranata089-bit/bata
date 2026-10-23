@@ -46,6 +46,7 @@ class AppStore extends ChangeNotifier {
     haptic = _prefs.getBool('haptic') ?? true;
     hideSaldo = _prefs.getBool('hide_saldo') ?? false;
     L.en = _prefs.getString('lang') == 'en';
+    name = _prefs.getString('name') ?? 'Reza';
     final a = _prefs.getString('avatar');
     if (a != null && a.isNotEmpty) {
       try {
@@ -63,6 +64,7 @@ class AppStore extends ChangeNotifier {
   bool counterAnim = true;
   bool haptic = true;
   Uint8List? avatar;
+  String name = 'Reza';
   Pal get pal => palettes[paletteIdx];
   bool get en => L.en;
   final List<StreamSubscription<dynamic>> _subs = [];
@@ -111,6 +113,14 @@ class AppStore extends ChangeNotifier {
   void setLang(bool english) {
     L.en = english;
     _prefs.setString('lang', english ? 'en' : 'id');
+    notifyListeners();
+  }
+
+  void setName(String v) {
+    final t = v.trim();
+    if (t.isEmpty) return;
+    name = t;
+    _prefs.setString('name', t);
     notifyListeners();
   }
 

@@ -62,6 +62,9 @@ Future<T?> _blurRoute<T>(BuildContext context, {required Widget child, required 
   );
 }
 
+/// Buka sheet bergaya sama dengan form transaksi (latar blur ringan)
+Future<T?> openSheet<T>(BuildContext context, Widget child) => _blurRoute<T>(context, sheet: true, child: child);
+
 Future<void> openTx(BuildContext context, TxKind kind, {String? tempat}) async {
   final msg = await _blurRoute<String>(context, sheet: true, child: TxSheet(kind: kind, tempat: tempat));
   if (msg != null && context.mounted) {

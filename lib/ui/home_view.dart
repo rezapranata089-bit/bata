@@ -82,9 +82,11 @@ class HomePage extends StatelessWidget {
                               '${_sapa()} 👋',
                               style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13),
                             ),
-                            const Text(
-                              'Reza',
-                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                            Text(
+                              s.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
                             ),
                           ],
                         ),

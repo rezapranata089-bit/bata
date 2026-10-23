@@ -150,6 +150,9 @@ class L {
     'take_photo': ['Ambil Foto', 'Take Photo'],
     'remove_photo': ['Hapus Foto', 'Remove Photo'],
     'cancel': ['Batal', 'Cancel'],
+    'edit_name': ['Ubah Nama', 'Edit Name'],
+    'name_label': ['Nama pengguna', 'Username'],
+    'save': ['Simpan', 'Save'],
   };
 }
 

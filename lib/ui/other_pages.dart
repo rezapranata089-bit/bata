@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart'
-    show CupertinoActionSheet, CupertinoActionSheetAction, CupertinoIcons, showCupertinoModalPopup;
+import 'package:flutter/cupertino.dart' show CupertinoIcons;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:image_picker/image_picker.dart';
@@ -251,6 +250,219 @@ class _PMini extends StatelessWidget {
   }
 }
 
+class _SheetRow extends StatelessWidget {
+  const _SheetRow({required this.icon, required this.label, required this.onTap, this.color});
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = color ?? C.ink;
+    return Tap(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Row(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(color: C.card, borderRadius: BorderRadius.circular(12)),
+              child: Icon(icon, size: 20, color: c),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(label, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: c)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SheetFrame extends StatelessWidget {
+  const _SheetFrame({required this.title, required this.child});
+
+  final String title;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: C.card,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
+      ),
+      padding: EdgeInsets.fromLTRB(24, 12, 24, MediaQuery.paddingOf(context).bottom + 24),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 40,
+            height: 4,
+            decoration: BoxDecoration(color: C.line, borderRadius: BorderRadius.circular(99)),
+          ),
+          const SizedBox(height: 16),
+          Text(title, style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w700, color: C.ink)),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+class _SheetBtn extends StatelessWidget {
+  const _SheetBtn({required this.label, required this.onTap, this.filled = true});
+
+  final String label;
+  final VoidCallback onTap;
+  final bool filled;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tap(
+      onTap: onTap,
+      child: Container(
+        height: 56,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: filled ? C.ink : C.field,
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: Text(
+          label,
+          style: TextStyle(color: filled ? C.inv : C.ink, fontSize: 16, fontWeight: FontWeight.w700),
+        ),
+      ),
+    );
+  }
+}
+
+class _PhotoSheet extends StatelessWidget {
+  const _PhotoSheet({
+    required this.hasPhoto,
+    required this.onGallery,
+    required this.onCamera,
+    required this.onRemove,
+  });
+
+  final bool hasPhoto;
+  final VoidCallback onGallery, onCamera, onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    void run(VoidCallback f) {
+      Navigator.of(context).pop();
+      f();
+    }
+
+    return _SheetFrame(
+      title: L.t('profile_photo'),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(24)),
+            child: Column(
+              children: [
+                _SheetRow(icon: CupertinoIcons.photo, label: L.t('from_gallery'), onTap: () => run(onGallery)),
+                Divider(height: 1, indent: 52, color: C.line),
+                _SheetRow(icon: CupertinoIcons.camera, label: L.t('take_photo'), onTap: () => run(onCamera)),
+                if (hasPhoto) ...[
+                  Divider(height: 1, indent: 52, color: C.line),
+                  _SheetRow(
+                    icon: CupertinoIcons.trash,
+                    label: L.t('remove_photo'),
+                    color: C.red,
+                    onTap: () => run(onRemove),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          _SheetBtn(label: L.t('cancel'), filled: false, onTap: () => Navigator.of(context).pop()),
+        ],
+      ),
+    );
+  }
+}
+
+class _NameSheet extends StatefulWidget {
+  const _NameSheet();
+
+  @override
+  State<_NameSheet> createState() => _NameSheetState();
+}
+
+class _NameSheetState extends State<_NameSheet> {
+  late final TextEditingController _c = TextEditingController(text: StoreScope.read(context).name);
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  void _save() {
+    if (_c.text.trim().isEmpty) return;
+    StoreScope.read(context).setName(_c.text);
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _SheetFrame(
+      title: L.t('edit_name'),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(color: C.field, borderRadius: BorderRadius.circular(24)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    L.t('name_label'),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: C.ink2),
+                  ),
+                ),
+                TextField(
+                  controller: _c,
+                  autofocus: true,
+                  maxLength: 24,
+                  textInputAction: TextInputAction.done,
+                  onSubmitted: (_) => _save(),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: C.ink),
+                  decoration: InputDecoration(
+                    counterText: '',
+                    filled: true,
+                    fillColor: C.card,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide.none),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+          _SheetBtn(label: L.t('save'), onTap: _save),
+        ],
+      ),
+    );
+  }
+}
+
 class ProfilPage extends StatelessWidget {
   const ProfilPage({super.key});
 
@@ -264,38 +476,19 @@ class ProfilPage extends StatelessWidget {
   }
 
   void _avatarMenu(BuildContext context, AppStore s) {
-    showCupertinoModalPopup<void>(
-      context: context,
-      builder: (c) => CupertinoActionSheet(
-        title: Text(L.t('profile_photo')),
-        actions: [
-          CupertinoActionSheetAction(
-            onPressed: () {
-              Navigator.pop(c);
-              _pick(s, ImageSource.gallery);
-            },
-            child: Text(L.t('from_gallery')),
-          ),
-          CupertinoActionSheetAction(
-            onPressed: () {
-              Navigator.pop(c);
-              _pick(s, ImageSource.camera);
-            },
-            child: Text(L.t('take_photo')),
-          ),
-          if (s.avatar != null)
-            CupertinoActionSheetAction(
-              isDestructiveAction: true,
-              onPressed: () {
-                Navigator.pop(c);
-                s.setAvatar(null);
-              },
-              child: Text(L.t('remove_photo')),
-            ),
-        ],
-        cancelButton: CupertinoActionSheetAction(onPressed: () => Navigator.pop(c), child: Text(L.t('cancel'))),
+    openSheet<void>(
+      context,
+      _PhotoSheet(
+        hasPhoto: s.avatar != null,
+        onGallery: () => _pick(s, ImageSource.gallery),
+        onCamera: () => _pick(s, ImageSource.camera),
+        onRemove: () => s.setAvatar(null),
       ),
     );
+  }
+
+  void _nameMenu(BuildContext context) {
+    openSheet<void>(context, const _NameSheet());
   }
 
   @override
@@ -354,7 +547,25 @@ class ProfilPage extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             Center(
-              child: const Text('Reza', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => _nameMenu(context),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        s.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Icon(CupertinoIcons.pencil, size: 16, color: Colors.white70),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 2),
             Center(child: Text(L.t('role'), style: const TextStyle(fontSize: 13.5, color: Colors.white70))),
