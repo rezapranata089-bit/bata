@@ -3,6 +3,7 @@ import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import '../data/store.dart';
 import 'icons.dart';
+import 'sheets.dart';
 import 'theme.dart';
 
 class _NavItem {
@@ -43,6 +44,36 @@ class GlassNav extends StatelessWidget {
       iconLabelSpacing: 2,
       quality: GlassQuality.premium,
       interactionBehavior: GlassInteractionBehavior.full,
+      extraButton: GlassTabBarExtraButton.menu(
+        icon: const Icon(CupertinoIcons.plus),
+        label: 'Tambah',
+        iconColor: accent,
+        size: 68,
+        placement: GlassExtraButtonPlacement.right,
+        menuWidth: 230,
+        menuItems: [
+          GlassMenuItem(
+            title: L.t('act_print'),
+            icon: Icon(Ic.add),
+            onTap: () => openTx(context, TxKind.cetak),
+          ),
+          GlassMenuItem(
+            title: L.t('act_kiln'),
+            icon: Icon(Ic.fire),
+            onTap: () => openTx(context, TxKind.pindah),
+          ),
+          GlassMenuItem(
+            title: L.t('act_send'),
+            icon: Icon(Ic.truck),
+            onTap: () => openTx(context, TxKind.kirim),
+          ),
+          GlassMenuItem(
+            title: L.t('act_cost'),
+            icon: Icon(Ic.wallet),
+            onTap: () => openTx(context, TxKind.pengeluaran),
+          ),
+        ],
+      ),
       selectedIconColor: accent,
       unselectedIconColor: C.ink2,
       selectedLabelColor: accent,
