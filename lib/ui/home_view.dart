@@ -122,7 +122,7 @@ class HomePage extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 36,
                             fontWeight: FontWeight.w700,
-                            letterSpacing: -1.4,
+                            letterSpacing: 0.2,
                           ),
                         ),
                       ),

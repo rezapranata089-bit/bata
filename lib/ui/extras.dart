@@ -61,10 +61,10 @@ class _CounterState extends State<Counter> {
               transformTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeInOut),
               opacityTiming: const TimingConfig(duration: Duration(milliseconds: 450), curve: Curves.easeOut),
               tabularNums: true,
-              style: widget.style.copyWith(fontFamily: 'Satoshi'),
+              style: widget.style.copyWith(fontFamily: 'Satoshi', letterSpacing: 0.2),
             ),
           )
-        : Text('${widget.symbol}${fmt(widget.value)}', style: widget.style);
+        : Text('${widget.symbol}${fmt(widget.value)}', style: widget.style.copyWith(letterSpacing: 0.2));
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(end: widget.hidden ? 12.0 : 0.0),
